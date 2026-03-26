@@ -26,7 +26,7 @@ import {
   type GravityStormParams,
   type GeoPulseParams,
   type WaveEtherParams,
-} from "../schemas";
+} from "./schemas";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types

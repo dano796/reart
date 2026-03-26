@@ -14,7 +14,6 @@
 import fs from "fs";
 import path from "path";
 import https from "https";
-import "dotenv/config";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Config
@@ -69,12 +68,7 @@ function log(msg, color = "reset") {
 }
 
 function detectCwd() {
-  // Try to find project root by looking for package.json
-  let dir = process.cwd();
-  for (let i = 0; i < 5; i++) {
-    if (fs.existsSync(path.join(dir, "package.json"))) return dir;
-    dir = path.dirname(dir);
-  }
+  // Use the directory where the command is run — users must run from project root.
   return process.cwd();
 }
 
@@ -155,9 +149,15 @@ async function cmdAdd(id) {
       const content = await fetchText(sourceUrl);
       ensureDir(targetPath);
       fs.writeFileSync(targetPath, content, "utf-8");
-      written.push(file.target);
+      written.push(targetPath);
     } catch (err) {
-      log(`  Failed to fetch ${file.source}: ${err.message}`, "red");
+      log(`\n  Failed to fetch ${file.source}: ${err.message}`, "red");
+      if (written.length > 0) {
+        log("  Cleaning up partial install...", "yellow");
+        for (const p of written) {
+          try { fs.unlinkSync(p); } catch { /* already gone */ }
+        }
+      }
       process.exit(1);
     }
   }
@@ -165,7 +165,7 @@ async function cmdAdd(id) {
   // Report
   if (written.length > 0) {
     log("\nAdded:", "green");
-    for (const f of written) log(`  + ${f}`, "green");
+    for (const f of written) log(`  + ${path.relative(projectRoot, f)}`, "green");
   }
   if (skipped.length > 0) {
     log("\nSkipped (already exist):", "yellow");
@@ -180,7 +180,8 @@ async function cmdAdd(id) {
 
   log(`\nDone! Usage:\n`, "bold");
   log(
-    `  import { ${exportName} } from "./${comp.files[0].target.replace(".tsx", "")}";\n` +
+    `  // Adjust the import path relative to your file:\n` +
+      `  import { ${exportName} } from "./components/backgrounds/${exportName}";\n` +
       `\n` +
       `  <${exportName}\n` +
       `    style={{ position: "absolute", inset: 0 }}\n` +
