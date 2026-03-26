@@ -3,7 +3,8 @@
  * kinetic-arcana CLI — shadcn/ui-style component installer.
  *
  * Usage:
- *   npx kinetic-arcana add <component-id>
+ *   npx kinetic-arcana add <component-id> [--force] [--dry-run]
+ *   npx kinetic-arcana update <component-id>
  *   npx kinetic-arcana list
  *   npx kinetic-arcana info <component-id>
  *
@@ -14,6 +15,7 @@
 import fs from "fs";
 import path from "path";
 import https from "https";
+import readline from "readline";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Config
@@ -22,10 +24,6 @@ import https from "https";
 const REGISTRY_URL =
   process.env.KINETIC_ARCANA_REGISTRY ||
   "https://raw.githubusercontent.com/dano796/alg-art-backgrounds/main/cli/registry.json";
-
-const BASE_URL =
-  process.env.KINETIC_ARCANA_BASE_URL ||
-  "https://raw.githubusercontent.com/dano796/alg-art-backgrounds/main";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Helpers
@@ -67,9 +65,27 @@ function log(msg, color = "reset") {
   console.log(`${colors[color]}${msg}${colors.reset}`);
 }
 
-function detectCwd() {
-  // Use the directory where the command is run — users must run from project root.
-  return process.cwd();
+function confirm(question) {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    rl.question(question, (answer) => {
+      rl.close();
+      const a = answer.trim().toLowerCase();
+      resolve(a === "y" || a === "yes");
+    });
+  });
+}
+
+async function fetchRegistry() {
+  const json = await fetchText(REGISTRY_URL);
+  return JSON.parse(json);
+}
+
+function toExportName(id) {
+  return id
+    .split("-")
+    .map((s) => s[0].toUpperCase() + s.slice(1))
+    .join("");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -78,8 +94,7 @@ function detectCwd() {
 
 async function cmdList() {
   log("\nFetching registry...", "dim");
-  const registryJson = await fetchText(REGISTRY_URL);
-  const registry = JSON.parse(registryJson);
+  const registry = await fetchRegistry();
 
   log("\nAvailable backgrounds:\n", "bold");
   for (const comp of registry.components) {
@@ -91,8 +106,12 @@ async function cmdList() {
 }
 
 async function cmdInfo(id) {
-  const registryJson = await fetchText(REGISTRY_URL);
-  const registry = JSON.parse(registryJson);
+  if (!id) {
+    log("\nUsage: npx kinetic-arcana info <component-id>\n", "yellow");
+    process.exit(1);
+  }
+
+  const registry = await fetchRegistry();
   const comp = registry.components.find((c) => c.id === id);
 
   if (!comp) {
@@ -110,16 +129,15 @@ async function cmdInfo(id) {
   log(`\nInstall: npx kinetic-arcana add ${comp.id}\n`, "dim");
 }
 
-async function cmdAdd(id) {
+async function cmdAdd(id, { force = false, dryRun = false } = {}) {
   if (!id) {
-    log("\nUsage: npx kinetic-arcana add <component-id>\n", "yellow");
+    log("\nUsage: npx kinetic-arcana add <component-id> [--force] [--dry-run]\n", "yellow");
     log("Run `npx kinetic-arcana list` to see available components.\n", "dim");
     process.exit(1);
   }
 
   log(`\nFetching registry...`, "dim");
-  const registryJson = await fetchText(REGISTRY_URL);
-  const registry = JSON.parse(registryJson);
+  const registry = await fetchRegistry();
   const comp = registry.components.find((c) => c.id === id);
 
   if (!comp) {
@@ -128,7 +146,25 @@ async function cmdAdd(id) {
     process.exit(1);
   }
 
-  const projectRoot = detectCwd();
+  const projectRoot = process.cwd();
+
+  if (dryRun) {
+    log(`\n[dry-run] Would add ${comp.name} to ${projectRoot}:\n`, "bold");
+    for (const file of comp.files) {
+      const targetPath = path.join(projectRoot, file.target);
+      const exists = fs.existsSync(targetPath);
+      if (exists && !force) {
+        log(`  ~ ${file.target}  (skipped — already exists)`, "yellow");
+      } else if (exists && force) {
+        log(`  ↺ ${file.target}  (would overwrite)`, "cyan");
+      } else {
+        log(`  + ${file.target}`, "green");
+      }
+    }
+    console.log();
+    return;
+  }
+
   log(`\nAdding ${comp.name} to project at ${projectRoot}...\n`, "bold");
 
   const written = [];
@@ -138,8 +174,7 @@ async function cmdAdd(id) {
     const sourceUrl = `${registry.baseUrl}/${file.source}`;
     const targetPath = path.join(projectRoot, file.target);
 
-    // Skip if file already exists (don't overwrite user edits)
-    if (fs.existsSync(targetPath)) {
+    if (fs.existsSync(targetPath) && !force) {
       skipped.push(file.target);
       continue;
     }
@@ -168,16 +203,16 @@ async function cmdAdd(id) {
     for (const f of written) log(`  + ${path.relative(projectRoot, f)}`, "green");
   }
   if (skipped.length > 0) {
-    log("\nSkipped (already exist):", "yellow");
+    log("\nSkipped (already exist — use --force to overwrite):", "yellow");
     for (const f of skipped) log(`  ~ ${f}`, "yellow");
   }
 
-  // Usage hint
-  const exportName = id
-    .split("-")
-    .map((s) => s[0].toUpperCase() + s.slice(1))
-    .join("");
+  if (written.length === 0 && skipped.length > 0) {
+    log(`\nNothing written. Run with --force to overwrite existing files.\n`, "dim");
+    return;
+  }
 
+  const exportName = toExportName(id);
   log(`\nDone! Usage:\n`, "bold");
   log(
     `  // Adjust the import path relative to your file:\n` +
@@ -190,16 +225,81 @@ async function cmdAdd(id) {
   );
 }
 
+async function cmdUpdate(id) {
+  if (!id) {
+    log("\nUsage: npx kinetic-arcana update <component-id>\n", "yellow");
+    log("Run `npx kinetic-arcana list` to see available components.\n", "dim");
+    process.exit(1);
+  }
+
+  log(`\nFetching registry...`, "dim");
+  const registry = await fetchRegistry();
+  const comp = registry.components.find((c) => c.id === id);
+
+  if (!comp) {
+    log(`\nComponent "${id}" not found.\n`, "red");
+    log("Available: " + registry.components.map((c) => c.id).join(", "), "dim");
+    process.exit(1);
+  }
+
+  const projectRoot = process.cwd();
+
+  // Show which files will be overwritten
+  log(`\nUpdating ${comp.name} (will overwrite existing files):\n`, "bold");
+  for (const file of comp.files) {
+    const targetPath = path.join(projectRoot, file.target);
+    const exists = fs.existsSync(targetPath);
+    log(`  ${exists ? "↺" : "+"} ${file.target}`, exists ? "yellow" : "green");
+  }
+
+  const ok = await confirm("\nContinue? (y/N) ");
+  if (!ok) {
+    log("\nAborted.\n", "dim");
+    process.exit(0);
+  }
+
+  const written = [];
+  for (const file of comp.files) {
+    const sourceUrl = `${registry.baseUrl}/${file.source}`;
+    const targetPath = path.join(projectRoot, file.target);
+
+    try {
+      log(`  Downloading ${file.source}...`, "dim");
+      const content = await fetchText(sourceUrl);
+      ensureDir(targetPath);
+      fs.writeFileSync(targetPath, content, "utf-8");
+      written.push(targetPath);
+    } catch (err) {
+      log(`\n  Failed to fetch ${file.source}: ${err.message}`, "red");
+      log("  Partial update — some files may have been overwritten.", "yellow");
+      process.exit(1);
+    }
+  }
+
+  log("\nUpdated:", "green");
+  for (const f of written) log(`  ↺ ${path.relative(projectRoot, f)}`, "green");
+
+  const exportName = toExportName(id);
+  log(`\nDone! ${exportName} is up to date.\n`, "bold");
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Entry point
 // ─────────────────────────────────────────────────────────────────────────────
 
-const [, , command, arg] = process.argv;
+const rawArgs = process.argv.slice(2);
+const flags = new Set(rawArgs.filter((a) => a.startsWith("--")));
+const positional = rawArgs.filter((a) => !a.startsWith("--"));
+const [command, arg] = positional;
+
+const force = flags.has("--force");
+const dryRun = flags.has("--dry-run");
 
 const commands = {
-  list: () => cmdList(),
-  add: () => cmdAdd(arg),
-  info: () => cmdInfo(arg),
+  list:   () => cmdList(),
+  add:    () => cmdAdd(arg, { force, dryRun }),
+  update: () => cmdUpdate(arg),
+  info:   () => cmdInfo(arg),
 };
 
 if (!command || command === "help" || command === "--help" || command === "-h") {
@@ -207,6 +307,9 @@ if (!command || command === "help" || command === "--help" || command === "-h") 
   log("Commands:", "dim");
   log("  list                  List all available backgrounds", "cyan");
   log("  add <id>              Copy a background into your project", "cyan");
+  log("  add <id> --force      Overwrite existing files", "cyan");
+  log("  add <id> --dry-run    Preview which files would be written", "cyan");
+  log("  update <id>           Re-fetch a component, overwriting local files", "cyan");
   log("  info <id>             Show details about a background\n", "cyan");
   process.exit(0);
 }

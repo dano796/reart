@@ -5,8 +5,23 @@ import {
   resetGeoPulse,
   type GeoPulseState,
 } from "./engines/geoPulse";
-import type { GeoPulseParams } from "./schemas";
-import { geoPulseDefaults } from "./schemas";
+
+export interface GeoPulseParams {
+  seed?: number;
+  layers?: number;
+  sides?: number;
+  rotSpeed?: number;
+  pulse?: number;
+  connect?: number;
+  colorPrimary?: string;
+  colorSecondary?: string;
+  colorAccent?: string;
+}
+
+export const geoPulseDefaults: Required<GeoPulseParams> = {
+  seed: 42731, layers: 7, sides: 6, rotSpeed: 0.008, pulse: 0.12, connect: 0.4,
+  colorPrimary: "#d97757", colorSecondary: "#6a9bcc", colorAccent: "#e8d87a",
+};
 
 export interface GeoPulseProps extends GeoPulseParams {
   className?: string;

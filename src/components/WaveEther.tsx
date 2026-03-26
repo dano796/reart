@@ -5,8 +5,23 @@ import {
   resetWaveEther,
   type WaveEtherState,
 } from "./engines/waveEther";
-import type { WaveEtherParams } from "./schemas";
-import { waveEtherDefaults } from "./schemas";
+export interface WaveEtherParams {
+  seed?: number;
+  sources?: number;
+  frequency?: number;
+  amplitude?: number;
+  waveSpeed?: number;
+  resolution?: number;
+  colorCrest?: string;
+  colorTrough?: string;
+  colorMid?: string;
+}
+
+export const waveEtherDefaults: Required<WaveEtherParams> = {
+  seed: 42731, sources: 3, frequency: 0.018, amplitude: 1.0,
+  waveSpeed: 0.025, resolution: 8,
+  colorCrest: "#00d4ff", colorTrough: "#0a0a2e", colorMid: "#7b2fff",
+};
 
 export interface WaveEtherProps extends WaveEtherParams {
   className?: string;

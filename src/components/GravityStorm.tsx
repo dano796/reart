@@ -5,8 +5,23 @@ import {
   resetGravityStorm,
   type GravityStormState,
 } from "./engines/gravityStorm";
-import type { GravityStormParams } from "./schemas";
-import { gravityStormDefaults } from "./schemas";
+
+export interface GravityStormParams {
+  seed?: number;
+  count?: number;
+  attractors?: number;
+  gravity?: number;
+  turbulence?: number;
+  orbitSpeed?: number;
+  colorCore?: string;
+  colorTrail?: string;
+}
+
+export const gravityStormDefaults: Required<GravityStormParams> = {
+  seed: 42731, count: 1200, attractors: 3, gravity: 1.0,
+  turbulence: 0.5, orbitSpeed: 0.008,
+  colorCore: "#ff6b35", colorTrail: "#7b5ea7",
+};
 
 export interface GravityStormProps extends GravityStormParams {
   className?: string;

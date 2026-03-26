@@ -19,10 +19,6 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -43,10 +39,6 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -67,10 +59,6 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -91,10 +79,6 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     }

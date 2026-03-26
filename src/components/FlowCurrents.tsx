@@ -5,8 +5,24 @@ import {
   resetFlowCurrents,
   type FlowCurrentsState,
 } from "./engines/flowCurrents";
-import type { FlowCurrentsParams } from "./schemas";
-import { flowCurrentsDefaults } from "./schemas";
+
+export interface FlowCurrentsParams {
+  seed?: number;
+  count?: number;
+  speed?: number;
+  noiseScale?: number;
+  trailOpacity?: number;
+  noiseEvol?: number;
+  colorWarm?: string;
+  colorCool?: string;
+  colorAccent?: string;
+}
+
+export const flowCurrentsDefaults: Required<FlowCurrentsParams> = {
+  seed: 42731, count: 3000, speed: 1.0, noiseScale: 0.004,
+  trailOpacity: 8, noiseEvol: 0.0005,
+  colorWarm: "#e8855a", colorCool: "#5a9bcc", colorAccent: "#a0c878",
+};
 
 export interface FlowCurrentsProps extends FlowCurrentsParams {
   className?: string;

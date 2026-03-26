@@ -1,11 +1,24 @@
 /**
  * Parameter schema system.
  *
- * Each schema entry describes one prop on a background component:
- * - Used to generate playground UI controls automatically
- * - Used to generate typed React props
- * - Used to generate code-export snippets
+ * Params interfaces and defaults live in each component file so installed
+ * components are self-contained. This file re-exports them and adds the
+ * schema arrays used by BackgroundStudio for UI generation.
  */
+
+// Re-export Params interfaces and defaults from each component
+export type { FlowCurrentsParams } from "../FlowCurrents";
+export { flowCurrentsDefaults } from "../FlowCurrents";
+export type { GravityStormParams } from "../GravityStorm";
+export { gravityStormDefaults } from "../GravityStorm";
+export type { GeoPulseParams } from "../GeoPulse";
+export { geoPulseDefaults } from "../GeoPulse";
+export type { WaveEtherParams } from "../WaveEther";
+export { waveEtherDefaults } from "../WaveEther";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ParamSchema — drives BackgroundStudio UI controls and code-gen
+// ─────────────────────────────────────────────────────────────────────────────
 
 export type ParamType = "number" | "color" | "boolean" | "select";
 
@@ -59,24 +72,6 @@ export const flowCurrentsSchema: ParamSchema[] = [
   { name: "colorAccent",  label: "Accent",          type: "color",   default: "#a0c878" },
 ];
 
-export interface FlowCurrentsParams {
-  seed?: number;
-  count?: number;
-  speed?: number;
-  noiseScale?: number;
-  trailOpacity?: number;
-  noiseEvol?: number;
-  colorWarm?: string;
-  colorCool?: string;
-  colorAccent?: string;
-}
-
-export const flowCurrentsDefaults: Required<FlowCurrentsParams> = {
-  seed: 42731, count: 3000, speed: 1.0, noiseScale: 0.004,
-  trailOpacity: 8, noiseEvol: 0.0005,
-  colorWarm: "#e8855a", colorCool: "#5a9bcc", colorAccent: "#a0c878",
-};
-
 // ─────────────────────────────────────────────────────────────────────────────
 // GRAVITY STORM
 // ─────────────────────────────────────────────────────────────────────────────
@@ -91,23 +86,6 @@ export const gravityStormSchema: ParamSchema[] = [
   { name: "colorCore",    label: "Core Color",       type: "color",  default: "#ff6b35" },
   { name: "colorTrail",   label: "Trail Color",      type: "color",  default: "#7b5ea7" },
 ];
-
-export interface GravityStormParams {
-  seed?: number;
-  count?: number;
-  attractors?: number;
-  gravity?: number;
-  turbulence?: number;
-  orbitSpeed?: number;
-  colorCore?: string;
-  colorTrail?: string;
-}
-
-export const gravityStormDefaults: Required<GravityStormParams> = {
-  seed: 42731, count: 1200, attractors: 3, gravity: 1.0,
-  turbulence: 0.5, orbitSpeed: 0.008,
-  colorCore: "#ff6b35", colorTrail: "#7b5ea7",
-};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GEO PULSE
@@ -125,23 +103,6 @@ export const geoPulseSchema: ParamSchema[] = [
   { name: "colorAccent",    label: "Accent",    type: "color", default: "#e8d87a" },
 ];
 
-export interface GeoPulseParams {
-  seed?: number;
-  layers?: number;
-  sides?: number;
-  rotSpeed?: number;
-  pulse?: number;
-  connect?: number;
-  colorPrimary?: string;
-  colorSecondary?: string;
-  colorAccent?: string;
-}
-
-export const geoPulseDefaults: Required<GeoPulseParams> = {
-  seed: 42731, layers: 7, sides: 6, rotSpeed: 0.008, pulse: 0.12, connect: 0.4,
-  colorPrimary: "#d97757", colorSecondary: "#6a9bcc", colorAccent: "#e8d87a",
-};
-
 // ─────────────────────────────────────────────────────────────────────────────
 // WAVE ETHER
 // ─────────────────────────────────────────────────────────────────────────────
@@ -157,21 +118,3 @@ export const waveEtherSchema: ParamSchema[] = [
   { name: "colorTrough", label: "Trough Color", type: "color",  default: "#0a0a2e" },
   { name: "colorMid",    label: "Mid Color",    type: "color",  default: "#7b2fff" },
 ];
-
-export interface WaveEtherParams {
-  seed?: number;
-  sources?: number;
-  frequency?: number;
-  amplitude?: number;
-  waveSpeed?: number;
-  resolution?: number;
-  colorCrest?: string;
-  colorTrough?: string;
-  colorMid?: string;
-}
-
-export const waveEtherDefaults: Required<WaveEtherParams> = {
-  seed: 42731, sources: 3, frequency: 0.018, amplitude: 1.0,
-  waveSpeed: 0.025, resolution: 8,
-  colorCrest: "#00d4ff", colorTrough: "#0a0a2e", colorMid: "#7b2fff",
-};
