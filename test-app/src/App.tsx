@@ -1,4 +1,4 @@
-import { BackgroundStudio } from "kinetic-arcana";
+import { BackgroundStudio } from "alg-art-backgrounds";
 
 export default function App() {
   return <BackgroundStudio />;

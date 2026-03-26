@@ -1,9 +1,9 @@
-# kinetic-arcana
+# alg-art-backgrounds
 
 Algorithmic background components for React — installed like shadcn/ui, owned by you.
 
 ```bash
-npx kinetic-arcana add wave-ether
+npx alg-art-backgrounds add wave-ether
 ```
 
 The component source is copied directly into your project. No runtime dependency. Full ownership of the code.
@@ -30,7 +30,7 @@ No other runtime dependencies. Components use only React and browser APIs (`canv
 Run from your project root:
 
 ```bash
-npx kinetic-arcana add <component-id>
+npx alg-art-backgrounds add <component-id>
 ```
 
 This copies the component files into `components/backgrounds/` in your project. Adjust the import path to match your file structure.
@@ -40,13 +40,13 @@ This copies the component files into `components/backgrounds/` in your project. 
 ## Commands
 
 ```bash
-npx kinetic-arcana list                   # Browse all available backgrounds
-npx kinetic-arcana info <id>              # See files and description for a component
-npx kinetic-arcana add <id>               # Install a component
-npx kinetic-arcana add <id> --force       # Overwrite existing files
-npx kinetic-arcana add <id> --dry-run         # Preview which files would be written
-npx kinetic-arcana update <id>               # Re-fetch a component (with confirmation)
-npx kinetic-arcana add background-studio     # Install all components + the studio playground
+npx alg-art-backgrounds list                   # Browse all available backgrounds
+npx alg-art-backgrounds info <id>              # See files and description for a component
+npx alg-art-backgrounds add <id>               # Install a component
+npx alg-art-backgrounds add <id> --force       # Overwrite existing files
+npx alg-art-backgrounds add <id> --dry-run         # Preview which files would be written
+npx alg-art-backgrounds update <id>               # Re-fetch a component (with confirmation)
+npx alg-art-backgrounds add background-studio     # Install all components + the studio playground
 ```
 
 ---
@@ -58,7 +58,7 @@ npx kinetic-arcana add background-studio     # Install all components + the stud
 Interactive playground to explore and configure all backgrounds with live preview and code export. Installs all four background components in one command.
 
 ```bash
-npx kinetic-arcana add background-studio
+npx alg-art-backgrounds add background-studio
 ```
 
 ```tsx
@@ -212,7 +212,7 @@ No special setup needed. Import and use directly.
 ## Setting a custom registry (for development)
 
 ```bash
-KINETIC_ARCANA_REGISTRY=http://localhost:3000/registry.json npx kinetic-arcana list
+ALG_ART_BACKGROUNDS_REGISTRY=http://localhost:3000/registry.json npx alg-art-backgrounds list
 ```
 
 ---

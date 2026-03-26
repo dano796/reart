@@ -1,5 +1,5 @@
 /**
- * BackgroundStudio — interactive playground for Kinetic Arcana backgrounds.
+ * BackgroundStudio — interactive playground for alg-art-backgrounds.
  *
  * Left panel: background selector + live parameter controls (auto-generated
  * from schema). Right panel: full canvas preview. Bottom sheet: code export.
@@ -131,7 +131,7 @@ function generateFullComponent(bg: BackgroundEntry): string {
     .map((s) => s[0].toUpperCase() + s.slice(1))
     .join("");
   return (
-    `import { ${componentName} } from "kinetic-arcana";\n\n` +
+    `import { ${componentName} } from "alg-art-backgrounds";\n\n` +
     `export default function MyPage() {\n` +
     `  return (\n` +
     `    <div style={{ position: "relative", height: "100vh" }}>\n` +
@@ -330,7 +330,7 @@ export function BackgroundStudio() {
         {/* Header */}
         <div style={{ padding: "20px 20px 16px" }}>
           <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 2 }}>Background Studio</div>
-          <div style={{ fontSize: 11, color: T.muted }}>Kinetic Arcana</div>
+          <div style={{ fontSize: 11, color: T.muted }}>alg-art-backgrounds</div>
         </div>
 
         <div style={{ borderBottom: `1px solid ${T.border}` }} />
@@ -451,7 +451,7 @@ export function BackgroundStudio() {
             fontFamily: "monospace",
           }}
         >
-          npx kinetic-arcana add {bg.installId}
+          npx alg-art-backgrounds add {bg.installId}
         </div>
 
         {/* Export panel */}
@@ -510,7 +510,7 @@ export function BackgroundStudio() {
                   <code
                     style={{ fontFamily: "monospace", background: T.input, padding: "2px 6px", borderRadius: 4 }}
                   >
-                    npx kinetic-arcana add {bg.installId}
+                    npx alg-art-backgrounds add {bg.installId}
                   </code>
                 </>
               )}

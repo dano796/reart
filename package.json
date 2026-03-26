@@ -1,5 +1,5 @@
 {
-  "name": "kinetic-arcana",
+  "name": "alg-art-backgrounds",
   "version": "0.1.0",
   "description": "Algorithmic art backgrounds as copy-paste-ready React components — shadcn/ui style.",
   "type": "module",
@@ -13,7 +13,7 @@
     }
   },
   "bin": {
-    "kinetic-arcana": "./cli/index.js"
+    "alg-art-backgrounds": "./cli/index.js"
   },
   "scripts": {
     "build": "tsc && node cli/build-registry.mjs",

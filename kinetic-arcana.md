@@ -1,4 +1,4 @@
-# Kinetic Arcana — An Algorithmic Philosophy
+# alg-art-backgrounds — An Algorithmic Philosophy
 
 **Movement:** Emergent Vitalism · Dynamic Background Systems
 
@@ -6,7 +6,7 @@
 
 ## I. The Living Membrane
 
-Backgrounds are not passive substrates. They are living membranes — computational organisms that breathe, pulse, and drift with quiet autonomy. Kinetic Arcana rejects the static canvas as foundation; instead, it treats every background as a portal: a system in continuous flux, obeying internal laws that were meticulously engineered to feel inevitable. Each frame is not a picture but a moment in a process — the way a river is not its water, but its flow.
+Backgrounds are not passive substrates. They are living membranes — computational organisms that breathe, pulse, and drift with quiet autonomy. alg-art-backgrounds rejects the static canvas as foundation; instead, it treats every background as a portal: a system in continuous flux, obeying internal laws that were meticulously engineered to feel inevitable. Each frame is not a picture but a moment in a process — the way a river is not its water, but its flow.
 
 ## II. The Four States of Computational Matter
 
@@ -30,4 +30,4 @@ Each room in the gallery exposes its essential tuning knobs — not arbitrary sl
 
 ## V. Background as Presence
 
-The final philosophical commitment: these algorithms exist to be *behind* things, yet they cannot be ignored. A living background asserts itself without dominating — it suggests depth, motion, life beneath whatever foreground it supports. Kinetic Arcana achieves this through restraint enforced by mathematics: transparency parameters tuned so trails breathe without overwhelming, color harmonies chosen so no single hue shouts, motion calibrated so the eye rests in flow rather than being seized by it. This restraint is itself the product of the most careful computational aesthetic judgment — knowing not just what to add, but what to withhold.
+The final philosophical commitment: these algorithms exist to be *behind* things, yet they cannot be ignored. A living background asserts itself without dominating — it suggests depth, motion, life beneath whatever foreground it supports. alg-art-backgrounds achieves this through restraint enforced by mathematics: transparency parameters tuned so trails breathe without overwhelming, color harmonies chosen so no single hue shouts, motion calibrated so the eye rests in flow rather than being seized by it. This restraint is itself the product of the most careful computational aesthetic judgment — knowing not just what to add, but what to withhold.

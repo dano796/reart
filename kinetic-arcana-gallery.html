@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinetic Arcana — Algorithmic Gallery</title>
+    <title>alg-art-backgrounds — Algorithmic Gallery</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,7 +224,7 @@
 <body>
 <div class="container">
     <div class="sidebar">
-        <h1>Kinetic Arcana</h1>
+        <h1>alg-art-backgrounds</h1>
         <div class="subtitle">Galería de arte algorítmico — backgrounds dinámicos con comportamiento emergente</div>
 
         <!-- Gallery Selector -->
@@ -613,7 +613,7 @@ function downloadCanvas() {
     const c = document.querySelector('#canvas-container canvas');
     if (!c) return;
     const a = document.createElement('a');
-    a.download = `kinetic-arcana-${artKeys[currentArtwork]}-seed${seed}.png`;
+    a.download = `alg-art-backgrounds-${artKeys[currentArtwork]}-seed${seed}.png`;
     a.href = c.toDataURL('image/png');
     a.click();
 }
