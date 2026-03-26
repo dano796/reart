@@ -4,9 +4,9 @@ import {
   drawWaveEther,
   resetWaveEther,
   type WaveEtherState,
-} from "../engines/waveEther";
-import type { WaveEtherParams } from "../schemas";
-import { waveEtherDefaults } from "../schemas";
+} from "./engines/waveEther";
+import type { WaveEtherParams } from "./schemas";
+import { waveEtherDefaults } from "./schemas";
 
 export interface WaveEtherProps extends WaveEtherParams {
   className?: string;

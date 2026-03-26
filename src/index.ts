@@ -13,25 +13,25 @@ export {
   drawFlowCurrents,
   resetFlowCurrents,
   type FlowCurrentsState,
-} from "./engines/flowCurrents";
+} from "./components/engines/flowCurrents";
 export {
   initGravityStorm,
   drawGravityStorm,
   resetGravityStorm,
   type GravityStormState,
-} from "./engines/gravityStorm";
+} from "./components/engines/gravityStorm";
 export {
   initGeoPulse,
   drawGeoPulse,
   resetGeoPulse,
   type GeoPulseState,
-} from "./engines/geoPulse";
+} from "./components/engines/geoPulse";
 export {
   initWaveEther,
   drawWaveEther,
   resetWaveEther,
   type WaveEtherState,
-} from "./engines/waveEther";
+} from "./components/engines/waveEther";
 
 // Schemas & types
 export {
@@ -48,10 +48,10 @@ export {
   type GravityStormParams,
   type GeoPulseParams,
   type WaveEtherParams,
-} from "./schemas";
+} from "./components/schemas";
 
 // Registry
 export { registry, getBackground, backgroundIds } from "./registry";
 
 // Utils (exposed for custom backgrounds)
-export { PerlinNoise, SeededRandom, hexToRgb, lerp, clamp, map, rgba } from "./utils/noise";
+export { PerlinNoise, SeededRandom, hexToRgb, lerp, clamp, map, rgba } from "./components/utils/noise";

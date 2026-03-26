@@ -13,16 +13,16 @@
           "target": "components/backgrounds/FlowCurrents.tsx"
         },
         {
-          "source": "src/engines/flowCurrents.ts",
-          "target": "components/engines/flowCurrents.ts"
+          "source": "src/components/engines/flowCurrents.ts",
+          "target": "components/backgrounds/engines/flowCurrents.ts"
         },
         {
-          "source": "src/utils/noise.ts",
-          "target": "components/utils/noise.ts"
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
         },
         {
-          "source": "src/schemas/index.ts",
-          "target": "components/schemas/index.ts"
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -37,16 +37,16 @@
           "target": "components/backgrounds/GravityStorm.tsx"
         },
         {
-          "source": "src/engines/gravityStorm.ts",
-          "target": "components/engines/gravityStorm.ts"
+          "source": "src/components/engines/gravityStorm.ts",
+          "target": "components/backgrounds/engines/gravityStorm.ts"
         },
         {
-          "source": "src/utils/noise.ts",
-          "target": "components/utils/noise.ts"
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
         },
         {
-          "source": "src/schemas/index.ts",
-          "target": "components/schemas/index.ts"
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -61,16 +61,16 @@
           "target": "components/backgrounds/GeoPulse.tsx"
         },
         {
-          "source": "src/engines/geoPulse.ts",
-          "target": "components/engines/geoPulse.ts"
+          "source": "src/components/engines/geoPulse.ts",
+          "target": "components/backgrounds/engines/geoPulse.ts"
         },
         {
-          "source": "src/utils/noise.ts",
-          "target": "components/utils/noise.ts"
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
         },
         {
-          "source": "src/schemas/index.ts",
-          "target": "components/schemas/index.ts"
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -85,16 +85,16 @@
           "target": "components/backgrounds/WaveEther.tsx"
         },
         {
-          "source": "src/engines/waveEther.ts",
-          "target": "components/engines/waveEther.ts"
+          "source": "src/components/engines/waveEther.ts",
+          "target": "components/backgrounds/engines/waveEther.ts"
         },
         {
-          "source": "src/utils/noise.ts",
-          "target": "components/utils/noise.ts"
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
         },
         {
-          "source": "src/schemas/index.ts",
-          "target": "components/schemas/index.ts"
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     }

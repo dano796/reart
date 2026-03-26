@@ -4,9 +4,9 @@ import {
   drawGeoPulse,
   resetGeoPulse,
   type GeoPulseState,
-} from "../engines/geoPulse";
-import type { GeoPulseParams } from "../schemas";
-import { geoPulseDefaults } from "../schemas";
+} from "./engines/geoPulse";
+import type { GeoPulseParams } from "./schemas";
+import { geoPulseDefaults } from "./schemas";
 
 export interface GeoPulseProps extends GeoPulseParams {
   className?: string;

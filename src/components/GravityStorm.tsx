@@ -4,9 +4,9 @@ import {
   drawGravityStorm,
   resetGravityStorm,
   type GravityStormState,
-} from "../engines/gravityStorm";
-import type { GravityStormParams } from "../schemas";
-import { gravityStormDefaults } from "../schemas";
+} from "./engines/gravityStorm";
+import type { GravityStormParams } from "./schemas";
+import { gravityStormDefaults } from "./schemas";
 
 export interface GravityStormProps extends GravityStormParams {
   className?: string;

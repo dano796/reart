@@ -4,9 +4,9 @@ import {
   drawFlowCurrents,
   resetFlowCurrents,
   type FlowCurrentsState,
-} from "../engines/flowCurrents";
-import type { FlowCurrentsParams } from "../schemas";
-import { flowCurrentsDefaults } from "../schemas";
+} from "./engines/flowCurrents";
+import type { FlowCurrentsParams } from "./schemas";
+import { flowCurrentsDefaults } from "./schemas";
 
 export interface FlowCurrentsProps extends FlowCurrentsParams {
   className?: string;

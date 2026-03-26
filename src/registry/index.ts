@@ -16,7 +16,7 @@ import {
   waveEtherSchema,
   waveEtherDefaults,
   type ParamSchema,
-} from "../schemas";
+} from "../components/schemas";
 
 export interface RegistryEntry {
   /** Kebab-case id used in CLI: `npx kinetic-arcana add <id>` */
@@ -49,9 +49,9 @@ export const registry: RegistryEntry[] = [
     defaults: flowCurrentsDefaults,
     files: [
       "src/components/FlowCurrents.tsx",
-      "src/engines/flowCurrents.ts",
-      "src/utils/noise.ts",
-      "src/schemas/index.ts",
+      "src/components/engines/flowCurrents.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
     ],
     description: "Thousands of particles trace Perlin noise vector fields forming organic density maps.",
     tags: ["particles", "noise", "flow", "organic"],
@@ -65,9 +65,9 @@ export const registry: RegistryEntry[] = [
     defaults: gravityStormDefaults,
     files: [
       "src/components/GravityStorm.tsx",
-      "src/engines/gravityStorm.ts",
-      "src/utils/noise.ts",
-      "src/schemas/index.ts",
+      "src/components/engines/gravityStorm.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
     ],
     description: "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
     tags: ["particles", "physics", "gravity", "orbits"],
@@ -81,9 +81,9 @@ export const registry: RegistryEntry[] = [
     defaults: geoPulseDefaults,
     files: [
       "src/components/GeoPulse.tsx",
-      "src/engines/geoPulse.ts",
-      "src/utils/noise.ts",
-      "src/schemas/index.ts",
+      "src/components/engines/geoPulse.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
     ],
     description: "Nested parametric polygons rotating at prime-ratio angular velocities.",
     tags: ["geometric", "polygons", "rotation", "mathematical"],
@@ -97,9 +97,9 @@ export const registry: RegistryEntry[] = [
     defaults: waveEtherDefaults,
     files: [
       "src/components/WaveEther.tsx",
-      "src/engines/waveEther.ts",
-      "src/utils/noise.ts",
-      "src/schemas/index.ts",
+      "src/components/engines/waveEther.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
     ],
     description: "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
     tags: ["waves", "interference", "sine", "pixel"],
