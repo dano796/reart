@@ -15,6 +15,12 @@ import {
   geoPulseDefaults,
   waveEtherSchema,
   waveEtherDefaults,
+  vortexBloomSchema,
+  vortexBloomDefaults,
+  crystallineDriftSchema,
+  crystallineDriftDefaults,
+  ambientMeshSchema,
+  ambientMeshDefaults,
   type ParamSchema,
 } from "../components/schemas";
 
@@ -105,6 +111,54 @@ export const registry: RegistryEntry[] = [
     tags: ["waves", "interference", "sine", "pixel"],
   },
   {
+    id: "vortex-bloom",
+    name: "Vortex Bloom",
+    componentPath: "../components/VortexBloom",
+    exportName: "VortexBloom",
+    schema: vortexBloomSchema,
+    defaults: vortexBloomDefaults,
+    files: [
+      "src/components/VortexBloom.tsx",
+      "src/components/engines/vortexBloom.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
+    ],
+    description: "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
+    tags: ["particles", "vortex", "orbital", "mandala"],
+  },
+  {
+    id: "crystalline-drift",
+    name: "Crystalline Drift",
+    componentPath: "../components/CrystallineDrift",
+    exportName: "CrystallineDrift",
+    schema: crystallineDriftSchema,
+    defaults: crystallineDriftDefaults,
+    files: [
+      "src/components/CrystallineDrift.tsx",
+      "src/components/engines/crystallineDrift.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
+    ],
+    description: "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
+    tags: ["fractal", "crystal", "symmetry", "dendrite"],
+  },
+  {
+    id: "ambient-mesh",
+    name: "Ambient Mesh",
+    componentPath: "../components/AmbientMesh",
+    exportName: "AmbientMesh",
+    schema: ambientMeshSchema,
+    defaults: ambientMeshDefaults,
+    files: [
+      "src/components/AmbientMesh.tsx",
+      "src/components/engines/ambientMesh.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
+    ],
+    description: "Nodes drift through noise fields, forming dynamic connections — a living network background.",
+    tags: ["network", "nodes", "mesh", "subtle"],
+  },
+  {
     id: "background-studio",
     name: "Background Studio",
     componentPath: "../components/BackgroundStudio",
@@ -117,10 +171,16 @@ export const registry: RegistryEntry[] = [
       "src/components/GravityStorm.tsx",
       "src/components/GeoPulse.tsx",
       "src/components/WaveEther.tsx",
+      "src/components/VortexBloom.tsx",
+      "src/components/CrystallineDrift.tsx",
+      "src/components/AmbientMesh.tsx",
       "src/components/engines/flowCurrents.ts",
       "src/components/engines/gravityStorm.ts",
       "src/components/engines/geoPulse.ts",
       "src/components/engines/waveEther.ts",
+      "src/components/engines/vortexBloom.ts",
+      "src/components/engines/crystallineDrift.ts",
+      "src/components/engines/ambientMesh.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
@@ -142,4 +202,7 @@ export { FlowCurrents } from "../components/FlowCurrents";
 export { GravityStorm } from "../components/GravityStorm";
 export { GeoPulse } from "../components/GeoPulse";
 export { WaveEther } from "../components/WaveEther";
+export { VortexBloom } from "../components/VortexBloom";
+export { CrystallineDrift } from "../components/CrystallineDrift";
+export { AmbientMesh } from "../components/AmbientMesh";
 export { BackgroundStudio } from "../components/BackgroundStudio";

@@ -4,6 +4,9 @@ import {
   WaveEther,
   GravityStorm,
   GeoPulse,
+  VortexBloom,
+  CrystallineDrift,
+  AmbientMesh,
 } from "alg-art-backgrounds";
 
 type BgComponentProps = { style?: CSSProperties; [key: string]: unknown };
@@ -58,6 +61,41 @@ const GALLERY_ITEMS: Array<{
     props: {
       layers: 7, sides: 6, rotSpeed: 0.008, pulse: 0.12, connect: 0.4,
       colorPrimary: "#d97757", colorSecondary: "#6a9bcc", colorAccent: "#e8d87a",
+    },
+  },
+  {
+    id: "vortex-bloom",
+    name: "Vortex Bloom",
+    tag: "Vortex · Orbital",
+    desc: "Particles spiral under competing vortex attractors, accumulating into mandala-like formations through orbital crystallization.",
+    Component: VortexBloom as React.ComponentType<BgComponentProps>,
+    props: {
+      vortexCount: 4, particleCount: 2000, orbitStrength: 1.2, spiralTightness: 0.9,
+      fadeRate: 4, trailWeight: 0.7,
+      colorA: "#d97757", colorB: "#6a9bcc", colorC: "#e8c46a",
+    },
+  },
+  {
+    id: "crystalline-drift",
+    name: "Crystalline Drift",
+    tag: "Fractal · Symmetry",
+    desc: "Recursive branching arms grow from the center, guided by noise, forming snowflake-like crystal mandala structures.",
+    Component: CrystallineDrift as React.ComponentType<BgComponentProps>,
+    props: {
+      symmetry: 6, maxDepth: 7, angleVariance: 0.5, segmentLength: 6, branchInterval: 12,
+      crystalColor: "#6ab8e8", glowColor: "#c4e8ff",
+    },
+  },
+  {
+    id: "ambient-mesh",
+    name: "Ambient Mesh",
+    tag: "Network · Subtle",
+    desc: "Nodes drift through noise fields, forming dynamic connections — a living network designed as a subtle, aesthetic background.",
+    Component: AmbientMesh as React.ComponentType<BgComponentProps>,
+    props: {
+      nodeCount: 80, connectionDistance: 150, motionSpeed: 0.3, breatheSpeed: 0.5,
+      edgeOpacity: 0.3, nodeSize: 4, nodeGlow: 0.8,
+      nodeColor: "#50b8e8", edgeColor: "#50b8e8",
     },
   },
 ];
@@ -138,7 +176,7 @@ export function GallerySection() {
           className="font-display font-extrabold text-ink leading-none tracking-[-0.04em] mb-[18px]"
           style={{ fontSize: "clamp(32px, 5vw, 52px)" }}
         >
-          Four distinct systems.
+          Seven distinct systems.
           <br />
           <span className="text-muted font-semibold">Infinite configurations.</span>
         </h2>

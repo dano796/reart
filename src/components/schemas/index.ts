@@ -15,6 +15,12 @@ export type { GeoPulseParams } from "../GeoPulse";
 export { geoPulseDefaults } from "../GeoPulse";
 export type { WaveEtherParams } from "../WaveEther";
 export { waveEtherDefaults } from "../WaveEther";
+export type { VortexBloomParams } from "../VortexBloom";
+export { vortexBloomDefaults } from "../VortexBloom";
+export type { CrystallineDriftParams } from "../CrystallineDrift";
+export { crystallineDriftDefaults } from "../CrystallineDrift";
+export type { AmbientMeshParams } from "../AmbientMesh";
+export { ambientMeshDefaults } from "../AmbientMesh";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ParamSchema — drives BackgroundStudio UI controls and code-gen
@@ -117,4 +123,59 @@ export const waveEtherSchema: ParamSchema[] = [
   { name: "colorCrest",  label: "Crest Color",  type: "color",  default: "#00d4ff" },
   { name: "colorTrough", label: "Trough Color", type: "color",  default: "#0a0a2e" },
   { name: "colorMid",    label: "Mid Color",    type: "color",  default: "#7b2fff" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VORTEX BLOOM
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const vortexBloomSchema: ParamSchema[] = [
+  { name: "seed",             label: "Seed",             type: "number", default: 12345, min: 1,    max: 999999, step: 1    },
+  { name: "vortexCount",      label: "Vortex Count",     type: "number", default: 4,     min: 2,    max: 8,      step: 1    },
+  { name: "particleCount",    label: "Particle Count",   type: "number", default: 3000,  min: 500,  max: 5000,   step: 250  },
+  { name: "orbitStrength",    label: "Orbit Strength",   type: "number", default: 1.2,   min: 0.1,  max: 3.0,    step: 0.1  },
+  { name: "spiralTightness",  label: "Spiral Tightness", type: "number", default: 0.9,   min: 0.1,  max: 2.5,    step: 0.1  },
+  { name: "fadeRate",         label: "Trail Fade",       type: "number", default: 4,     min: 1,    max: 20,     step: 1    },
+  { name: "trailWeight",      label: "Trail Weight",     type: "number", default: 0.7,   min: 0.2,  max: 3.0,    step: 0.1  },
+  { name: "bgColor",          label: "Background",       type: "color",  default: "#080810" },
+  { name: "colorA",           label: "Vortex A",         type: "color",  default: "#d97757" },
+  { name: "colorB",           label: "Vortex B",         type: "color",  default: "#6a9bcc" },
+  { name: "colorC",           label: "Vortex C",         type: "color",  default: "#e8c46a" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CRYSTALLINE DRIFT
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const crystallineDriftSchema: ParamSchema[] = [
+  { name: "seed",           label: "Seed",            type: "number", default: 7777, min: 1,    max: 999999, step: 1    },
+  { name: "symmetry",       label: "Symmetry",        type: "number", default: 6,    min: 2,    max: 12,     step: 1    },
+  { name: "maxDepth",       label: "Branch Depth",    type: "number", default: 7,    min: 2,    max: 10,     step: 1    },
+  { name: "angleVariance",  label: "Angle Variance",  type: "number", default: 0.5,  min: 0.05, max: 1.5,    step: 0.05 },
+  { name: "segmentLength",  label: "Segment Length",  type: "number", default: 6,    min: 2,    max: 14,     step: 0.5  },
+  { name: "branchInterval", label: "Branch Interval", type: "number", default: 12,   min: 5,    max: 30,     step: 1    },
+  { name: "bgColor",        label: "Background",      type: "color",  default: "#050a14" },
+  { name: "crystalColor",   label: "Crystal",         type: "color",  default: "#6ab8e8" },
+  { name: "glowColor",      label: "Glow Halo",       type: "color",  default: "#c4e8ff" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AMBIENT MESH
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const ambientMeshSchema: ParamSchema[] = [
+  { name: "seed",               label: "Seed",                type: "number", default: 8888, min: 1,    max: 999999, step: 1    },
+  { name: "nodeCount",          label: "Node Count",          type: "number", default: 80,   min: 20,   max: 200,    step: 10   },
+  { name: "connectionDistance", label: "Connection Distance", type: "number", default: 150,  min: 50,   max: 300,    step: 10   },
+  { name: "motionSpeed",        label: "Motion Speed",        type: "number", default: 0.3,  min: 0.1,  max: 1.5,    step: 0.1  },
+  { name: "noiseScale",         label: "Noise Scale",         type: "number", default: 2.0,  min: 0.5,  max: 5.0,    step: 0.25 },
+  { name: "breatheSpeed",       label: "Breathe Speed",       type: "number", default: 0.5,  min: 0.0,  max: 2.0,    step: 0.1  },
+  { name: "breatheAmount",      label: "Breathe Amount",      type: "number", default: 0.15, min: 0.0,  max: 0.5,    step: 0.05 },
+  { name: "edgeOpacity",        label: "Edge Opacity",        type: "number", default: 0.3,  min: 0.1,  max: 1.0,    step: 0.05 },
+  { name: "nodeSize",           label: "Node Size",           type: "number", default: 4,    min: 2,    max: 10,     step: 0.5  },
+  { name: "nodeGlow",           label: "Node Glow",           type: "number", default: 0.8,  min: 0.0,  max: 2.0,    step: 0.1  },
+  { name: "bgOpacity",          label: "BG Opacity",          type: "number", default: 0.05, min: 0.0,  max: 1.0,    step: 0.05 },
+  { name: "bgColor",            label: "Background",          type: "color",  default: "#0a0e14" },
+  { name: "nodeColor",          label: "Nodes",               type: "color",  default: "#50b8e8" },
+  { name: "edgeColor",          label: "Edges",               type: "color",  default: "#50b8e8" },
 ];

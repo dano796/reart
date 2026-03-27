@@ -111,6 +111,10 @@ export class SeededRandom {
     return this.state / 0x100000000;
   }
 
+  random(): number {
+    return this.next();
+  }
+
   range(lo: number, hi: number): number {
     return lo + this.next() * (hi - lo);
   }

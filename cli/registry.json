@@ -6,7 +6,12 @@
       "id": "flow-currents",
       "name": "Flow Currents",
       "description": "Thousands of particles trace Perlin noise vector fields forming organic density maps.",
-      "tags": ["particles", "noise", "flow", "organic"],
+      "tags": [
+        "particles",
+        "noise",
+        "flow",
+        "organic"
+      ],
       "files": [
         {
           "source": "src/components/FlowCurrents.tsx",
@@ -19,6 +24,10 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -26,7 +35,12 @@
       "id": "gravity-storm",
       "name": "Gravity Storm",
       "description": "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
-      "tags": ["particles", "physics", "gravity", "orbits"],
+      "tags": [
+        "particles",
+        "physics",
+        "gravity",
+        "orbits"
+      ],
       "files": [
         {
           "source": "src/components/GravityStorm.tsx",
@@ -39,6 +53,10 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -46,7 +64,12 @@
       "id": "geo-pulse",
       "name": "Geo Pulse",
       "description": "Nested parametric polygons rotating at prime-ratio angular velocities.",
-      "tags": ["geometric", "polygons", "rotation", "mathematical"],
+      "tags": [
+        "geometric",
+        "polygons",
+        "rotation",
+        "mathematical"
+      ],
       "files": [
         {
           "source": "src/components/GeoPulse.tsx",
@@ -59,6 +82,10 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -66,7 +93,12 @@
       "id": "wave-ether",
       "name": "Wave Ether",
       "description": "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
-      "tags": ["waves", "interference", "sine", "pixel"],
+      "tags": [
+        "waves",
+        "interference",
+        "sine",
+        "pixel"
+      ],
       "files": [
         {
           "source": "src/components/WaveEther.tsx",
@@ -79,6 +111,97 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "vortex-bloom",
+      "name": "Vortex Bloom",
+      "description": "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
+      "tags": [
+        "particles",
+        "vortex",
+        "orbital",
+        "mandala"
+      ],
+      "files": [
+        {
+          "source": "src/components/VortexBloom.tsx",
+          "target": "components/backgrounds/VortexBloom.tsx"
+        },
+        {
+          "source": "src/components/engines/vortexBloom.ts",
+          "target": "components/backgrounds/engines/vortexBloom.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "crystalline-drift",
+      "name": "Crystalline Drift",
+      "description": "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
+      "tags": [
+        "fractal",
+        "crystal",
+        "symmetry",
+        "dendrite"
+      ],
+      "files": [
+        {
+          "source": "src/components/CrystallineDrift.tsx",
+          "target": "components/backgrounds/CrystallineDrift.tsx"
+        },
+        {
+          "source": "src/components/engines/crystallineDrift.ts",
+          "target": "components/backgrounds/engines/crystallineDrift.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "ambient-mesh",
+      "name": "Ambient Mesh",
+      "description": "Nodes drift through noise fields, forming dynamic connections — a living network background.",
+      "tags": [
+        "network",
+        "nodes",
+        "mesh",
+        "subtle"
+      ],
+      "files": [
+        {
+          "source": "src/components/AmbientMesh.tsx",
+          "target": "components/backgrounds/AmbientMesh.tsx"
+        },
+        {
+          "source": "src/components/engines/ambientMesh.ts",
+          "target": "components/backgrounds/engines/ambientMesh.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -86,7 +209,11 @@
       "id": "background-studio",
       "name": "Background Studio",
       "description": "Interactive playground to explore and configure all backgrounds with live preview and code export.",
-      "tags": ["studio", "playground", "dev-tool"],
+      "tags": [
+        "studio",
+        "playground",
+        "dev-tool"
+      ],
       "files": [
         {
           "source": "src/components/BackgroundStudio.tsx",
@@ -109,6 +236,18 @@
           "target": "components/backgrounds/WaveEther.tsx"
         },
         {
+          "source": "src/components/VortexBloom.tsx",
+          "target": "components/backgrounds/VortexBloom.tsx"
+        },
+        {
+          "source": "src/components/CrystallineDrift.tsx",
+          "target": "components/backgrounds/CrystallineDrift.tsx"
+        },
+        {
+          "source": "src/components/AmbientMesh.tsx",
+          "target": "components/backgrounds/AmbientMesh.tsx"
+        },
+        {
           "source": "src/components/engines/flowCurrents.ts",
           "target": "components/backgrounds/engines/flowCurrents.ts"
         },
@@ -123,6 +262,18 @@
         {
           "source": "src/components/engines/waveEther.ts",
           "target": "components/backgrounds/engines/waveEther.ts"
+        },
+        {
+          "source": "src/components/engines/vortexBloom.ts",
+          "target": "components/backgrounds/engines/vortexBloom.ts"
+        },
+        {
+          "source": "src/components/engines/crystallineDrift.ts",
+          "target": "components/backgrounds/engines/crystallineDrift.ts"
+        },
+        {
+          "source": "src/components/engines/ambientMesh.ts",
+          "target": "components/backgrounds/engines/ambientMesh.ts"
         },
         {
           "source": "src/components/utils/noise.ts",

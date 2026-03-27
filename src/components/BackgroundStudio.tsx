@@ -12,6 +12,9 @@ import { FlowCurrents } from "./FlowCurrents";
 import { GravityStorm } from "./GravityStorm";
 import { GeoPulse } from "./GeoPulse";
 import { WaveEther } from "./WaveEther";
+import { VortexBloom } from "./VortexBloom";
+import { CrystallineDrift } from "./CrystallineDrift";
+import { AmbientMesh } from "./AmbientMesh";
 import {
   flowCurrentsSchema,
   flowCurrentsDefaults,
@@ -21,18 +24,27 @@ import {
   geoPulseDefaults,
   waveEtherSchema,
   waveEtherDefaults,
+  vortexBloomSchema,
+  vortexBloomDefaults,
+  crystallineDriftSchema,
+  crystallineDriftDefaults,
+  ambientMeshSchema,
+  ambientMeshDefaults,
   type ParamSchema,
   type FlowCurrentsParams,
   type GravityStormParams,
   type GeoPulseParams,
   type WaveEtherParams,
+  type VortexBloomParams,
+  type CrystallineDriftParams,
+  type AmbientMeshParams,
 } from "./schemas";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
 // ─────────────────────────────────────────────────────────────────────────────
 
-type BackgroundId = "flow-currents" | "gravity-storm" | "geo-pulse" | "wave-ether";
+type BackgroundId = "flow-currents" | "gravity-storm" | "geo-pulse" | "wave-ether" | "vortex-bloom" | "crystalline-drift" | "ambient-mesh";
 type AnyParams = Record<string, number | string | boolean>;
 
 interface BackgroundEntry {
@@ -82,6 +94,33 @@ const BACKGROUNDS: BackgroundEntry[] = [
     Component: WaveEther,
     description: "Multi-source interference waves across a pixel grid.",
     installId: "wave-ether",
+  },
+  {
+    id: "vortex-bloom",
+    label: "Vortex Bloom",
+    schema: vortexBloomSchema,
+    defaults: vortexBloomDefaults as AnyParams,
+    Component: VortexBloom,
+    description: "Particles spiral under competing vortex attractors.",
+    installId: "vortex-bloom",
+  },
+  {
+    id: "crystalline-drift",
+    label: "Crystalline Drift",
+    schema: crystallineDriftSchema,
+    defaults: crystallineDriftDefaults as AnyParams,
+    Component: CrystallineDrift,
+    description: "Recursive branching arms form snowflake-like crystals.",
+    installId: "crystalline-drift",
+  },
+  {
+    id: "ambient-mesh",
+    label: "Ambient Mesh",
+    schema: ambientMeshSchema,
+    defaults: ambientMeshDefaults as AnyParams,
+    Component: AmbientMesh,
+    description: "Nodes drift through noise fields forming dynamic connections.",
+    installId: "ambient-mesh",
   },
 ];
 
@@ -263,6 +302,9 @@ export function BackgroundStudio() {
     "gravity-storm": { ...(gravityStormDefaults as AnyParams) },
     "geo-pulse": { ...(geoPulseDefaults as AnyParams) },
     "wave-ether": { ...(waveEtherDefaults as AnyParams) },
+    "vortex-bloom": { ...(vortexBloomDefaults as AnyParams) },
+    "crystalline-drift": { ...(crystallineDriftDefaults as AnyParams) },
+    "ambient-mesh": { ...(ambientMeshDefaults as AnyParams) },
   });
   const [exportOpen, setExportOpen] = useState(false);
   const [exportTab, setExportTab] = useState<"usage" | "full">("usage");
