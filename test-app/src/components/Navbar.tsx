@@ -1,11 +1,38 @@
 import { useState, useEffect } from "react";
 import { GitHubIcon } from "./GitHubIcon";
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function navigate(href: string) {
+  window.history.pushState({}, "", href);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
+function NavLink({
+  href,
+  children,
+  active,
+  spa,
+}: {
+  href: string;
+  children: React.ReactNode;
+  active?: boolean;
+  spa?: boolean;
+}) {
+  const handleClick = spa
+    ? (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigate(href);
+      }
+    : undefined;
+
   return (
     <a
       href={href}
-      className="px-[14px] py-[7px] text-muted text-[13px] no-underline font-sans rounded-md inline-block hover:text-ink transition-colors"
+      onClick={handleClick}
+      className="px-[14px] py-[7px] text-[13px] no-underline font-sans rounded-md inline-block transition-colors"
+      style={{
+        color: active ? "var(--color-ink)" : "var(--color-muted)",
+        fontWeight: active ? 500 : 400,
+      }}
     >
       {children}
     </a>
@@ -14,11 +41,18 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
+  }, []);
+
+  useEffect(() => {
+    const h = () => setCurrentPath(window.location.pathname);
+    window.addEventListener("popstate", h);
+    return () => window.removeEventListener("popstate", h);
   }, []);
 
   return (
@@ -31,20 +65,29 @@ export function Navbar() {
       }}
     >
       {/* Logo */}
-      <div className="flex items-center gap-[10px]">
+      <button
+        onClick={() => navigate("/")}
+        className="flex items-center gap-[10px] cursor-pointer bg-transparent border-0"
+      >
         <div className="w-7 h-7 rounded-[7px] bg-accent flex items-center justify-center text-[13px] font-bold text-white font-display shrink-0">
           A
         </div>
         <span className="font-display font-bold text-[14px] text-ink tracking-[-0.01em]">
           alg-art-backgrounds
         </span>
-      </div>
+      </button>
 
       {/* Nav links */}
       <div className="flex items-center gap-0.5">
-        <NavLink href="/Studio">Studio</NavLink>
-        <NavLink href="/#gallery">Gallery</NavLink>
-        <NavLink href="/#docs">Docs</NavLink>
+        <NavLink href="/Studio" spa active={currentPath === "/Studio"}>
+          Studio
+        </NavLink>
+        <NavLink href="/#gallery" active={currentPath === "/" && false}>
+          Gallery
+        </NavLink>
+        <NavLink href="/docs" spa active={currentPath === "/docs"}>
+          Docs
+        </NavLink>
         <a
           href="https://github.com/dano796/alg-art-backgrounds"
           target="_blank"

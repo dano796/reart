@@ -46,10 +46,46 @@ body {
   min-height: 100svh;
 }
 
-/* Range input global reset */
+/* Range input — custom track + centered thumb */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
+  width: 100%;
+  height: 14px;          /* tall hit area so thumb stays vertically centered */
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-faint);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-accent);
+  margin-top: -5px;      /* center thumb on the 4px track: (14-4)/2 = 5 */
+}
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-faint);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-accent);
 }
 
 /* Scrollbar */
@@ -103,3 +139,24 @@ input[type="range"] {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.5; transform: scale(0.7); }
 }
+
+/* Hide scrollbar but keep scrollability */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Docs page content entrance */
+@keyframes docsIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.docs-in   { animation: docsIn 0.4s ease both; }
+.docs-in-1 { animation: docsIn 0.4s ease both; animation-delay: 0.06s; }
+.docs-in-2 { animation: docsIn 0.4s ease both; animation-delay: 0.13s; }
+.docs-in-3 { animation: docsIn 0.4s ease both; animation-delay: 0.2s; }
+.docs-in-4 { animation: docsIn 0.4s ease both; animation-delay: 0.28s; }
+.docs-in-5 { animation: docsIn 0.4s ease both; animation-delay: 0.36s; }

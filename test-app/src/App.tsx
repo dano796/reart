@@ -1,9 +1,9 @@
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { GallerySection } from "./components/GallerySection";
-import { DocsSection } from "./components/DocsSection";
 import { Footer } from "./components/Footer";
 import { StudioPage } from "./pages/StudioPage";
+import { DocsPage } from "./pages/DocsPage";
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -17,9 +17,12 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // Simple client-side routing
   if (currentPath === "/Studio") {
     return <StudioPage />;
+  }
+
+  if (currentPath === "/docs") {
+    return <DocsPage />;
   }
 
   return (
@@ -27,7 +30,6 @@ export default function App() {
       <Navbar />
       <HeroSection />
       <GallerySection />
-      <DocsSection />
       <Footer />
     </div>
   );
