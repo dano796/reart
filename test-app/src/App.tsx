@@ -1,10 +1,11 @@
-import { Navbar } from "./components/Navbar";
-import { HeroSection } from "./components/HeroSection";
-import { GallerySection } from "./components/GallerySection";
-import { Footer } from "./components/Footer";
+import { Navbar } from "./components/layout/Navbar";
+import { Footer } from "./components/layout/Footer";
+import { HeroSection } from "./components/home/HeroSection";
+import { GallerySection } from "./components/home/GallerySection";
 import { StudioPage } from "./pages/StudioPage";
 import { DocsPage } from "./pages/DocsPage";
 import { useState, useEffect } from "react";
+import { ROUTES } from "./lib/constants";
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -17,11 +18,11 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  if (currentPath === "/Studio") {
+  if (currentPath === ROUTES.studio) {
     return <StudioPage />;
   }
 
-  if (currentPath === "/docs") {
+  if (currentPath === ROUTES.docs) {
     return <DocsPage />;
   }
 

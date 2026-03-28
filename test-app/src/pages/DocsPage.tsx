@@ -1,11 +1,11 @@
-import { Navbar } from "../components/Navbar";
-import { DocsSection } from "../components/DocsSection";
+import { Navbar } from "../components/layout/Navbar";
+import { DocsSection } from "../components/docs/DocsSection";
 
 export function DocsPage() {
   return (
     <div className="bg-bg min-h-svh">
       <Navbar />
-      <div style={{ paddingTop: 58 }}>
+      <div className="pt-14.5">
         <DocsSection />
       </div>
     </div>
