@@ -5,11 +5,21 @@ import { ROUTES, CLI_PACKAGE } from "../../lib/constants";
 import { PropsTable } from "./PropsTable";
 import { CodeBlock } from "./CodeBlock";
 import { generateFullSnippet } from "./generateSnippet";
+import { DemoContentOverlay } from "../shared/DemoContentOverlay";
 
 type Tab = "preview" | "code";
 
 const IconMonitor = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="2" y="3" width="20" height="14" rx="2" />
     <line x1="8" y1="21" x2="16" y2="21" />
     <line x1="12" y1="17" x2="12" y2="21" />
@@ -17,7 +27,16 @@ const IconMonitor = () => (
 );
 
 const IconCode = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="16 18 22 12 16 6" />
     <polyline points="8 6 2 12 8 18" />
   </svg>
@@ -42,8 +61,10 @@ export function BackgroundView({
     const el = previewRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setInView(true); },
-      { rootMargin: "200px" }
+      ([e]) => {
+        if (e.isIntersecting) setInView(true);
+      },
+      { rootMargin: "200px" },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -93,7 +114,12 @@ export function BackgroundView({
           {inView && (
             <entry.Component
               {...params}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
             />
           )}
           {!inView && (
@@ -102,57 +128,13 @@ export function BackgroundView({
             </div>
           )}
 
-          {/* Demo content overlay — raw content directly on canvas */}
-          {showContent && (
-            <div className="absolute inset-0 z-10 flex flex-col">
-              {/* Fake navbar pinned to top */}
-              <div className="h-11 flex items-center justify-between px-5 shrink-0 bg-[rgba(12,12,20,0.35)] backdrop-blur-sm border-b border-white/6">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-md flex items-center justify-center text-white font-bold font-display shrink-0 bg-accent text-[10px]">
-                    A
-                  </div>
-                  <span className="text-[12px] font-display font-semibold text-ink">
-                    YourBrand
-                  </span>
-                </div>
-                <div className="flex items-center gap-5">
-                  {["Home", "About", "Docs"].map((link) => (
-                    <span
-                      key={link}
-                      className="text-[12px] font-sans cursor-default text-[rgba(232,230,220,0.65)]"
-                    >
-                      {link}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Centered hero content */}
-              <div className="flex-1 flex flex-col items-center justify-center gap-5">
-                <div className="font-mono mb-1 text-[10px] tracking-[0.14em] text-accent uppercase">
-                  ✦ New Background
-                </div>
-                <h2 className="font-display font-bold text-ink text-center text-[clamp(20px,3.5vw,30px)] leading-[1.15] [text-shadow:0_2px_24px_rgba(0,0,0,0.8)] max-w-90">
-                  The web, made fluid<br />at your fingertips.
-                </h2>
-                <div className="flex items-center gap-3">
-                  <button className="py-2.25 px-5.5 text-[13px] rounded-lg text-white font-semibold font-display cursor-default border-0 bg-accent">
-                    Get Started
-                  </button>
-                  <button className="py-2.25 px-5.5 text-[13px] rounded-lg font-semibold font-display cursor-default text-[rgba(232,230,220,0.85)] bg-white/8 border border-white/[0.14]">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Demo content overlay */}
+          {showContent && <DemoContentOverlay />}
         </div>
 
         {/* Demo Content toggle — below the canvas */}
         <div className="flex items-center justify-end gap-2.5 border-b border-border py-2.5 px-3.5">
-          <span className="text-[12px] font-sans text-muted">
-            Demo Content
-          </span>
+          <span className="text-[12px] font-sans text-muted">Demo Content</span>
           <button
             onClick={() => setShowContent((v) => !v)}
             className={`relative w-9 h-5 rounded-full transition-colors duration-200 cursor-pointer border-0 shrink-0 ${showContent ? "bg-accent" : "bg-faint"}`}
