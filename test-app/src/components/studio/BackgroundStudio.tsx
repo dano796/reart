@@ -10,6 +10,8 @@ import type { BackgroundId, AnyParams } from "./types";
 import { BACKGROUNDS, buildInitialParamMap } from "./backgrounds";
 import { Sidebar } from "./Sidebar";
 import { ExportModal } from "./ExportModal";
+import { useCanvasExport } from "./useCanvasExport";
+import { CanvasExportTabs } from "./CanvasExportTabs";
 import { Navbar } from "../layout/Navbar";
 import { DemoContentOverlay } from "../shared/DemoContentOverlay";
 
@@ -24,11 +26,18 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
   const [searchQuery, setSearchQuery] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
-  const [canvasTab, setCanvasTab] = useState<"image" | "div-video">("image");
   const [showContent, setShowContent] = useState(false);
 
   const bg = BACKGROUNDS.find((b) => b.id === activeId)!;
   const params = paramMap[activeId];
+  const {
+    previewRef,
+    isDownloadingImage,
+    isRecordingVideo,
+    recordingCountdown,
+    handleDownloadImage,
+    handleVideoAction,
+  } = useCanvasExport(bg.id, params.seed as number | string | undefined);
 
   const handleParamChange = useCallback(
     (name: string, value: number | string | boolean) => {
@@ -69,6 +78,7 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
         <Sidebar
           bg={bg}
           params={params}
+          isDisabled={isRecordingVideo}
           activeId={activeId}
           dropdownOpen={dropdownOpen}
           searchQuery={searchQuery}
@@ -85,7 +95,10 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
         {/* Canvas area */}
         <div className="flex-1 flex flex-col overflow-hidden pt-2 p-4 gap-3">
           {/* Canvas card */}
-          <div className="studio-in-1 flex-1 relative overflow-hidden rounded-xl">
+          <div
+            ref={previewRef}
+            className="studio-in-1 flex-1 relative overflow-hidden rounded-xl"
+          >
             <bg.Component
               {...params}
               style={{
@@ -100,21 +113,13 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
 
           {/* Bottom bar: tabs left, demo toggle right */}
           <div className="studio-in-2 shrink-0 flex items-center justify-between px-1">
-            <div className="flex items-center gap-0.5">
-              {(["image", "div-video"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setCanvasTab(tab)}
-                  className={`text-[12px] font-sans px-3 py-1.5 rounded-md cursor-pointer border-none transition-colors ${
-                    canvasTab === tab
-                      ? "bg-faint text-ink"
-                      : "bg-transparent text-muted hover:text-ink"
-                  }`}
-                >
-                  {tab === "image" ? "Image" : "Video"}
-                </button>
-              ))}
-            </div>
+            <CanvasExportTabs
+              isDownloadingImage={isDownloadingImage}
+              isRecordingVideo={isRecordingVideo}
+              recordingCountdown={recordingCountdown}
+              onDownloadImage={handleDownloadImage}
+              onVideoAction={handleVideoAction}
+            />
 
             <div className="flex items-center gap-2.5">
               <span className="text-[12px] font-sans text-muted">

@@ -14,6 +14,7 @@ import {
 interface SidebarProps {
   bg: BackgroundEntry;
   params: AnyParams;
+  isDisabled?: boolean;
   activeId: BackgroundId;
   dropdownOpen: boolean;
   searchQuery: string;
@@ -30,6 +31,7 @@ interface SidebarProps {
 export function Sidebar({
   bg,
   params,
+  isDisabled = false,
   activeId,
   dropdownOpen,
   searchQuery,
@@ -42,7 +44,17 @@ export function Sidebar({
   onExport,
 }: SidebarProps) {
   return (
-    <aside className="studio-side-in w-64 ml-4 shrink-0 bg-bg flex flex-col">
+    <aside
+      aria-disabled={isDisabled}
+      className={`studio-side-in relative w-64 ml-4 shrink-0 bg-bg flex flex-col ${isDisabled ? "opacity-70" : ""}`}
+    >
+      {isDisabled && (
+        <div
+          className="absolute inset-0 z-20 cursor-not-allowed"
+          title="Controls are disabled while recording video"
+        />
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between mx-4 py-4 border-b border-border shrink-0">
         <div className="flex items-center gap-2">
