@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Copy, Check } from "lucide-react";
 import { DOC_REGISTRY } from "../docs/registry";
 import { CLI_PACKAGE } from "../../lib/constants";
 
@@ -59,9 +60,9 @@ function GalleryCard({
             {cmd}
           </span>
           <span
-            className={`text-[13px] shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
+            className={`shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
           >
-            {copied ? "✓" : "⎘"}
+            {copied ? <Check size={13} aria-hidden="true" /> : <Copy size={13} aria-hidden="true" />}
           </span>
         </button>
       </div>

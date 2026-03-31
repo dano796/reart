@@ -9,7 +9,12 @@ import { navigate } from "../../lib/navigate";
 import { docsRoute, ROUTES } from "../../lib/constants";
 
 export function DocsSection({ backgroundId }: { backgroundId?: string }) {
-  const initialPage = backgroundId ? `bg-${backgroundId}` : "introduction";
+  const staticPages = ["introduction", "installation"];
+  const initialPage = backgroundId
+    ? staticPages.includes(backgroundId)
+      ? backgroundId
+      : `bg-${backgroundId}`
+    : "introduction";
   const [activePage, setActivePage] = useState(initialPage);
   const initialEntry = DOC_REGISTRY.find((e) => `bg-${e.id}` === initialPage);
   const [params, setParams] = useState<Record<string, unknown>>(

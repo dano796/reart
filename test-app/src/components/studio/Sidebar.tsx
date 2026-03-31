@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RotateCcw, Share2, ArrowUpRight, ChevronDown, Check } from "lucide-react";
 import type { ParamSchema } from "alg-art-backgrounds";
 import type { BackgroundEntry, AnyParams, BackgroundId } from "./types";
 import {
@@ -84,11 +85,11 @@ export function Sidebar({
             }`}
           >
             <span className="text-[12px] text-ink font-medium">{bg.label}</span>
-            <span
-              className={`text-[9px] text-muted transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
-            >
-              ▼
-            </span>
+            <ChevronDown
+              size={12}
+              aria-hidden="true"
+              className={`text-muted transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+            />
           </button>
 
           {dropdownOpen && (
@@ -178,7 +179,7 @@ export function Sidebar({
             onClick={onReset}
             className="flex-1 flex items-center justify-center gap-1 bg-transparent border border-current rounded-lg text-[12px] text-muted py-2 cursor-pointer hover:text-ink transition-colors font-sans"
           >
-            ↺ Reset
+            <RotateCcw size={12} aria-hidden="true" /> Reset
           </button>
           <button
             onClick={() => {
@@ -188,7 +189,7 @@ export function Sidebar({
             }}
             className={`flex-1 flex items-center justify-center gap-1 bg-transparent border border-current rounded-lg text-[12px] py-2 cursor-pointer transition-colors font-sans ${copied ? "text-green" : "text-muted hover:text-ink"}`}
           >
-            {copied ? "copied ✓" : "⤴ Share"}
+            {copied ? <><Check size={12} aria-hidden="true" /> copied</> : <><Share2 size={12} aria-hidden="true" /> Share</>}
           </button>
         </div>
 
@@ -203,7 +204,7 @@ export function Sidebar({
           onClick={onExport}
           className="w-full bg-accent border-none rounded-lg text-[#1a1a1a] text-[13px] font-semibold py-2.5 cursor-pointer hover:opacity-90 transition-opacity font-display flex items-center justify-center gap-1.5"
         >
-          ↗ Export Code
+          <ArrowUpRight size={13} aria-hidden="true" /> Export Code
         </button>
       </div>
     </aside>

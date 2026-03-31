@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Check } from "lucide-react";
 import { FlowCurrents } from "alg-art-backgrounds";
 import { navigate } from "../../lib/navigate";
 import { ROUTES, CLI_PACKAGE } from "../../lib/constants";
@@ -88,7 +89,7 @@ export function HeroSection() {
             <span
               className={`px-2.25 py-0.5 bg-faint rounded text-[11px] shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
             >
-              {copied ? "copied ✓" : "copy"}
+              {copied ? <span className="inline-flex items-center gap-1"><Check size={11} aria-hidden="true" /> copied</span> : "copy"}
             </span>
           </button>
         </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Search, X } from "lucide-react";
 import { DOC_REGISTRY } from "./registry";
 
 function SidebarItem({
@@ -46,20 +47,7 @@ export function DocsSidebar({
       {/* Search */}
       <div className="border-b border-border pt-3 pb-3 pl-8">
         <div className="relative flex items-center">
-          <svg
-            className="absolute left-2.5 shrink-0 text-muted"
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
+          <Search size={12} aria-hidden="true" className="absolute left-2.5 shrink-0 text-muted" />
           <input
             type="text"
             placeholder="Search..."
@@ -70,9 +58,9 @@ export function DocsSidebar({
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-2 text-sm leading-none text-muted hover:text-ink transition-colors cursor-pointer bg-transparent border-0"
+              className="absolute right-2 text-muted hover:text-ink transition-colors cursor-pointer bg-transparent border-0 flex items-center"
             >
-              ×
+              <X size={13} aria-hidden="true" />
             </button>
           )}
         </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Monitor, Code2 } from "lucide-react";
 import type { DocEntry } from "./registry";
 import { navigate } from "../../lib/navigate";
 import { studioRoute, CLI_PACKAGE } from "../../lib/constants";
@@ -8,39 +9,6 @@ import { generateFullSnippet } from "./generateSnippet";
 import { DemoContentOverlay } from "../shared/DemoContentOverlay";
 
 type Tab = "preview" | "code";
-
-const IconMonitor = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="3" width="20" height="14" rx="2" />
-    <line x1="8" y1="21" x2="16" y2="21" />
-    <line x1="12" y1="17" x2="12" y2="21" />
-  </svg>
-);
-
-const IconCode = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="16 18 22 12 16 6" />
-    <polyline points="8 6 2 12 8 18" />
-  </svg>
-);
 
 export function BackgroundView({
   entry,
@@ -88,7 +56,7 @@ export function BackgroundView({
               onClick={() => setTab(t)}
               className={`flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-sans cursor-pointer border-0 bg-transparent transition-colors -mb-px border-b-2 ${tab === t ? "text-ink font-medium border-b-accent" : "text-muted font-normal border-b-transparent"}`}
             >
-              {t === "preview" ? <IconMonitor /> : <IconCode />}
+              {t === "preview" ? <Monitor size={14} aria-hidden="true" /> : <Code2 size={14} aria-hidden="true" />}
               {t.charAt(0).toUpperCase() + t.slice(1)}
             </button>
           ))}

@@ -1,46 +1,10 @@
 import { useState, useEffect } from "react";
+import { Copy, Check, X } from "lucide-react";
 import type { BackgroundEntry, AnyParams } from "./types";
 import { generateUsageSnippet, generateFullComponent } from "./codeGenerators";
 import { CodeBlock } from "./CodeBlock";
 
 // ── Copy button ───────────────────────────────────────────────────────────────
-
-function IconCheck() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-      <path
-        d="M2 7L5 10L11 3.5"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconCopy() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-      <rect
-        x="4"
-        y="0.5"
-        width="8.5"
-        height="8.5"
-        rx="1.5"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <path
-        d="M0.5 4H3.5V12.5H9.5V9.5"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function CopyBtn({
   copied,
@@ -58,7 +22,7 @@ function CopyBtn({
           : "bg-transparent border-border/60 text-muted hover:text-ink hover:border-border-hover"
       }`}
     >
-      {copied ? <IconCheck /> : <IconCopy />}
+      {copied ? <Check size={13} aria-hidden="true" /> : <Copy size={13} aria-hidden="true" />}
     </button>
   );
 }
@@ -111,9 +75,9 @@ export function ExportModal({ bg, params, onClose }: ExportModalProps) {
           </h2>
           <button
             onClick={onClose}
-            className="w-7 h-7 flex items-center justify-center rounded-lg text-muted hover:text-ink hover:bg-faint cursor-pointer bg-transparent border border-transparent hover:border-border text-[20px] leading-none transition-colors"
+            className="w-7 h-7 flex items-center justify-center rounded-lg text-muted hover:text-ink hover:bg-faint cursor-pointer bg-transparent border border-transparent hover:border-border transition-colors"
           >
-            ×
+            <X size={16} aria-hidden="true" />
           </button>
         </div>
 
