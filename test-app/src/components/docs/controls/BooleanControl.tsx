@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { ParamSchema } from "alg-art-backgrounds";
 
 type BooleanParam = Extract<ParamSchema, { type: "boolean" }>;
@@ -23,9 +24,10 @@ export function BooleanControl({
           background: value ? "var(--color-accent)" : "var(--color-faint)",
         }}
       >
-        <span
-          className="absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform duration-200"
-          style={{ transform: value ? "translateX(18px)" : "translateX(2px)" }}
+        <motion.span
+          className="absolute top-0.5 w-4 h-4 rounded-full bg-white"
+          animate={{ x: value ? 18 : 2 }}
+          transition={{ type: "spring", stiffness: 500, damping: 35 }}
         />
       </button>
     </div>

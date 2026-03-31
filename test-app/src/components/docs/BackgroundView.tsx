@@ -43,12 +43,12 @@ export function BackgroundView({
   return (
     <div>
       {/* Title */}
-      <h1 className="docs-in font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-6 text-[clamp(28px,4vw,42px)]">
+      <h1 className="font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-6 text-[clamp(28px,4vw,42px)]">
         {entry.name}
       </h1>
 
       {/* Tab bar */}
-      <div className="docs-in-1 flex items-center justify-between border-b border-border">
+      <div className="flex items-center justify-between border-b border-border">
         <div className="flex items-center">
           {(["preview", "code"] as Tab[]).map((t) => (
             <button
@@ -70,7 +70,7 @@ export function BackgroundView({
       </div>
 
       {/* ── PREVIEW TAB ── */}
-      <div className={`docs-in-2 ${tab === "preview" ? "block" : "hidden"}`}>
+      <div className={tab === "preview" ? "block" : "hidden"}>
         {/* Canvas */}
         <div
           ref={previewRef}

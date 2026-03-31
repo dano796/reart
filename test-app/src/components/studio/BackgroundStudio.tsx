@@ -6,6 +6,7 @@
  */
 
 import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import type { BackgroundId, AnyParams } from "./types";
 import { BACKGROUNDS, buildInitialParamMap } from "./backgrounds";
 import { Sidebar } from "./Sidebar";
@@ -98,9 +99,12 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
         {/* Canvas area */}
         <div className="flex-1 flex flex-col overflow-hidden pt-2 p-4 gap-3">
           {/* Canvas card */}
-          <div
+          <motion.div
             ref={previewRef}
-            className="studio-in-1 flex-1 relative overflow-hidden rounded-xl"
+            className="flex-1 relative overflow-hidden rounded-xl"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.08 }}
           >
             <bg.Component
               {...params}
@@ -112,10 +116,15 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
               }}
             />
             {showContent && <DemoContentOverlay />}
-          </div>
+          </motion.div>
 
           {/* Bottom bar: tabs left, demo toggle right */}
-          <div className="studio-in-2 shrink-0 flex items-center justify-between px-1">
+          <motion.div
+            className="shrink-0 flex items-center justify-between px-1"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.18 }}
+          >
             <CanvasExportTabs
               isDownloadingImage={isDownloadingImage}
               isRecordingVideo={isRecordingVideo}
@@ -132,12 +141,14 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
                 onClick={() => setShowContent((v) => !v)}
                 className={`relative w-9 h-5 rounded-full transition-colors duration-200 cursor-pointer border-0 shrink-0 ${showContent ? "bg-accent" : "bg-faint"}`}
               >
-                <span
-                  className={`absolute w-3.5 h-3.5 top-0.75 left-0.75 rounded-full bg-white transition-transform duration-200 ${showContent ? "translate-x-4" : "translate-x-0"}`}
+                <motion.span
+                  className="absolute w-3.5 h-3.5 top-0.75 left-0.75 rounded-full bg-white"
+                  animate={{ x: showContent ? 16 : 0 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 35 }}
                 />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

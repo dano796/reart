@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import { DocsSidebar } from "./DocsSidebar";
 import { ControlsPanel } from "./ControlsPanel";
 import { IntroductionView } from "./IntroductionView";
@@ -18,7 +19,7 @@ export function DocsSection({ backgroundId }: { backgroundId?: string }) {
   const [activePage, setActivePage] = useState(initialPage);
   const initialEntry = DOC_REGISTRY.find((e) => `bg-${e.id}` === initialPage);
   const [params, setParams] = useState<Record<string, unknown>>(
-    initialEntry ? { ...initialEntry.defaults } : {}
+    initialEntry ? { ...initialEntry.defaults } : {},
   );
 
   const bgEntry = DOC_REGISTRY.find((e) => `bg-${e.id}` === activePage);
@@ -47,7 +48,12 @@ export function DocsSection({ backgroundId }: { backgroundId?: string }) {
         <DocsSidebar activePage={activePage} onNavigate={handleNavigate} />
 
         <main className="min-w-0 pt-1 px-8 pb-24 min-h-[calc(100vh-58px)]">
-          <div key={activePage}>
+          <motion.div
+            key={activePage}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             {activePage === "introduction" && <IntroductionView />}
             {activePage === "installation" && <InstallationView />}
             {bgEntry && (
@@ -57,7 +63,7 @@ export function DocsSection({ backgroundId }: { backgroundId?: string }) {
                 onParamChange={handleParamChange}
               />
             )}
-          </div>
+          </motion.div>
         </main>
 
         {bgEntry && (

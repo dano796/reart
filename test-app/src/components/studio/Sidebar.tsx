@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RotateCcw, Share2, ArrowUpRight, ChevronDown, Check } from "lucide-react";
+import { motion } from "framer-motion";
 import type { ParamSchema } from "alg-art-backgrounds";
 import type { BackgroundEntry, AnyParams, BackgroundId } from "./types";
 import {
@@ -48,9 +49,12 @@ export function Sidebar({
   const [copied, setCopied] = useState(false);
 
   return (
-    <aside
+    <motion.aside
       aria-disabled={isDisabled}
-      className={`studio-side-in relative w-64 ml-4 shrink-0 bg-bg flex flex-col ${isDisabled ? "opacity-70" : ""}`}
+      className={`relative w-64 ml-4 shrink-0 bg-bg flex flex-col ${isDisabled ? "opacity-70" : ""}`}
+      initial={{ opacity: 0, x: -18 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
     >
       {isDisabled && (
         <div
@@ -85,11 +89,13 @@ export function Sidebar({
             }`}
           >
             <span className="text-[12px] text-ink font-medium">{bg.label}</span>
-            <ChevronDown
-              size={12}
-              aria-hidden="true"
-              className={`text-muted transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
-            />
+            <motion.span
+              animate={{ rotate: dropdownOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-muted flex items-center"
+            >
+              <ChevronDown size={12} aria-hidden="true" />
+            </motion.span>
           </button>
 
           {dropdownOpen && (
@@ -207,6 +213,6 @@ export function Sidebar({
           <ArrowUpRight size={13} aria-hidden="true" /> Export Code
         </button>
       </div>
-    </aside>
+    </motion.aside>
   );
 }

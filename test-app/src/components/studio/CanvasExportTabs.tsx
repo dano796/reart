@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface CanvasExportTabsProps {
   isDownloadingImage: boolean;
   isRecordingVideo: boolean;
@@ -29,16 +31,13 @@ export function CanvasExportTabs({
             }`}
           >
             {tab === "div-video" && isRecordingVideo && (
-              <>
-                <style>{`@keyframes rec-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}`}</style>
-                <span
-                  className="absolute inset-0 bg-red-500/20 rounded-sm"
-                  style={{
-                    transformOrigin: "left",
-                    animation: "rec-fill 10s linear forwards",
-                  }}
-                />
-              </>
+              <motion.span
+                className="absolute inset-0 bg-red-500/20 rounded-sm"
+                style={{ transformOrigin: "left" }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 10, ease: "linear" }}
+              />
             )}
             <span className="relative z-10">
               {tab === "image"

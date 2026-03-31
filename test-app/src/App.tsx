@@ -23,11 +23,11 @@ export default function App() {
   const docsMatch   = matchRoute(ROUTES.docsBackground, currentPath);
 
   if (currentPath === ROUTES.studio || currentPath === "/Studio" || studioMatch) {
-    return <StudioPage key={currentPath} backgroundId={studioMatch?.id} />;
+    return <StudioPage key="studio" backgroundId={studioMatch?.id} />;
   }
 
   if (currentPath === ROUTES.docs || docsMatch) {
-    return <DocsPage key={currentPath} backgroundId={docsMatch?.id} />;
+    return <DocsPage key="docs" backgroundId={docsMatch?.id} />;
   }
 
   return (

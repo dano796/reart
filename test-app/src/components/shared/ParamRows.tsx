@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { ParamSchema } from "alg-art-backgrounds";
 
 export type NumberParam = Extract<ParamSchema, { type: "number" }>;
@@ -89,7 +90,11 @@ export function BooleanRow({
         onClick={() => onChange(param.name, !value)}
         className={`relative w-8 h-4.5 rounded-full border-0 cursor-pointer shrink-0 transition-colors duration-200 ${value ? "bg-accent" : "bg-faint"}`}
       >
-        <span className={`absolute w-3.5 h-3.5 top-0.5 left-0.5 rounded-full bg-white transition-transform duration-200 ${value ? "translate-x-3.5" : "translate-x-0"}`} />
+        <motion.span
+          className="absolute w-3.5 h-3.5 top-0.5 left-0.5 rounded-full bg-white"
+          animate={{ x: value ? 14 : 0 }}
+          transition={{ type: "spring", stiffness: 500, damping: 35 }}
+        />
       </button>
     </div>
   );

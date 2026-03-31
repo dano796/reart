@@ -18,12 +18,7 @@ export function HeroSection() {
     <section className="relative h-svh min-h-150 flex items-center justify-center overflow-hidden">
       {/* Live canvas background */}
       <FlowCurrents
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-        }}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
         count={2200}
         speed={0.75}
         colorWarm="#d97757"
@@ -96,11 +91,13 @@ export function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="hero-scroll absolute bottom-7.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-[scrollBounce_2.4s_ease-in-out_infinite]">
-        <div className="w-px h-9 bg-linear-to-b from-muted to-transparent" />
-        <span className="text-[10px] text-muted tracking-[0.14em] font-mono uppercase">
-          scroll
-        </span>
+      <div className="hero-scroll absolute bottom-7.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
+        <div className="animate-[scrollBounce_2.4s_ease-in-out_infinite] flex flex-col items-center gap-1.5">
+          <div className="w-px h-9 bg-linear-to-b from-muted to-transparent" />
+          <span className="text-[10px] text-muted tracking-[0.14em] font-mono uppercase">
+            scroll
+          </span>
+        </div>
       </div>
     </section>
   );
