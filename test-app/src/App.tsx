@@ -20,9 +20,13 @@ export default function App() {
   }, []);
 
   const studioMatch = matchRoute(ROUTES.studioBackground, currentPath);
-  const docsMatch   = matchRoute(ROUTES.docsBackground, currentPath);
+  const docsMatch = matchRoute(ROUTES.docsBackground, currentPath);
 
-  if (currentPath === ROUTES.studio || currentPath === "/Studio" || studioMatch) {
+  if (
+    currentPath === ROUTES.studio ||
+    currentPath === "/Studio" ||
+    studioMatch
+  ) {
     return <StudioPage key="studio" backgroundId={studioMatch?.id} />;
   }
 

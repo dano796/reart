@@ -47,7 +47,11 @@ export function DocsSidebar({
       {/* Search */}
       <div className="border-b border-border pt-3 pb-3 pl-8">
         <div className="relative flex items-center">
-          <Search size={12} aria-hidden="true" className="absolute left-2.5 shrink-0 text-muted" />
+          <Search
+            size={12}
+            aria-hidden="true"
+            className="absolute left-2.5 shrink-0 text-muted"
+          />
           <input
             type="text"
             placeholder="Search..."

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import type { ParamSchema } from "alg-art-backgrounds";
 
 export type NumberParam = Extract<ParamSchema, { type: "number" }>;
-export type ColorParam  = Extract<ParamSchema, { type: "color" }>;
+export type ColorParam = Extract<ParamSchema, { type: "color" }>;
 export type BooleanParam = Extract<ParamSchema, { type: "boolean" }>;
-export type SelectParam  = Extract<ParamSchema, { type: "select" }>;
+export type SelectParam = Extract<ParamSchema, { type: "select" }>;
 
 export type OnParamChange = (name: string, value: unknown) => void;
 
@@ -21,10 +21,13 @@ export function SliderRow({
   onChange: OnParamChange;
 }) {
   const display =
-    param.step < 0.01 ? value.toFixed(4) :
-    param.step < 0.1  ? value.toFixed(3) :
-    param.step < 1    ? value.toFixed(2) :
-    String(value);
+    param.step < 0.01
+      ? value.toFixed(4)
+      : param.step < 0.1
+        ? value.toFixed(3)
+        : param.step < 1
+          ? value.toFixed(2)
+          : String(value);
 
   return (
     <div className={rowBase}>

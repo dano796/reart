@@ -16,7 +16,13 @@ export function CodeBlock({ code, label }: { code: string; label: string }) {
           }}
           className={`bg-transparent border border-border rounded-[5px] text-[11px] px-2.5 py-0.5 cursor-pointer font-sans transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
         >
-          {copied ? <span className="inline-flex items-center gap-1"><Check size={11} aria-hidden="true" /> copied</span> : "copy"}
+          {copied ? (
+            <span className="inline-flex items-center gap-1">
+              <Check size={11} aria-hidden="true" /> copied
+            </span>
+          ) : (
+            "copy"
+          )}
         </button>
       </div>
       <pre className="bg-surface border border-border border-t-0 rounded-b-[9px] px-6 py-5 text-[13px] leading-[1.75] text-ink overflow-x-auto font-mono m-0 whitespace-pre">

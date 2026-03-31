@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { RotateCcw, Share2, ArrowUpRight, ChevronDown, Check } from "lucide-react";
+import {
+  RotateCcw,
+  Share2,
+  ArrowUpRight,
+  ChevronDown,
+  Check,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import type { ParamSchema } from "alg-art-backgrounds";
 import type { BackgroundEntry, AnyParams, BackgroundId } from "./types";
@@ -195,7 +201,15 @@ export function Sidebar({
             }}
             className={`flex-1 flex items-center justify-center gap-1 bg-transparent border border-current rounded-lg text-[12px] py-2 cursor-pointer transition-colors font-sans ${copied ? "text-green" : "text-muted hover:text-ink"}`}
           >
-            {copied ? <><Check size={12} aria-hidden="true" /> copied</> : <><Share2 size={12} aria-hidden="true" /> Share</>}
+            {copied ? (
+              <>
+                <Check size={12} aria-hidden="true" /> copied
+              </>
+            ) : (
+              <>
+                <Share2 size={12} aria-hidden="true" /> Share
+              </>
+            )}
           </button>
         </div>
 

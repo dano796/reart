@@ -22,7 +22,11 @@ function CopyBtn({
           : "bg-transparent border-border/60 text-muted hover:text-ink hover:border-border-hover"
       }`}
     >
-      {copied ? <Check size={13} aria-hidden="true" /> : <Copy size={13} aria-hidden="true" />}
+      {copied ? (
+        <Check size={13} aria-hidden="true" />
+      ) : (
+        <Copy size={13} aria-hidden="true" />
+      )}
     </button>
   );
 }

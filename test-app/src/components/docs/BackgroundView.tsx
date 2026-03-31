@@ -56,7 +56,11 @@ export function BackgroundView({
               onClick={() => setTab(t)}
               className={`flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-sans cursor-pointer border-0 bg-transparent transition-colors -mb-px border-b-2 ${tab === t ? "text-ink font-medium border-b-accent" : "text-muted font-normal border-b-transparent"}`}
             >
-              {t === "preview" ? <Monitor size={14} aria-hidden="true" /> : <Code2 size={14} aria-hidden="true" />}
+              {t === "preview" ? (
+                <Monitor size={14} aria-hidden="true" />
+              ) : (
+                <Code2 size={14} aria-hidden="true" />
+              )}
               {t.charAt(0).toUpperCase() + t.slice(1)}
             </button>
           ))}

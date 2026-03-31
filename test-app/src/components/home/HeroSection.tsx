@@ -18,7 +18,12 @@ export function HeroSection() {
     <section className="relative h-svh min-h-150 flex items-center justify-center overflow-hidden">
       {/* Live canvas background */}
       <FlowCurrents
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+        }}
         count={2200}
         speed={0.75}
         colorWarm="#d97757"
@@ -67,7 +72,7 @@ export function HeroSection() {
           </a>
           <a
             href="#gallery"
-            className="px-7 py-3.25 bg-white/4 border border-border rounded-[10px] text-ink text-[15px] font-medium cursor-pointer no-underline font-sans inline-block hover:bg-white/[0.07] transition-colors"
+            className="px-7 py-3.25 bg-white/4 border border-border rounded-[10px] text-ink text-[15px] font-medium cursor-pointer no-underline font-sans inline-block hover:border-accent"
           >
             See Backgrounds
           </a>
@@ -77,14 +82,20 @@ export function HeroSection() {
         <div className="hero-cmd">
           <button
             onClick={copyCmd}
-            className="inline-flex items-center gap-3 px-4.5 py-2.5 bg-black/45 backdrop-blur-sm border border-border rounded-[9px] text-muted cursor-pointer font-mono text-[13px] hover:border-border-hover transition-colors"
+            className="inline-flex items-center gap-3 px-4.5 py-2.5 bg-black/45 backdrop-blur-sm border border-border rounded-[9px] text-muted cursor-pointer font-mono text-[13px] hover:border-accent"
           >
             <span className="text-accent select-none">$</span>
             <span>{cmd}</span>
             <span
               className={`px-2.25 py-0.5 bg-faint rounded text-[11px] shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
             >
-              {copied ? <span className="inline-flex items-center gap-1"><Check size={11} aria-hidden="true" /> copied</span> : "copy"}
+              {copied ? (
+                <span className="inline-flex items-center gap-1">
+                  <Check size={11} aria-hidden="true" /> copied
+                </span>
+              ) : (
+                "copy"
+              )}
             </span>
           </button>
         </div>

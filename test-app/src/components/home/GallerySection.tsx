@@ -15,7 +15,7 @@ function GalleryCard({
 
   return (
     <div
-      className="bg-surface border border-transparent ring-1 ring-border rounded-[18px] overflow-hidden transition-shadow duration-220 hover:shadow-[0_16px_48px_rgba(0,0,0,0.5)] hover:ring-accent focus-within:ring-accent animate-[cardIn_0.5s_ease_both]"
+      className="bg-surface border border-border rounded-[18px] overflow-hidden hover:border-accent focus-within:border-accent animate-[cardIn_0.5s_ease_both]"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       {/* Live canvas preview */}
@@ -53,7 +53,7 @@ function GalleryCard({
             setCopied(true);
             setTimeout(() => setCopied(false), 1500);
           }}
-          className="w-full flex items-center gap-2 px-3.25 py-2.25 bg-bg border border-transparent ring-1 ring-border rounded-lg cursor-pointer font-mono text-[12px] text-muted text-left transition-shadow hover:ring-accent focus-visible:ring-accent focus-visible:outline-none"
+          className="w-full flex items-center gap-2 px-3.25 py-2.25 bg-bg border border-border rounded-lg cursor-pointer font-mono text-[12px] text-muted text-left hover:border-accent focus-visible:border-accent focus-visible:outline-none"
         >
           <span className="text-accent shrink-0 select-none">$</span>
           <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -62,7 +62,11 @@ function GalleryCard({
           <span
             className={`shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
           >
-            {copied ? <Check size={13} aria-hidden="true" /> : <Copy size={13} aria-hidden="true" />}
+            {copied ? (
+              <Check size={13} aria-hidden="true" />
+            ) : (
+              <Copy size={13} aria-hidden="true" />
+            )}
           </span>
         </button>
       </div>

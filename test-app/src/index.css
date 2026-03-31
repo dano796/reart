@@ -124,34 +124,75 @@ input[type="color"]::-moz-color-swatch {
   background: #3a3a50;
 }
 
-
 /* Hero entrance animations */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-badge  { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
-.hero-h1     { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
-.hero-sub    { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
-.hero-ctas   { animation: fadeUp 0.6s ease both; animation-delay: 0.52s; }
-.hero-cmd    { animation: fadeUp 0.6s ease both; animation-delay: 0.62s; }
-.hero-scroll { animation: fadeUp 0.6s ease both; animation-delay: 0.8s; }
+.hero-badge {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.1s;
+}
+.hero-h1 {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.25s;
+}
+.hero-sub {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.4s;
+}
+.hero-ctas {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.52s;
+}
+.hero-cmd {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.62s;
+}
+.hero-scroll {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.8s;
+}
 
 @keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 @keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.7); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
 }
 
 /* Gallery card entrance */
 @keyframes cardIn {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hide scrollbar but keep scrollability */
@@ -161,4 +202,3 @@ input[type="color"]::-moz-color-swatch {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
-
