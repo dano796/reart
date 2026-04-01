@@ -28,9 +28,13 @@ function SidebarItem({
 export function DocsSidebar({
   activePage,
   onNavigate,
+  isOpen,
+  onClose,
 }: {
   activePage: string;
   onNavigate: (page: string) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }) {
   const [search, setSearch] = useState("");
 
@@ -42,10 +46,34 @@ export function DocsSidebar({
       )
     : DOC_REGISTRY;
 
+  const handleNavigate = (page: string) => {
+    onNavigate(page);
+    onClose?.();
+  };
+
   return (
-    <aside className="hidden lg:flex flex-col scrollbar-none sticky top-14.5 h-[calc(100vh-58px)] overflow-y-auto bg-bg">
+    <aside
+      className={`
+        fixed top-14.5 bottom-0 left-0 z-40 w-72 bg-bg flex flex-col scrollbar-none overflow-y-auto
+        transition-transform duration-300 ease-in-out
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        lg:relative lg:top-auto lg:bottom-auto lg:w-auto lg:z-auto lg:translate-x-0 lg:flex
+      `}
+    >
+      {/* Mobile close button */}
+      <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
+        <span className="text-[13px] font-semibold text-ink font-display">Navigation</span>
+        <button
+          onClick={onClose}
+          className="flex items-center justify-center w-7 h-7 rounded-md text-muted hover:text-ink cursor-pointer bg-transparent border-0"
+          aria-label="Cerrar navegación"
+        >
+          <X size={14} />
+        </button>
+      </div>
+
       {/* Search */}
-      <div className="border-b border-border pt-3 pb-3 pl-8">
+      <div className="border-b border-border pt-3 pb-3 px-4 lg:pl-8 lg:pr-4 shrink-0">
         <div className="relative flex items-center">
           <Search
             size={12}
@@ -70,7 +98,7 @@ export function DocsSidebar({
         </div>
       </div>
 
-      <div className="pt-6 pr-4 pb-8 pl-8">
+      <div className="pt-6 pr-4 pb-8 pl-8 flex-1 overflow-y-auto scrollbar-none">
         {/* Get Started group — hidden when searching */}
         {!search && (
           <div className="mb-6">
@@ -80,12 +108,12 @@ export function DocsSidebar({
             <SidebarItem
               label="Introduction"
               active={activePage === "introduction"}
-              onClick={() => onNavigate("introduction")}
+              onClick={() => handleNavigate("introduction")}
             />
             <SidebarItem
               label="Installation"
               active={activePage === "installation"}
-              onClick={() => onNavigate("installation")}
+              onClick={() => handleNavigate("installation")}
             />
           </div>
         )}
@@ -110,7 +138,7 @@ export function DocsSidebar({
               key={entry.id}
               label={entry.name}
               active={activePage === `bg-${entry.id}`}
-              onClick={() => onNavigate(`bg-${entry.id}`)}
+              onClick={() => handleNavigate(`bg-${entry.id}`)}
             />
           ))}
         </div>

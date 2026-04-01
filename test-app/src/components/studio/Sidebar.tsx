@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   ChevronDown,
   Check,
+  X,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import type { ParamSchema } from "alg-art-backgrounds";
@@ -35,6 +36,8 @@ interface SidebarProps {
   onReset: () => void;
   onRandomSeed: () => void;
   onExport: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export function Sidebar({
@@ -51,15 +54,17 @@ export function Sidebar({
   onParamChange,
   onReset,
   onExport,
+  isOpen,
+  onClose,
 }: SidebarProps) {
   const [copied, setCopied] = useState(false);
 
   return (
     <motion.aside
       aria-disabled={isDisabled}
-      className={`relative w-64 ml-4 shrink-0 bg-bg flex flex-col ${isDisabled ? "opacity-70" : ""}`}
-      initial={{ opacity: 0, x: -18 }}
-      animate={{ opacity: 1, x: 0 }}
+      className={`fixed top-14.5 bottom-0 left-0 z-40 w-72 bg-bg flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:top-auto md:bottom-auto md:translate-x-0 md:w-64 md:ml-4 md:shrink-0 md:z-auto ${isDisabled ? "opacity-70" : ""}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
     >
       {isDisabled && (
@@ -70,18 +75,25 @@ export function Sidebar({
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between mx-4 py-4 border-b border-border shrink-0">
+      <div className="flex items-center justify-between mx-5 md:mx-4 py-4 border-b border-border shrink-0">
         <div className="flex items-center gap-2">
           <span className="text-[14px] font-bold tracking-[-0.01em] font-display">
             Background Studio
           </span>
         </div>
+        <button
+          className="md:hidden flex items-center justify-center w-7 h-7 rounded-md text-muted hover:text-ink"
+          onClick={onClose}
+          aria-label="Close controls"
+        >
+          <X size={14} aria-hidden="true" />
+        </button>
       </div>
 
       {/* Scrollable content */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-none">
         {/* Background selector + parameters */}
-        <div className="px-4 pt-4 pb-3">
+        <div className="px-5 md:px-4 pt-4 pb-3">
           <div className="text-[12px] text-muted font-semibold tracking-[0.12em] uppercase font-mono mb-2.5">
             Background
           </div>
@@ -185,7 +197,7 @@ export function Sidebar({
       </div>
 
       {/* Bottom actions */}
-      <div className="mx-4 py-4 border-t border-border shrink-0 flex flex-col gap-2">
+      <div className="mx-5 md:mx-4 py-4 border-t border-border shrink-0 flex flex-col gap-2">
         <div className="flex gap-2">
           <button
             onClick={onReset}

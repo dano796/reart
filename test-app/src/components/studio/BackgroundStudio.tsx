@@ -5,8 +5,9 @@
  * the canvas preview, and ExportModal.
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
 import type { BackgroundId, AnyParams } from "./types";
 import { BACKGROUNDS, buildInitialParamMap } from "./backgrounds";
 import { Sidebar } from "./Sidebar";
@@ -30,6 +31,12 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("sidebar-open", isSidebarOpen);
+    return () => document.body.classList.remove("sidebar-open");
+  }, [isSidebarOpen]);
 
   const bg = BACKGROUNDS.find((b) => b.id === activeId)!;
   const params = paramMap[activeId];
@@ -64,6 +71,7 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
     setActiveId(id);
     setDropdownOpen(false);
     setSearchQuery("");
+    setIsSidebarOpen(false);
     navigate(studioRoute(id));
   };
 
@@ -74,11 +82,19 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
   );
 
   return (
-    <div className="bg-bg font-sans text-ink overflow-hidden">
+    <div className="bg-bg font-sans text-ink overflow-hidden h-screen">
       <Navbar />
 
+      {/* Mobile backdrop */}
+      {isSidebarOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-30 bg-black/60"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Main content row — offset below fixed navbar */}
-      <div className="flex mt-14.5 mr-4 h-[calc(100vh-3.625rem)] overflow-hidden">
+      <div className="flex mt-14.5 h-[calc(100vh-3.625rem)] overflow-hidden">
         <Sidebar
           bg={bg}
           params={params}
@@ -94,10 +110,20 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
           onReset={handleReset}
           onRandomSeed={handleRandomSeed}
           onExport={() => setExportOpen(true)}
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
         />
 
         {/* Canvas area */}
-        <div className="flex-1 flex flex-col overflow-hidden pt-2 p-4 gap-3">
+        <div className="flex-1 flex flex-col overflow-hidden pt-2 p-4 gap-3 md:mr-4">
+          {/* Mobile sidebar toggle */}
+          <button
+            className="md:hidden self-start flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface border border-border text-[12px] text-muted font-sans touch-manipulation"
+            onClick={() => setIsSidebarOpen(true)}
+            aria-label="Open controls"
+          >
+            <Menu size={14} aria-hidden="true" /> Controls
+          </button>
           {/* Canvas card */}
           <motion.div
             ref={previewRef}

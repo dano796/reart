@@ -9,7 +9,7 @@ export function PropsTable({ schema }: { schema: ParamSchema[] }) {
             <th className="text-left py-2.5 px-3 text-muted font-medium text-[12px] uppercase tracking-[0.06em]">
               Prop
             </th>
-            <th className="text-left py-2.5 px-3 text-muted font-medium text-[12px] uppercase tracking-[0.06em]">
+            <th className="hidden md:table-cell text-left py-2.5 px-3 text-muted font-medium text-[12px] uppercase tracking-[0.06em]">
               Type
             </th>
             <th className="text-left py-2.5 px-3 text-muted font-medium text-[12px] uppercase tracking-[0.06em]">
@@ -29,7 +29,7 @@ export function PropsTable({ schema }: { schema: ParamSchema[] }) {
               <td className="py-2.5 px-3 font-mono text-accent text-[12px] whitespace-nowrap">
                 {param.name}
               </td>
-              <td className="py-2.5 px-3 font-mono text-[12px] whitespace-nowrap text-blue">
+              <td className="hidden md:table-cell py-2.5 px-3 font-mono text-[12px] whitespace-nowrap text-blue">
                 {param.type === "number"
                   ? "number"
                   : param.type === "color"

@@ -48,6 +48,10 @@ body {
   min-height: 100svh;
 }
 
+body.sidebar-open {
+  overflow: hidden;
+}
+
 /* Range input — custom track + centered thumb */
 input[type="range"] {
   -webkit-appearance: none;
@@ -88,6 +92,28 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   border: 2px solid var(--color-bg);
   box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+/* Touch-friendly range inputs on mobile */
+@media (max-width: 767px) {
+  input[type="range"] {
+    height: 44px;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 5px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    width: 22px;
+    height: 22px;
+    margin-top: -8.5px;
+  }
+  input[type="range"]::-moz-range-track {
+    height: 5px;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* Remove default color-input inner chrome that can create hairline seams */

@@ -64,14 +64,14 @@ export function ExportModal({ bg, params, onClose }: ExportModalProps) {
     });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
+    <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 pt-17.5 md:p-6 overflow-y-auto">
       <div
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Card — centrada, ancho y alto fijo */}
-      <div className="relative bg-surface border border-border rounded-2xl w-160 max-w-full h-[min(760px,90vh)] flex flex-col shadow-[0_24px_64px_rgba(0,0,0,0.65)] overflow-hidden">
+      {/* Card */}
+      <div className="relative bg-surface border border-border rounded-2xl w-160 max-w-full h-[min(760px,calc(100vh-5rem))] md:h-[min(760px,90vh)] flex flex-col shadow-[0_24px_64px_rgba(0,0,0,0.65)] overflow-hidden">
         {/* Header */}
         <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-border">
           <h2 className="text-[16px] font-bold font-display text-ink tracking-[-0.01em]">

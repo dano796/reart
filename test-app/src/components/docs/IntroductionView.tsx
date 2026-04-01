@@ -76,7 +76,7 @@ export function IntroductionView() {
         ))}
       </div>
 
-      <div className="docs-in-4 grid gap-3 grid-cols-4">
+      <div className="docs-in-4 grid gap-3 grid-cols-2 md:grid-cols-4">
         {STATS.map((stat) => (
           <div
             key={stat.label}

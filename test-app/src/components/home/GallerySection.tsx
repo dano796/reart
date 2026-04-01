@@ -76,7 +76,7 @@ function GalleryCard({
 
 export function GallerySection() {
   return (
-    <section id="gallery" className="py-27.5 px-10 max-w-280 mx-auto">
+    <section id="gallery" className="py-16 md:py-27.5 px-5 md:px-10 max-w-280 mx-auto">
       {/* Section header */}
       <div className="mb-15 max-w-145">
         <div className="font-mono text-[11px] text-accent tracking-[0.12em] font-medium mb-3.5 uppercase">

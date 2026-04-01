@@ -8,7 +8,8 @@ export type SelectParam = Extract<ParamSchema, { type: "select" }>;
 
 export type OnParamChange = (name: string, value: unknown) => void;
 
-const rowBase = "py-2.5 border-b border-border/40 last:border-0";
+const rowBase =
+  "py-2 md:py-2.5 border-b border-border/40 last:border-0 touch-manipulation";
 const labelCls = "text-[12px] text-ink font-sans truncate mr-2";
 
 export function SliderRow({
@@ -64,7 +65,7 @@ export function ColorRow({
       <span className={labelCls}>{param.label}</span>
       <div className="flex items-center gap-2 shrink-0">
         <span className="text-[11px] text-muted font-mono">{value}</span>
-        <div className="w-6 h-6 rounded-md border border-border/60 overflow-hidden cursor-pointer">
+        <div className="w-10 h-10 md:w-6 md:h-6 rounded-md border border-border/60 overflow-hidden cursor-pointer touch-manipulation">
           <input
             type="color"
             value={value}
@@ -91,11 +92,11 @@ export function BooleanRow({
       <span className={labelCls}>{param.label}</span>
       <button
         onClick={() => onChange(param.name, !value)}
-        className={`relative w-8 h-4.5 rounded-full border-0 cursor-pointer shrink-0 transition-colors duration-200 ${value ? "bg-accent" : "bg-faint"}`}
+        className={`relative w-9 h-5 rounded-full border-0 cursor-pointer shrink-0 transition-colors duration-200 touch-manipulation ${value ? "bg-accent" : "bg-faint"}`}
       >
         <motion.span
-          className="absolute w-3.5 h-3.5 top-0.5 left-0.5 rounded-full bg-white"
-          animate={{ x: value ? 14 : 0 }}
+          className="absolute w-3.5 h-3.5 top-0.75 left-0.75 rounded-full bg-white"
+          animate={{ x: value ? 16 : 0 }}
           transition={{ type: "spring", stiffness: 500, damping: 35 }}
         />
       </button>
@@ -118,7 +119,7 @@ export function SelectRow({
       <select
         value={value}
         onChange={(e) => onChange(param.name, e.target.value)}
-        className="text-[11px] font-mono text-ink bg-faint border border-border rounded-md px-2 py-1 cursor-pointer outline-none shrink-0"
+        className="text-[11px] font-mono text-ink bg-faint border border-border rounded-md px-2 py-2 md:py-1 cursor-pointer outline-none shrink-0 touch-manipulation"
       >
         {param.options.map((opt: { value: string; label: string }) => (
           <option key={opt.value} value={opt.value}>

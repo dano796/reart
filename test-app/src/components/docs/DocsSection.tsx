@@ -1,5 +1,6 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Menu, SlidersHorizontal } from "lucide-react";
 import { DocsSidebar } from "./DocsSidebar";
 import { ControlsPanel } from "./ControlsPanel";
 import { IntroductionView } from "./IntroductionView";
@@ -21,8 +22,16 @@ export function DocsSection({ backgroundId }: { backgroundId?: string }) {
   const [params, setParams] = useState<Record<string, unknown>>(
     initialEntry ? { ...initialEntry.defaults } : {},
   );
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [controlsOpen, setControlsOpen] = useState(false);
 
   const bgEntry = DOC_REGISTRY.find((e) => `bg-${e.id}` === activePage);
+
+  useEffect(() => {
+    const anyOpen = sidebarOpen || controlsOpen;
+    document.body.classList.toggle("sidebar-open", anyOpen);
+    return () => document.body.classList.remove("sidebar-open");
+  }, [sidebarOpen, controlsOpen]);
 
   const handleNavigate = useCallback((page: string) => {
     const entry = DOC_REGISTRY.find((e) => `bg-${e.id}` === page);
@@ -42,28 +51,67 @@ export function DocsSection({ backgroundId }: { backgroundId?: string }) {
 
   return (
     <section id="docs" className="min-h-[calc(100vh-58px)]">
-      <div
-        className={`grid ${bgEntry ? "grid-cols-[260px_minmax(0,1fr)_292px]" : "grid-cols-[260px_minmax(0,1fr)]"}`}
-      >
-        <DocsSidebar activePage={activePage} onNavigate={handleNavigate} />
+      {/* Mobile backdrops */}
+      {sidebarOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-30 bg-black/50"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      {controlsOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-30 bg-black/50"
+          onClick={() => setControlsOpen(false)}
+        />
+      )}
 
-        <main className="min-w-0 pt-1 px-8 pb-24 min-h-[calc(100vh-58px)]">
-          <motion.div
-            key={activePage}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            {activePage === "introduction" && <IntroductionView />}
-            {activePage === "installation" && <InstallationView />}
+      <div
+        className={`grid ${bgEntry ? "lg:grid-cols-[260px_minmax(0,1fr)_292px]" : "lg:grid-cols-[260px_minmax(0,1fr)]"}`}
+      >
+        <DocsSidebar
+          activePage={activePage}
+          onNavigate={handleNavigate}
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
+
+        <main className="min-w-0 pb-24 min-h-[calc(100vh-58px)]">
+          {/* Mobile toolbar */}
+          <div className="lg:hidden sticky top-14.5 z-20 flex items-center gap-2 px-4 py-2.5 bg-bg border-b border-border">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-border text-[12px] text-muted font-sans touch-manipulation hover:border-accent"
+            >
+              <Menu size={13} aria-hidden="true" /> Navigation
+            </button>
             {bgEntry && (
-              <BackgroundView
-                entry={bgEntry}
-                params={params}
-                onParamChange={handleParamChange}
-              />
+              <button
+                onClick={() => setControlsOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-border text-[12px] text-muted font-sans touch-manipulation hover:border-accent"
+              >
+                <SlidersHorizontal size={13} aria-hidden="true" /> Customize
+              </button>
             )}
-          </motion.div>
+          </div>
+
+          <div className="pt-6 px-5 md:pt-8 md:px-10">
+            <motion.div
+              key={activePage}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              {activePage === "introduction" && <IntroductionView />}
+              {activePage === "installation" && <InstallationView />}
+              {bgEntry && (
+                <BackgroundView
+                  entry={bgEntry}
+                  params={params}
+                  onParamChange={handleParamChange}
+                />
+              )}
+            </motion.div>
+          </div>
         </main>
 
         {bgEntry && (
@@ -72,6 +120,8 @@ export function DocsSection({ backgroundId }: { backgroundId?: string }) {
             params={params}
             onChange={handleParamChange}
             onReset={handleReset}
+            isOpen={controlsOpen}
+            onClose={() => setControlsOpen(false)}
           />
         )}
       </div>

@@ -78,7 +78,7 @@ export function BackgroundView({
         {/* Canvas */}
         <div
           ref={previewRef}
-          className="relative bg-bg overflow-hidden mt-2 rounded-xl h-105"
+          className="relative bg-bg overflow-hidden mt-2 rounded-xl h-56 md:h-80 lg:h-105"
         >
           {inView && (
             <entry.Component

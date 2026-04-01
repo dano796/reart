@@ -37,10 +37,9 @@ export function HeroSection() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(12,12,20,0.2)_0%,rgba(12,12,20,0.72)_65%,rgba(12,12,20,0.97)_100%)]" />
 
       {/* Content */}
-      <div className="relative text-center max-w-190 px-6">
+      <div className="relative text-center w-full max-w-190 px-4 md:px-6">
         {/* Badge */}
         <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.25 bg-accent-soft border border-accent-border rounded-full text-[11px] text-accent font-semibold tracking-[0.08em] mb-7 font-mono uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block animate-[pulseDot_1.8s_ease-in-out_infinite]" />
           Zero Dependencies · Copy-paste · shadcn/ui Style
         </div>
 
@@ -52,7 +51,7 @@ export function HeroSection() {
         </h1>
 
         {/* Subheadline */}
-        <p className="hero-sub text-muted font-sans font-light leading-[1.65] mx-auto mb-10 max-w-135 text-[clamp(16px,2vw,19px)]">
+        <p className="hero-sub text-muted font-sans font-light leading-[1.65] mx-auto mb-10 max-w-full md:max-w-135 text-[clamp(15px,2vw,19px)]">
           24 animated canvas backgrounds you own forever. Install with one
           command, customize every parameter, ship without adding a single npm
           dependency.
@@ -82,10 +81,12 @@ export function HeroSection() {
         <div className="hero-cmd">
           <button
             onClick={copyCmd}
-            className="inline-flex items-center gap-3 px-4.5 py-2.5 bg-black/45 backdrop-blur-sm border border-border rounded-[9px] text-muted cursor-pointer font-mono text-[13px] hover:border-accent"
+            className="inline-flex items-center gap-3 px-4.5 py-2.5 bg-black/45 backdrop-blur-sm border border-border rounded-[9px] text-muted cursor-pointer font-mono text-[13px] hover:border-accent max-w-full"
           >
-            <span className="text-accent select-none">$</span>
-            <span>{cmd}</span>
+            <span className="text-accent select-none shrink-0">$</span>
+            <span className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">
+              {cmd}
+            </span>
             <span
               className={`px-2.25 py-0.5 bg-faint rounded text-[11px] shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
             >
