@@ -24,6 +24,14 @@ export { ReactionDiffusion } from "./components/backgrounds/ReactionDiffusion";
 export { RecursiveSubdivision } from "./components/backgrounds/RecursiveSubdivision";
 export { TideHarmonics } from "./components/backgrounds/TideHarmonics";
 export { VoronoiMosaic } from "./components/backgrounds/VoronoiMosaic";
+export { PlasmaField } from "./components/backgrounds/PlasmaField";
+export { NebulaVeil } from "./components/backgrounds/NebulaVeil";
+export { PrismaticWave } from "./components/backgrounds/PrismaticWave";
+export { PhotonBurst } from "./components/backgrounds/PhotonBurst";
+export { FibonacciVortex } from "./components/backgrounds/FibonacciVortex";
+export { HexRipple } from "./components/backgrounds/HexRipple";
+
+export { RecursiveTunnel } from "./components/backgrounds/RecursiveTunnel";
 // Engines (for headless / custom renderer usage)
 export {
   initFlowCurrents,
@@ -163,6 +171,58 @@ export {
   resetVoronoiMosaic,
   type VoronoiMosaicState,
 } from "./components/engines/voronoiMosaic";
+export {
+  initPlasmaField,
+  drawPlasmaField,
+  resetPlasmaField,
+  plasmaFieldDefaults,
+  type PlasmaFieldState,
+  type PlasmaFieldParams,
+} from "./components/engines/plasmaField";
+export {
+  initNebulaVeil,
+  drawNebulaVeil,
+  resetNebulaVeil,
+  nebulaVeilDefaults,
+  type NebulaVeilState,
+  type NebulaVeilParams,
+} from "./components/engines/nebulaVeil";
+export {
+  initPrismaticWave,
+  drawPrismaticWave,
+  resetPrismaticWave,
+  spawnAtClick as prismaticWaveSpawnAtClick,
+  type PrismaticWaveState,
+} from "./components/engines/prismaticWave";
+export {
+  initPhotonBurst,
+  drawPhotonBurst,
+  resetPhotonBurst,
+  spawnAtClick as photonBurstSpawnAtClick,
+  type PhotonBurstState,
+} from "./components/engines/photonBurst";
+export {
+  initFibonacciVortex,
+  drawFibonacciVortex,
+  resetFibonacciVortex,
+  addBloom as fibonacciVortexAddBloom,
+  type FibonacciVortexState,
+} from "./components/engines/fibonacciVortex";
+export {
+  initHexRipple,
+  drawHexRipple,
+  resetHexRipple,
+  addSource as hexRippleAddSource,
+  type HexRippleState,
+} from "./components/engines/hexRipple";
+
+export {
+  initRecursiveTunnel,
+  drawRecursiveTunnel,
+  resetRecursiveTunnel,
+  toggleTwist as recursiveTunnelToggleTwist,
+  type RecursiveTunnelState,
+} from "./components/engines/recursiveTunnel";
 
 // Schemas & types
 export {
@@ -212,6 +272,19 @@ export {
   tideHarmonicsDefaults,
   voronoiMosaicSchema,
   voronoiMosaicDefaults,
+  plasmaFieldSchema,
+  nebulaVeilSchema,
+  prismaticWaveSchema,
+  prismaticWaveDefaults,
+  photonBurstSchema,
+  photonBurstDefaults,
+  fibonacciVortexSchema,
+  fibonacciVortexDefaults,
+  hexRippleSchema,
+  hexRippleDefaults,
+
+  recursiveTunnelSchema,
+  recursiveTunnelDefaults,
   type ParamSchema,
   type FlowCurrentsParams,
   type GravityStormParams,
@@ -236,6 +309,12 @@ export {
   type RecursiveSubdivisionParams,
   type TideHarmonicsParams,
   type VoronoiMosaicParams,
+  type PrismaticWaveParams,
+  type PhotonBurstParams,
+  type FibonacciVortexParams,
+  type HexRippleParams,
+
+  type RecursiveTunnelParams,
 } from "./components/schemas";
 
 // Registry

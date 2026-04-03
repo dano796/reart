@@ -172,6 +172,11 @@ async function cmdInfo(id) {
   for (const f of comp.files) {
     log(`  ${f.target}`, "cyan");
   }
+  if (comp.peerDependencies?.length > 0) {
+    log(`\nRequired peer packages:`, "yellow");
+    log(`  npm install ${comp.peerDependencies.join(" ")}`, "cyan");
+    log(`  # or: yarn add / pnpm add ${comp.peerDependencies.join(" ")}`, "dim");
+  }
   log(`\nInstall: npx alg-art-backgrounds add ${comp.id}\n`, "dim");
 }
 
@@ -261,6 +266,12 @@ async function cmdAdd(id, { force = false, dryRun = false } = {}) {
 
   const exportName = toExportName(id);
   log(`\nDone! Usage:\n`, "bold");
+
+  if (comp.peerDependencies?.length > 0) {
+    log(`\nThis component requires additional packages:`, "yellow");
+    log(`  npm install ${comp.peerDependencies.join(" ")}`, "cyan");
+    log(`  # or: yarn add / pnpm add ${comp.peerDependencies.join(" ")}`, "dim");
+  }
 
   if (id === "background-studio") {
     log(

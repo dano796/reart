@@ -23,7 +23,17 @@ export type BackgroundId =
   | "reaction-diffusion"
   | "recursive-subdivision"
   | "tide-harmonics"
-  | "voronoi-mosaic";
+  | "voronoi-mosaic"
+  | "fractal-tree"
+  | "sierpinski-chaos"
+  | "dragon-fold"
+  | "plasma-field"
+  | "nebula-veil"
+  | "prismatic-wave"
+  | "photon-burst"
+  | "fibonacci-vortex"
+  | "hex-ripple"
+  | "recursive-tunnel";
 
 export type AnyParams = Record<string, number | string | boolean>;
 

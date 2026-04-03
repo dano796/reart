@@ -53,6 +53,17 @@ export type { TideHarmonicsParams } from "../engines/tideHarmonics";
 export { tideHarmonicsDefaults } from "../backgrounds/TideHarmonics";
 export type { VoronoiMosaicParams } from "../engines/voronoiMosaic";
 export { voronoiMosaicDefaults } from "../backgrounds/VoronoiMosaic";
+export type { PrismaticWaveParams } from "../backgrounds/PrismaticWave";
+export { prismaticWaveDefaults } from "../backgrounds/PrismaticWave";
+export type { PhotonBurstParams } from "../backgrounds/PhotonBurst";
+export { photonBurstDefaults } from "../backgrounds/PhotonBurst";
+export type { FibonacciVortexParams } from "../backgrounds/FibonacciVortex";
+export { fibonacciVortexDefaults } from "../backgrounds/FibonacciVortex";
+export type { HexRippleParams } from "../backgrounds/HexRipple";
+export { hexRippleDefaults } from "../backgrounds/HexRipple";
+
+export type { RecursiveTunnelParams } from "../backgrounds/RecursiveTunnel";
+export { recursiveTunnelDefaults } from "../backgrounds/RecursiveTunnel";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ParamSchema — drives BackgroundStudio UI controls and code-gen
@@ -203,10 +214,10 @@ export const ambientMeshSchema: ParamSchema[] = [
   { name: "noiseScale", label: "Noise Scale", type: "number", default: 2.0, min: 0.5, max: 5.0, step: 0.25 },
   { name: "breatheSpeed", label: "Breathe Speed", type: "number", default: 0.5, min: 0.0, max: 2.0, step: 0.1 },
   { name: "breatheAmount", label: "Breathe Amount", type: "number", default: 0.15, min: 0.0, max: 0.5, step: 0.05 },
-  { name: "edgeOpacity", label: "Edge Opacity", type: "number", default: 0.3, min: 0.1, max: 1.0, step: 0.05 },
+  { name: "edgeOpacity", label: "Edge Opacity", type: "number", default: 0.75, min: 0.1, max: 1.0, step: 0.05 },
   { name: "nodeSize", label: "Node Size", type: "number", default: 4, min: 2, max: 10, step: 0.5 },
   { name: "nodeGlow", label: "Node Glow", type: "number", default: 0.8, min: 0.0, max: 2.0, step: 0.1 },
-  { name: "bgOpacity", label: "BG Opacity", type: "number", default: 0.05, min: 0.0, max: 1.0, step: 0.05 },
+  { name: "bgOpacity", label: "BG Opacity", type: "number", default: 0.5, min: 0.0, max: 1.0, step: 0.05 },
   { name: "bgColor", label: "Background", type: "color", default: "#0a0e14" },
   { name: "nodeColor", label: "Nodes", type: "color", default: "#50b8e8" },
   { name: "edgeColor", label: "Edges", type: "color", default: "#50b8e8" },
@@ -491,4 +502,117 @@ export const voronoiMosaicSchema: ParamSchema[] = [
   { name: "moveSpeed", label: "Move Speed", type: "number", default: 0.5, min: 0.0, max: 2.0, step: 0.1 },
   { name: "edgeContrast", label: "Edge Contrast", type: "number", default: 1.2, min: 0.0, max: 3.0, step: 0.1 },
   { name: "bgColor", label: "Background", type: "color", default: "#0a0e14" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PLASMA FIELD  (WebGL2 — Tier 2)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type { PlasmaFieldParams } from "../backgrounds/PlasmaField";
+export { plasmaFieldDefaults } from "../engines/plasmaField";
+
+export const plasmaFieldSchema: ParamSchema[] = [
+  { name: "seed", label: "Seed", type: "number", default: 42, min: 1, max: 999, step: 1 },
+  { name: "speed", label: "Speed", type: "number", default: 1.0, min: 0.1, max: 3.0, step: 0.1 },
+  { name: "scale", label: "Scale", type: "number", default: 2.5, min: 0.5, max: 6.0, step: 0.1 },
+  { name: "contrast", label: "Contrast", type: "number", default: 2.2, min: 0.5, max: 4.0, step: 0.1 },
+  { name: "colorA", label: "Color A", type: "color", default: "#0d1b6e" },
+  { name: "colorB", label: "Color B", type: "color", default: "#c0146c" },
+  { name: "colorC", label: "Color C", type: "color", default: "#f5a623" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEBULA VEIL  (OGL — Tier 3)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type { NebulaVeilParams } from "../backgrounds/NebulaVeil";
+export { nebulaVeilDefaults } from "../engines/nebulaVeil";
+
+export const nebulaVeilSchema: ParamSchema[] = [
+  { name: "speed", label: "Speed", type: "number", default: 1.0, min: 0.1, max: 3.0, step: 0.1 },
+  { name: "amplitude", label: "Amplitude", type: "number", default: 2.0, min: 0.5, max: 4.0, step: 0.1 },
+  { name: "density", label: "Density", type: "number", default: 2.2, min: 0.5, max: 5.0, step: 0.1 },
+  { name: "blend", label: "Layer Blend", type: "number", default: 0.6, min: 0.0, max: 1.0, step: 0.05 },
+  { name: "colorA", label: "Color A", type: "color", default: "#0a0a2e" },
+  { name: "colorB", label: "Color B", type: "color", default: "#7b2fbe" },
+  { name: "colorC", label: "Color C", type: "color", default: "#00d4ff" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PRISMATIC WAVE
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const prismaticWaveSchema: ParamSchema[] = [
+  { name: "seed",         label: "Seed",          type: "number",  default: 42731, min: 1,    max: 999999, step: 1    },
+  { name: "sources",      label: "Wave Sources",  type: "number",  default: 5,     min: 2,    max: 12,     step: 1    },
+  { name: "frequency",    label: "Frequency",     type: "number",  default: 0.012, min: 0.004,max: 0.03,   step: 0.001 },
+  { name: "waveSpeed",    label: "Wave Speed",    type: "number",  default: 0.025, min: 0.005,max: 0.1,    step: 0.005 },
+  { name: "resolution",   label: "Resolution",    type: "number",  default: 6,     min: 3,    max: 16,     step: 1    },
+  { name: "dispersion",   label: "Dispersion",    type: "number",  default: 300,   min: 60,   max: 360,    step: 10   },
+  { name: "hueOffset",    label: "Hue Offset",    type: "number",  default: 0,     min: 0,    max: 360,    step: 5    },
+  { name: "saturation",   label: "Saturation",    type: "number",  default: 0.9,   min: 0.3,  max: 1.0,    step: 0.05 },
+  { name: "brightness",   label: "Brightness",    type: "number",  default: 0.65,  min: 0.3,  max: 0.85,   step: 0.05 },
+  { name: "lensStrength", label: "Lens Strength", type: "number",  default: 1.0,   min: 0,    max: 3.0,    step: 0.1  },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PHOTON BURST
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const photonBurstSchema: ParamSchema[] = [
+  { name: "seed",          label: "Seed",             type: "number", default: 42731, min: 1,     max: 999999, step: 1    },
+  { name: "count",         label: "Photon Count",     type: "number", default: 800,   min: 200,   max: 2500,   step: 100  },
+  { name: "speed",         label: "Speed",            type: "number", default: 1.0,   min: 0.2,   max: 3.0,    step: 0.1  },
+  { name: "noiseScale",    label: "Drift Scale",      type: "number", default: 0.0025,min: 0.001, max: 0.008,  step: 0.0005 },
+  { name: "trailOpacity",  label: "Trail Length",     type: "number", default: 12,    min: 4,     max: 40,     step: 2    },
+  { name: "burstSize",     label: "Burst Size",       type: "number", default: 28,    min: 8,     max: 60,     step: 4    },
+  { name: "cursorGravity", label: "Cursor Gravity",   type: "number", default: 0.18,  min: 0,     max: 0.6,    step: 0.02 },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FIBONACCI VORTEX
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const fibonacciVortexSchema: ParamSchema[] = [
+  { name: "seed",           label: "Seed",            type: "number", default: 33771, min: 1,   max: 999999, step: 1    },
+  { name: "numArms",        label: "Spiral Arms",     type: "number", default: 8,     min: 3,   max: 13,     step: 1    },
+  { name: "particlesPerArm",label: "Particles/Arm",   type: "number", default: 90,    min: 10,  max: 100,    step: 5    },
+  { name: "speed",          label: "Speed",           type: "number", default: 1.0,   min: 0.1, max: 3.0,    step: 0.1  },
+  { name: "mouseStrength",  label: "Mouse Pull",      type: "number", default: 0.14,  min: 0,   max: 0.5,    step: 0.02 },
+  { name: "maxBlooms",      label: "Max Blooms",      type: "number", default: 4,     min: 1,   max: 8,      step: 1    },
+  { name: "trailOpacity",   label: "Trail Length",    type: "number", default: 20,    min: 3,   max: 40,     step: 1    },
+  { name: "colorPrimary",   label: "Inner Color",     type: "color",  default: "#f5c842" },
+  { name: "colorSecondary", label: "Mid Color",       type: "color",  default: "#e05a20" },
+  { name: "colorAccent",    label: "Outer Color",     type: "color",  default: "#8c42f5" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HEX RIPPLE
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const hexRippleSchema: ParamSchema[] = [
+  { name: "seed",       label: "Seed",        type: "number", default: 51289, min: 1,     max: 999999, step: 1      },
+  { name: "cellSize",   label: "Cell Size",   type: "number", default: 22,    min: 8,     max: 50,     step: 2      },
+  { name: "waveSpeed",  label: "Wave Speed",  type: "number", default: 1.0,   min: 0.1,   max: 3.0,    step: 0.1    },
+  { name: "frequency",  label: "Frequency",   type: "number", default: 0.038, min: 0.01,  max: 0.1,    step: 0.002  },
+  { name: "damping",    label: "Damping",     type: "number", default: 0.0006,min: 0.0001,max: 0.003,  step: 0.0001 },
+  { name: "maxSources", label: "Max Sources", type: "number", default: 6,     min: 1,     max: 10,     step: 1      },
+  { name: "colorTrough",label: "Trough",      type: "color",  default: "#080820" },
+  { name: "colorMid",   label: "Mid",         type: "color",  default: "#1a6fff" },
+  { name: "colorCrest", label: "Crest",       type: "color",  default: "#00ffcc" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RECURSIVE TUNNEL
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const recursiveTunnelSchema: ParamSchema[] = [
+  { name: "sides",            label: "Polygon Sides",  type: "number", default: 6,    min: 3,   max: 12,  step: 1    },
+  { name: "layers",           label: "Layer Count",    type: "number", default: 22,   min: 8,   max: 40,  step: 2    },
+  { name: "zoomSpeed",        label: "Zoom Speed",     type: "number", default: 0.1,  min: 0.05,max: 1.5, step: 0.05 },
+  { name: "twistPerLayer",    label: "Twist",          type: "number", default: 0.11, min: 0,   max: 0.5, step: 0.01 },
+  { name: "parallaxStrength", label: "Parallax",       type: "number", default: 0.28, min: 0,   max: 1.0, step: 0.05 },
+  { name: "colorInner",       label: "Inner Color",    type: "color",  default: "#ff2d78" },
+  { name: "colorMid",         label: "Mid Color",      type: "color",  default: "#2d78ff" },
+  { name: "colorOuter",       label: "Outer Color",    type: "color",  default: "#2dffbe" },
 ];

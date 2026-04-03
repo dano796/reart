@@ -670,6 +670,219 @@
       ]
     },
     {
+      "id": "plasma-field",
+      "name": "Plasma Field",
+      "description": "Domain-warped fractional Brownian motion rendered at pixel resolution via a WebGL2 fragment shader.",
+      "tags": [
+        "webgl2",
+        "shader",
+        "noise",
+        "plasma",
+        "generative"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/PlasmaField.tsx",
+          "target": "components/backgrounds/PlasmaField.tsx"
+        },
+        {
+          "source": "src/components/engines/plasmaField.ts",
+          "target": "components/backgrounds/engines/plasmaField.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ],
+      "tier": "webgl2"
+    },
+    {
+      "id": "nebula-veil",
+      "name": "Nebula Veil",
+      "description": "Three superimposed noise planes interfere to create a volumetric nebula curtain with radial depth.",
+      "tags": [
+        "ogl",
+        "webgl",
+        "shader",
+        "nebula",
+        "noise",
+        "volumetric"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/NebulaVeil.tsx",
+          "target": "components/backgrounds/NebulaVeil.tsx"
+        },
+        {
+          "source": "src/components/engines/nebulaVeil.ts",
+          "target": "components/backgrounds/engines/nebulaVeil.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ],
+      "tier": "ogl",
+      "peerDependencies": [
+        "ogl"
+      ]
+    },
+    {
+      "id": "prismatic-wave",
+      "name": "Prismatic Wave",
+      "description": "Wave interference mapped to a full spectral hue sweep — like light through a prism. Cursor bends the chromatic bands; click to plant new wave sources.",
+      "tags": [
+        "waves",
+        "color",
+        "interactive",
+        "prism",
+        "spectral",
+        "interference"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/PrismaticWave.tsx",
+          "target": "components/backgrounds/PrismaticWave.tsx"
+        },
+        {
+          "source": "src/components/engines/prismaticWave.ts",
+          "target": "components/backgrounds/engines/prismaticWave.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "photon-burst",
+      "name": "Photon Burst",
+      "description": "Glowing photons drift through cosmic noise currents. Cursor bends paths with gravitational pull; click to detonate a radial rainbow burst.",
+      "tags": [
+        "particles",
+        "interactive",
+        "glow",
+        "cosmic",
+        "rainbow",
+        "burst"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/PhotonBurst.tsx",
+          "target": "components/backgrounds/PhotonBurst.tsx"
+        },
+        {
+          "source": "src/components/engines/photonBurst.ts",
+          "target": "components/backgrounds/engines/photonBurst.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "fibonacci-vortex",
+      "name": "Fibonacci Vortex",
+      "description": "Particles travel along golden spiral arms (r = k·φ^(θ/½π)) radiating from bloom centers. Cursor bends paths; click to plant new spiral origins.",
+      "tags": [
+        "fibonacci",
+        "golden-ratio",
+        "spiral",
+        "particles",
+        "interactive",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/FibonacciVortex.tsx",
+          "target": "components/backgrounds/FibonacciVortex.tsx"
+        },
+        {
+          "source": "src/components/engines/fibonacciVortex.ts",
+          "target": "components/backgrounds/engines/fibonacciVortex.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "hex-ripple",
+      "name": "Hex Ripple",
+      "description": "Hexagonal tessellation with multi-source wave superposition. Interference patterns create chromatic ripples across the grid. Hover highlights cells; click plants new sources.",
+      "tags": [
+        "hexagonal",
+        "grid",
+        "waves",
+        "interference",
+        "interactive",
+        "geometric"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/HexRipple.tsx",
+          "target": "components/backgrounds/HexRipple.tsx"
+        },
+        {
+          "source": "src/components/engines/hexRipple.ts",
+          "target": "components/backgrounds/engines/hexRipple.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "recursive-tunnel",
+      "name": "Recursive Tunnel",
+      "description": "Concentric nested polygons zoom inward with cumulative twist, creating a recursive depth tunnel. Mouse moves the vanishing point; click reverses twist direction.",
+      "tags": [
+        "recursive",
+        "geometric",
+        "tunnel",
+        "polygon",
+        "interactive",
+        "depth"
+      ],
+      "files": [
+        {
+          "source": "src/components/backgrounds/RecursiveTunnel.tsx",
+          "target": "components/backgrounds/RecursiveTunnel.tsx"
+        },
+        {
+          "source": "src/components/engines/recursiveTunnel.ts",
+          "target": "components/backgrounds/engines/recursiveTunnel.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
       "id": "background-studio",
       "name": "Background Studio",
       "description": "Interactive playground to explore and configure all backgrounds with live preview and code export.",
@@ -866,6 +1079,46 @@
         {
           "source": "src/components/engines/voronoiMosaic.ts",
           "target": "components/backgrounds/engines/voronoiMosaic.ts"
+        },
+        {
+          "source": "src/components/backgrounds/PrismaticWave.tsx",
+          "target": "components/backgrounds/PrismaticWave.tsx"
+        },
+        {
+          "source": "src/components/backgrounds/PhotonBurst.tsx",
+          "target": "components/backgrounds/PhotonBurst.tsx"
+        },
+        {
+          "source": "src/components/backgrounds/FibonacciVortex.tsx",
+          "target": "components/backgrounds/FibonacciVortex.tsx"
+        },
+        {
+          "source": "src/components/backgrounds/HexRipple.tsx",
+          "target": "components/backgrounds/HexRipple.tsx"
+        },
+        {
+          "source": "src/components/backgrounds/RecursiveTunnel.tsx",
+          "target": "components/backgrounds/RecursiveTunnel.tsx"
+        },
+        {
+          "source": "src/components/engines/prismaticWave.ts",
+          "target": "components/backgrounds/engines/prismaticWave.ts"
+        },
+        {
+          "source": "src/components/engines/photonBurst.ts",
+          "target": "components/backgrounds/engines/photonBurst.ts"
+        },
+        {
+          "source": "src/components/engines/fibonacciVortex.ts",
+          "target": "components/backgrounds/engines/fibonacciVortex.ts"
+        },
+        {
+          "source": "src/components/engines/hexRipple.ts",
+          "target": "components/backgrounds/engines/hexRipple.ts"
+        },
+        {
+          "source": "src/components/engines/recursiveTunnel.ts",
+          "target": "components/backgrounds/engines/recursiveTunnel.ts"
         },
         {
           "source": "src/components/utils/noise.ts",

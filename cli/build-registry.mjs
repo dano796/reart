@@ -115,9 +115,19 @@ while (pos < arrayContent.length) {
   const description = extractString(obj, "description");
   const tags = extractStringArray(obj, "tags");
   const files = extractStringArray(obj, "files");
+  const tier = extractString(obj, "tier");
+  const peerDependencies = extractStringArray(obj, "peerDependencies");
 
   if (id && name && files.length > 0) {
-    entries.push({ id, name, description: description ?? "", tags, files });
+    entries.push({
+      id,
+      name,
+      description: description ?? "",
+      tags,
+      files,
+      ...(tier ? { tier } : {}),
+      ...(peerDependencies.length > 0 ? { peerDependencies } : {}),
+    });
   }
 
   pos = objEnd + 1;
@@ -157,6 +167,8 @@ const output = {
       source,
       target: sourceToTarget(source),
     })),
+    ...(entry.tier ? { tier: entry.tier } : {}),
+    ...(entry.peerDependencies?.length > 0 ? { peerDependencies: entry.peerDependencies } : {}),
   })),
 };
 
