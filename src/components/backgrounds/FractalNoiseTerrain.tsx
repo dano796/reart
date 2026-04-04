@@ -49,8 +49,9 @@ export function FractalNoiseTerrain(props: FractalNoiseTerrainProps) {
     let isVisible = false;
 
     function resizeCanvas() {
-      const w = canvas!.clientWidth * window.devicePixelRatio;
-      const h = canvas!.clientHeight * window.devicePixelRatio;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.floor(canvas!.clientWidth * dpr);
+      const h = Math.floor(canvas!.clientHeight * dpr);
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;

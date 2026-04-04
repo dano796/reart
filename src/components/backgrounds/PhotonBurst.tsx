@@ -86,8 +86,9 @@ export function PhotonBurst(props: PhotonBurstProps) {
     const mouse: { pos: { x: number; y: number } | undefined } = { pos: undefined };
 
     function resizeCanvas() {
-      const w = canvas!.clientWidth  * window.devicePixelRatio;
-      const h = canvas!.clientHeight * window.devicePixelRatio;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.floor(canvas!.clientWidth * dpr);
+      const h = Math.floor(canvas!.clientHeight * dpr);
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width  = w;
         canvas!.height = h;
@@ -103,43 +104,47 @@ export function PhotonBurst(props: PhotonBurstProps) {
     // ── Pointer listeners ──────────────────────────────────────────────────
 
     const onMouseMove = (e: MouseEvent) => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
       mouse.pos = {
-        x: (e.clientX - rect.left) * window.devicePixelRatio,
-        y: (e.clientY - rect.top)  * window.devicePixelRatio,
+        x: (e.clientX - rect.left) * dpr,
+        y: (e.clientY - rect.top) * dpr,
       };
     };
     const onMouseLeave = () => { mouse.pos = undefined; };
 
     const onClick = (e: MouseEvent) => {
       if (!stateRef.current) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
       photonSpawnAtClick(
         stateRef.current,
-        (e.clientX - rect.left) * window.devicePixelRatio,
-        (e.clientY - rect.top)  * window.devicePixelRatio,
+        (e.clientX - rect.left) * dpr,
+        (e.clientY - rect.top) * dpr,
         paramsRef.current
       );
     };
 
     const onTouchMove = (e: TouchEvent) => {
       e.preventDefault();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const t    = e.touches[0];
       const rect = canvas.getBoundingClientRect();
       mouse.pos = {
-        x: (t.clientX - rect.left) * window.devicePixelRatio,
-        y: (t.clientY - rect.top)  * window.devicePixelRatio,
+        x: (t.clientX - rect.left) * dpr,
+        y: (t.clientY - rect.top) * dpr,
       };
     };
     const onTouchStart = (e: TouchEvent) => {
       e.preventDefault();
       if (!stateRef.current) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const t    = e.touches[0];
       const rect = canvas.getBoundingClientRect();
       photonSpawnAtClick(
         stateRef.current,
-        (t.clientX - rect.left) * window.devicePixelRatio,
-        (t.clientY - rect.top)  * window.devicePixelRatio,
+        (t.clientX - rect.left) * dpr,
+        (t.clientY - rect.top) * dpr,
         paramsRef.current
       );
     };

@@ -56,8 +56,9 @@ export function NebulaVeil(props: NebulaVeilProps) {
     let isVisible = false;
 
     function resizeRenderer() {
-      const w = Math.floor(container!.clientWidth * window.devicePixelRatio);
-      const h = Math.floor(container!.clientHeight * window.devicePixelRatio);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.floor(container!.clientWidth * dpr);
+      const h = Math.floor(container!.clientHeight * dpr);
       if (stateRef.current) {
         const { renderer } = stateRef.current;
         if (stateRef.current.width !== w || stateRef.current.height !== h) {
