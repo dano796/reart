@@ -3,7 +3,7 @@
  * Gray-Scott model creating organic pattern formation
  */
 
-import { SeededRandom, hexToRgb, lerp } from "../utils/noise";
+import { SeededRandom, hexToRgb, lerp } from "../../utils/noise";
 
 export interface ReactionDiffusionParams {
   seed: number;

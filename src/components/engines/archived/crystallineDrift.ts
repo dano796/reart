@@ -5,9 +5,9 @@
  * forming snowflake-like crystal mandala structures with radial symmetry.
  */
 
-import { PerlinNoise, SeededRandom, hexToRgb, rgba, map } from "../utils/noise";
-import type { CrystallineDriftParams } from "../schemas";
-import { crystallineDriftDefaults } from "../schemas";
+import { PerlinNoise, SeededRandom, hexToRgb, rgba, map } from "../../utils/noise";
+import type { CrystallineDriftParams } from "../../schemas";
+import { crystallineDriftDefaults } from "../../schemas";
 
 interface Arm {
   x: number;

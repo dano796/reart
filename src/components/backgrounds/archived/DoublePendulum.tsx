@@ -1,61 +1,44 @@
-/**
- * Spirograph
- * Hypotrochoid curves from rolling circles
- */
-
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initSpirograph,
-  drawSpirograph,
-  resetSpirograph,
-  type SpirographState,
-} from "../engines/spirograph";
+  initDoublePendulum,
+  drawDoublePendulum,
+  resetDoublePendulum,
+  type DoublePendulumState,
+  type DoublePendulumParams,
+} from "../../engines/archived/doublePendulum";
 
-export interface SpirographParams {
-  seed?: number;
-  R?: number;
-  r?: number;
-  d?: number;
-  speed?: number;
-  lineWeight?: number;
-  bgColor?: string;
-  colorA?: string;
-  colorB?: string;
-  colorC?: string;
-}
-
-export const spirographDefaults: Required<SpirographParams> = {
-  seed: 42731,
-  R: 120,
-  r: 45,
-  d: 70,
-  speed: 1.0,
-  lineWeight: 1.2,
-  bgColor: "#0a0a0a",
-  colorA: "#ff6b35",
-  colorB: "#f7931e",
-  colorC: "#fdc830",
+export const doublePendulumDefaults: DoublePendulumParams = {
+  seed: 7777,
+  numPendulums: 9,
+  length1: 180,
+  length2: 180,
+  gravity: 1.2,
+  simSpeed: 1.5,
+  fadeRate: 8,
+  bgColor: "#0a0e14",
+  colorA: "#e8b850",
+  colorB: "#50e8b8",
+  colorC: "#b850e8",
 };
 
-export interface SpirographProps extends SpirographParams {
+export interface DoublePendulumProps extends Partial<DoublePendulumParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function Spirograph(props: SpirographProps) {
+export function DoublePendulum(props: DoublePendulumProps) {
   const { className, style, ...params } = props;
-  const merged = { ...spirographDefaults, ...params };
+  const merged = { ...doublePendulumDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<SpirographState | null>(null);
+  const stateRef = useRef<DoublePendulumState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
-    const ctx = canvas.getContext("2d", { alpha: false });
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let animId: number;
@@ -68,17 +51,17 @@ export function Spirograph(props: SpirographProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initSpirograph(w, h, paramsRef.current);
+        stateRef.current = initDoublePendulum(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initSpirograph(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initDoublePendulum(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running || !isVisible) return;
       if (stateRef.current) {
-        drawSpirograph(ctx, stateRef.current, paramsRef.current);
+        drawDoublePendulum(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -107,11 +90,9 @@ export function Spirograph(props: SpirographProps) {
   }, []);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx || !stateRef.current) return;
-    resetSpirograph(stateRef.current, paramsRef.current);
-  }, [merged.seed, merged.R, merged.r, merged.d]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (!stateRef.current) return;
+    resetDoublePendulum(stateRef.current, merged);
+  }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

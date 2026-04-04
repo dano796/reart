@@ -34,7 +34,7 @@
     {
       "id": "gravity-storm",
       "name": "Gravity Storm",
-      "description": "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
+      "description": "",
       "tags": [
         "particles",
         "physics",
@@ -121,7 +121,7 @@
     {
       "id": "vortex-bloom",
       "name": "Vortex Bloom",
-      "description": "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
+      "description": "",
       "tags": [
         "particles",
         "vortex",
@@ -150,7 +150,7 @@
     {
       "id": "crystalline-drift",
       "name": "Crystalline Drift",
-      "description": "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
+      "description": "",
       "tags": [
         "fractal",
         "crystal",
@@ -208,7 +208,7 @@
     {
       "id": "ember-cascade",
       "name": "Ember Cascade",
-      "description": "Thermal particles rise with turbulent motion, glowing through temperature-based color gradients.",
+      "description": "",
       "tags": [
         "particles",
         "fire",
@@ -237,7 +237,7 @@
     {
       "id": "clifford-attractor",
       "name": "Clifford Attractor",
-      "description": "Strange attractor density map revealing the fractal structure of chaotic orbital dynamics.",
+      "description": "",
       "tags": [
         "attractor",
         "chaos",
@@ -353,7 +353,7 @@
     {
       "id": "spirograph",
       "name": "Spirograph",
-      "description": "Hypotrochoid curves traced by rolling circles, creating intricate geometric rosettes and patterns.",
+      "description": "",
       "tags": [
         "geometric",
         "parametric",
@@ -382,7 +382,7 @@
     {
       "id": "differential-growth",
       "name": "Differential Growth",
-      "description": "Organic growth simulation with spring forces, repulsion, and noise-guided expansion creating folded forms.",
+      "description": "",
       "tags": [
         "organic",
         "growth",
@@ -411,7 +411,7 @@
     {
       "id": "double-pendulum",
       "name": "Double Pendulum",
-      "description": "Chaotic dynamics visualization using RK4 integration showing diverging trajectories from similar initial conditions.",
+      "description": "",
       "tags": [
         "chaos",
         "physics",
@@ -556,7 +556,7 @@
     {
       "id": "reaction-diffusion",
       "name": "Reaction Diffusion",
-      "description": "Gray-Scott model creating organic pattern formation through chemical reaction simulation.",
+      "description": "",
       "tags": [
         "reaction-diffusion",
         "organic",

@@ -4,7 +4,7 @@ import {
   drawCrystallineDrift,
   resetCrystallineDrift,
   type CrystallineDriftState,
-} from "../engines/crystallineDrift";
+} from "../../engines/archived/crystallineDrift";
 
 export interface CrystallineDriftParams {
   seed?: number;

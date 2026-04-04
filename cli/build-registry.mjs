@@ -95,6 +95,14 @@ while (pos < arrayContent.length) {
   const objStart = arrayContent.indexOf("{", pos);
   if (objStart === -1) break;
 
+  // Check if this object is commented out by looking backwards for comment markers
+  const textBeforeObj = arrayContent.slice(Math.max(0, objStart - 200), objStart);
+  const lastNewline = textBeforeObj.lastIndexOf("\n");
+  const lineBeforeObj = lastNewline !== -1 ? textBeforeObj.slice(lastNewline + 1) : textBeforeObj;
+  
+  // Skip if the line before contains "ARCHIVED:" comment or if the opening brace is commented
+  const isCommented = /\/\/\s*ARCHIVED:/i.test(lineBeforeObj) || /\/\/\s*\{/.test(lineBeforeObj);
+
   let braceDepth = 0;
   let objEnd = -1;
   for (let i = objStart; i < arrayContent.length; i++) {
@@ -110,24 +118,28 @@ while (pos < arrayContent.length) {
   if (objEnd === -1) break;
 
   const obj = arrayContent.slice(objStart, objEnd + 1);
-  const id = extractString(obj, "id");
-  const name = extractString(obj, "name");
-  const description = extractString(obj, "description");
-  const tags = extractStringArray(obj, "tags");
-  const files = extractStringArray(obj, "files");
-  const tier = extractString(obj, "tier");
-  const peerDependencies = extractStringArray(obj, "peerDependencies");
+  
+  // Skip commented entries
+  if (!isCommented) {
+    const id = extractString(obj, "id");
+    const name = extractString(obj, "name");
+    const description = extractString(obj, "description");
+    const tags = extractStringArray(obj, "tags");
+    const files = extractStringArray(obj, "files");
+    const tier = extractString(obj, "tier");
+    const peerDependencies = extractStringArray(obj, "peerDependencies");
 
-  if (id && name && files.length > 0) {
-    entries.push({
-      id,
-      name,
-      description: description ?? "",
-      tags,
-      files,
-      ...(tier ? { tier } : {}),
-      ...(peerDependencies.length > 0 ? { peerDependencies } : {}),
-    });
+    if (id && name && files.length > 0) {
+      entries.push({
+        id,
+        name,
+        description: description ?? "",
+        tags,
+        files,
+        ...(tier ? { tier } : {}),
+        ...(peerDependencies.length > 0 ? { peerDependencies } : {}),
+      });
+    }
   }
 
   pos = objEnd + 1;

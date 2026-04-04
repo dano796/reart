@@ -2,24 +2,24 @@ import type { CSSProperties } from "react";
 import {
   FlowCurrents,
   WaveEther,
-  GravityStorm,
+  //GravityStorm,
   GeoPulse,
-  VortexBloom,
-  CrystallineDrift,
+  //VortexBloom,
+  //CrystallineDrift,
   AmbientMesh,
-  EmberCascade,
-  CliffordAttractor,
+  //EmberCascade,
+  //CliffordAttractor,
   HarmonicLattice,
   LissajousWeave,
   PhyllotaxisDream,
-  Spirograph,
-  DifferentialGrowth,
-  DoublePendulum,
+  //Spirograph,
+  //DifferentialGrowth,
+  //DoublePendulum,
   FractalNoiseTerrain,
   MoireLattice,
   NeuralWeave,
   OrbitalResonance,
-  ReactionDiffusion,
+  //ReactionDiffusion,
   RecursiveSubdivision,
   TideHarmonics,
   VoronoiMosaic,
@@ -29,34 +29,34 @@ import {
   PhotonBurst,
   flowCurrentsSchema,
   flowCurrentsDefaults,
-  gravityStormSchema,
-  gravityStormDefaults,
+  //gravityStormSchema,
+  //gravityStormDefaults,
   geoPulseSchema,
   geoPulseDefaults,
   waveEtherSchema,
   waveEtherDefaults,
-  vortexBloomSchema,
-  vortexBloomDefaults,
-  crystallineDriftSchema,
-  crystallineDriftDefaults,
+  //vortexBloomSchema,
+  //vortexBloomDefaults,
+  //crystallineDriftSchema,
+  //crystallineDriftDefaults,
   ambientMeshSchema,
   ambientMeshDefaults,
-  emberCascadeSchema,
-  emberCascadeDefaults,
-  cliffordAttractorSchema,
-  cliffordAttractorDefaults,
+  //emberCascadeSchema,
+  //emberCascadeDefaults,
+  //cliffordAttractorSchema,
+  //cliffordAttractorDefaults,
   harmonicLatticeSchema,
   harmonicLatticeDefaults,
   lissajousWeaveSchema,
   lissajousWeaveDefaults,
   phyllotaxisDreamSchema,
   phyllotaxisDreamDefaults,
-  spirographSchema,
-  spirographDefaults,
-  differentialGrowthSchema,
-  differentialGrowthDefaults,
-  doublePendulumSchema,
-  doublePendulumDefaults,
+  //spirographSchema,
+  //spirographDefaults,
+  //differentialGrowthSchema,
+  //differentialGrowthDefaults,
+  //doublePendulumSchema,
+  //doublePendulumDefaults,
   fractalNoiseTerrainSchema,
   fractalNoiseTerrainDefaults,
   moireLatticeSchema,
@@ -65,8 +65,8 @@ import {
   neuralWeaveDefaults,
   orbitalResonanceSchema,
   orbitalResonanceDefaults,
-  reactionDiffusionSchema,
-  reactionDiffusionDefaults,
+  //reactionDiffusionSchema,
+  //reactionDiffusionDefaults,
   recursiveSubdivisionSchema,
   recursiveSubdivisionDefaults,
   tideHarmonicsSchema,
@@ -141,7 +141,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorMid: "#7b2fff",
     },
   },
-  {
+  /*{
     id: "gravity-storm",
     name: "Gravity Storm",
     tag: "N-Body · Attractors",
@@ -157,7 +157,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorCore: "#ff6b35",
       colorTrail: "#7b5ea7",
     },
-  },
+  },*/
   {
     id: "geo-pulse",
     name: "Geo Pulse",
@@ -177,7 +177,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorAccent: "#e8d87a",
     },
   },
-  {
+  /*{
     id: "vortex-bloom",
     name: "Vortex Bloom",
     tag: "Vortex · Orbital",
@@ -196,8 +196,8 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorB: "#6a9bcc",
       colorC: "#e8c46a",
     },
-  },
-  {
+  },*/
+  /*{
     id: "crystalline-drift",
     name: "Crystalline Drift",
     tag: "Fractal · Symmetry",
@@ -214,7 +214,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       crystalColor: "#6ab8e8",
       glowColor: "#c4e8ff",
     },
-  },
+  },*/
   {
     id: "ambient-mesh",
     name: "Ambient Mesh",
@@ -235,7 +235,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       edgeColor: "#50b8e8",
     },
   },
-  {
+  /*{
     id: "ember-cascade",
     name: "Ember Cascade",
     tag: "Particles · Fire",
@@ -252,8 +252,8 @@ export const DOC_REGISTRY: DocEntry[] = [
       midColor: "#ff5533",
       coolColor: "#aa2233",
     },
-  },
-  {
+  },*/
+  /*{
     id: "clifford-attractor",
     name: "Clifford Attractor",
     tag: "Chaos · Fractal",
@@ -270,7 +270,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorA: "#1a1a2e",
       colorB: "#00d4ff",
     },
-  },
+  },*/
   {
     id: "harmonic-lattice",
     name: "Harmonic Lattice",
@@ -324,7 +324,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorC: "#fdc830",
     },
   },
-  {
+  /*{
     id: "spirograph",
     name: "Spirograph",
     tag: "Geometric · Curves",
@@ -342,8 +342,8 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorB: "#f7931e",
       colorC: "#fdc830",
     },
-  },
-  {
+  },*/
+  /*{
     id: "differential-growth",
     name: "Differential Growth",
     tag: "Organic · Simulation",
@@ -359,8 +359,8 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorA: "#50b8e8",
       colorB: "#e850b8",
     },
-  },
-  {
+  },*/
+  /*{
     id: "double-pendulum",
     name: "Double Pendulum",
     tag: "Chaos · Physics",
@@ -381,7 +381,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorB: "#4ecdc4",
       colorC: "#ffe66d",
     },
-  },
+  },¨*/
   {
     id: "fractal-noise-terrain",
     name: "Fractal Noise Terrain",
@@ -456,7 +456,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorD: "#50b8e8",
     },
   },
-  {
+  /*{
     id: "reaction-diffusion",
     name: "Reaction Diffusion",
     tag: "Simulation · Organic",
@@ -473,7 +473,7 @@ export const DOC_REGISTRY: DocEntry[] = [
       colorA: "#1a1a2e",
       colorB: "#00d4ff",
     },
-  },
+  },*/
   {
     id: "recursive-subdivision",
     name: "Recursive Subdivision",

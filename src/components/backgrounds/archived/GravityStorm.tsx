@@ -1,38 +1,51 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initDifferentialGrowth,
-  drawDifferentialGrowth,
-  resetDifferentialGrowth,
-  type DifferentialGrowthState,
-  type DifferentialGrowthParams,
-} from "../engines/differentialGrowth";
+  initGravityStorm,
+  drawGravityStorm,
+  resetGravityStorm,
+  type GravityStormState,
+} from "../../engines/archived/gravityStorm";
 
-export const differentialGrowthDefaults: DifferentialGrowthParams = {
-  seed: 4242,
-  growthRate: 0.8,
-  repelRadius: 12,
-  repelStrength: 0.4,
-  maxEdge: 8,
-  maxNodes: 2800,
-  stepsPerFrame: 3,
-  fadeRate: 18,
-  lineWeight: 1.8,
-  bgColor: "#0a0e14",
-  colorA: "#50b8e8",
-  colorB: "#e850b8",
+export interface GravityStormParams {
+  seed?: number;
+  count?: number;
+  attractors?: number;
+  gravity?: number;
+  turbulence?: number;
+  orbitSpeed?: number;
+  colorCore?: string;
+  colorTrail?: string;
+}
+
+export const gravityStormDefaults: Required<GravityStormParams> = {
+  seed: 42731, count: 1200, attractors: 3, gravity: 1.0,
+  turbulence: 0.5, orbitSpeed: 0.008,
+  colorCore: "#ff6b35", colorTrail: "#7b5ea7",
 };
 
-export interface DifferentialGrowthProps extends Partial<DifferentialGrowthParams> {
+export interface GravityStormProps extends GravityStormParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function DifferentialGrowth(props: DifferentialGrowthProps) {
+/**
+ * GravityStorm — n-body attractor particle system background.
+ *
+ * @example
+ * <GravityStorm
+ *   attractors={4}
+ *   gravity={1.2}
+ *   colorCore="#ff6b35"
+ *   colorTrail="#7b5ea7"
+ *   style={{ position: "absolute", inset: 0 }}
+ * />
+ */
+export function GravityStorm(props: GravityStormProps) {
   const { className, style, ...params } = props;
-  const merged = { ...differentialGrowthDefaults, ...params };
+  const merged = { ...gravityStormDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<DifferentialGrowthState | null>(null);
+  const stateRef = useRef<GravityStormState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -52,17 +65,19 @@ export function DifferentialGrowth(props: DifferentialGrowthProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initDifferentialGrowth(w, h, paramsRef.current);
+        ctx!.fillStyle = "rgb(8,6,18)";
+        ctx!.fillRect(0, 0, w, h);
+        stateRef.current = initGravityStorm(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initDifferentialGrowth(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initGravityStorm(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running || !isVisible) return;
       if (stateRef.current) {
-        drawDifferentialGrowth(ctx, stateRef.current, paramsRef.current);
+        drawGravityStorm(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -91,9 +106,11 @@ export function DifferentialGrowth(props: DifferentialGrowthProps) {
   }, []);
 
   useEffect(() => {
-    if (!stateRef.current) return;
-    resetDifferentialGrowth(stateRef.current, merged);
-  }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx || !stateRef.current) return;
+    stateRef.current = resetGravityStorm(ctx, stateRef.current, merged);
+  }, [merged.seed, merged.count, merged.attractors]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

@@ -1,53 +1,53 @@
 /**
- * Clifford Attractor
- * Strange attractor density visualization
+ * Spirograph
+ * Hypotrochoid curves from rolling circles
  */
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initCliffordAttractor,
-  drawCliffordAttractor,
-  resetCliffordAttractor,
-  type CliffordAttractorState,
-} from "../engines/cliffordAttractor";
+  initSpirograph,
+  drawSpirograph,
+  resetSpirograph,
+  type SpirographState,
+} from "../../engines/archived/spirograph";
 
-export interface CliffordAttractorParams {
+export interface SpirographParams {
   seed?: number;
-  pA?: number;
-  pB?: number;
-  pC?: number;
-  pD?: number;
-  pointsPerFrame?: number;
-  brightness?: number;
+  R?: number;
+  r?: number;
+  d?: number;
+  speed?: number;
+  lineWeight?: number;
   bgColor?: string;
   colorA?: string;
   colorB?: string;
+  colorC?: string;
 }
 
-export const cliffordAttractorDefaults: Required<CliffordAttractorParams> = {
+export const spirographDefaults: Required<SpirographParams> = {
   seed: 42731,
-  pA: -1.4,
-  pB: 1.6,
-  pC: 1.0,
-  pD: 0.7,
-  pointsPerFrame: 8000,
-  brightness: 1.0,
+  R: 120,
+  r: 45,
+  d: 70,
+  speed: 1.0,
+  lineWeight: 1.2,
   bgColor: "#0a0a0a",
-  colorA: "#1a1a2e",
-  colorB: "#00d4ff",
+  colorA: "#ff6b35",
+  colorB: "#f7931e",
+  colorC: "#fdc830",
 };
 
-export interface CliffordAttractorProps extends CliffordAttractorParams {
+export interface SpirographProps extends SpirographParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function CliffordAttractor(props: CliffordAttractorProps) {
+export function Spirograph(props: SpirographProps) {
   const { className, style, ...params } = props;
-  const merged = { ...cliffordAttractorDefaults, ...params };
+  const merged = { ...spirographDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<CliffordAttractorState | null>(null);
+  const stateRef = useRef<SpirographState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -68,17 +68,17 @@ export function CliffordAttractor(props: CliffordAttractorProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initCliffordAttractor(w, h, paramsRef.current);
+        stateRef.current = initSpirograph(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initCliffordAttractor(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initSpirograph(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running || !isVisible) return;
       if (stateRef.current) {
-        drawCliffordAttractor(ctx, stateRef.current, paramsRef.current);
+        drawSpirograph(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -110,8 +110,8 @@ export function CliffordAttractor(props: CliffordAttractorProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    resetCliffordAttractor(stateRef.current, paramsRef.current);
-  }, [merged.seed, merged.pA, merged.pB, merged.pC, merged.pD]); // eslint-disable-line react-hooks/exhaustive-deps
+    resetSpirograph(stateRef.current, paramsRef.current);
+  }, [merged.seed, merged.R, merged.r, merged.d]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

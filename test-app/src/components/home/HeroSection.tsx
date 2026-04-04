@@ -52,7 +52,7 @@ export function HeroSection() {
 
         {/* Subheadline */}
         <p className="hero-sub text-muted font-sans font-light leading-[1.65] mx-auto mb-10 max-w-full md:max-w-135 text-[clamp(15px,2vw,19px)]">
-          24 animated canvas backgrounds you own forever. Install with one
+          21 animated canvas backgrounds you own forever. Install with one
           command, customize every parameter, ship without adding a single npm
           dependency.
         </p>

@@ -3,7 +3,7 @@
  * Chaotic dynamics visualization using RK4 integration
  */
 
-import { SeededRandom, hexToRgb, rgba } from "../utils/noise";
+import { SeededRandom, hexToRgb, rgba } from "../../utils/noise";
 
 export interface DoublePendulumParams {
   seed: number;

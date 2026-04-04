@@ -1,51 +1,65 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initGravityStorm,
-  drawGravityStorm,
-  resetGravityStorm,
-  type GravityStormState,
-} from "../engines/gravityStorm";
+  initVortexBloom,
+  drawVortexBloom,
+  resetVortexBloom,
+  type VortexBloomState,
+} from "../../engines/archived//vortexBloom";
 
-export interface GravityStormParams {
+export interface VortexBloomParams {
   seed?: number;
-  count?: number;
-  attractors?: number;
-  gravity?: number;
-  turbulence?: number;
-  orbitSpeed?: number;
-  colorCore?: string;
-  colorTrail?: string;
+  vortexCount?: number;
+  particleCount?: number;
+  orbitStrength?: number;
+  spiralTightness?: number;
+  fadeRate?: number;
+  trailWeight?: number;
+  bgColor?: string;
+  colorA?: string;
+  colorB?: string;
+  colorC?: string;
 }
 
-export const gravityStormDefaults: Required<GravityStormParams> = {
-  seed: 42731, count: 1200, attractors: 3, gravity: 1.0,
-  turbulence: 0.5, orbitSpeed: 0.008,
-  colorCore: "#ff6b35", colorTrail: "#7b5ea7",
+export const vortexBloomDefaults: Required<VortexBloomParams> = {
+  seed: 12345,
+  vortexCount: 4,
+  particleCount: 3000,
+  orbitStrength: 1.2,
+  spiralTightness: 0.9,
+  fadeRate: 4,
+  trailWeight: 0.7,
+  bgColor: "#080810",
+  colorA: "#d97757",
+  colorB: "#6a9bcc",
+  colorC: "#e8c46a",
 };
 
-export interface GravityStormProps extends GravityStormParams {
+export interface VortexBloomProps extends VortexBloomParams {
   className?: string;
   style?: CSSProperties;
 }
 
 /**
- * GravityStorm — n-body attractor particle system background.
+ * VortexBloom — Orbital crystallization background.
+ *
+ * Particles spiral under competing vortex attractors, accumulating into
+ * mandala-like formations.
  *
  * @example
- * <GravityStorm
- *   attractors={4}
- *   gravity={1.2}
- *   colorCore="#ff6b35"
- *   colorTrail="#7b5ea7"
+ * <VortexBloom
+ *   vortexCount={4}
+ *   particleCount={3000}
+ *   orbitStrength={1.2}
+ *   spiralTightness={0.9}
  *   style={{ position: "absolute", inset: 0 }}
  * />
  */
-export function GravityStorm(props: GravityStormProps) {
+export function VortexBloom(props: VortexBloomProps) {
   const { className, style, ...params } = props;
-  const merged = { ...gravityStormDefaults, ...params };
+  const merged = { ...vortexBloomDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<GravityStormState | null>(null);
+  const stateRef = useRef<VortexBloomState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -65,19 +79,20 @@ export function GravityStorm(props: GravityStormProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        ctx!.fillStyle = "rgb(8,6,18)";
+        const bg = paramsRef.current.bgColor;
+        ctx!.fillStyle = bg;
         ctx!.fillRect(0, 0, w, h);
-        stateRef.current = initGravityStorm(w, h, paramsRef.current);
+        stateRef.current = initVortexBloom(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initGravityStorm(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initVortexBloom(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running || !isVisible) return;
       if (stateRef.current) {
-        drawGravityStorm(ctx, stateRef.current, paramsRef.current);
+        drawVortexBloom(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -109,8 +124,8 @@ export function GravityStorm(props: GravityStormProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    stateRef.current = resetGravityStorm(ctx, stateRef.current, merged);
-  }, [merged.seed, merged.count, merged.attractors]); // eslint-disable-line react-hooks/exhaustive-deps
+    stateRef.current = resetVortexBloom(ctx, stateRef.current, merged);
+  }, [merged.seed, merged.vortexCount, merged.particleCount]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

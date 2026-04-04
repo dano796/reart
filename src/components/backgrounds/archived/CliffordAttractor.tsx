@@ -1,44 +1,61 @@
+/**
+ * Clifford Attractor
+ * Strange attractor density visualization
+ */
+
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initDoublePendulum,
-  drawDoublePendulum,
-  resetDoublePendulum,
-  type DoublePendulumState,
-  type DoublePendulumParams,
-} from "../engines/doublePendulum";
+  initCliffordAttractor,
+  drawCliffordAttractor,
+  resetCliffordAttractor,
+  type CliffordAttractorState,
+} from "../../engines/archived/cliffordAttractor";
 
-export const doublePendulumDefaults: DoublePendulumParams = {
-  seed: 7777,
-  numPendulums: 9,
-  length1: 180,
-  length2: 180,
-  gravity: 1.2,
-  simSpeed: 1.5,
-  fadeRate: 8,
-  bgColor: "#0a0e14",
-  colorA: "#e8b850",
-  colorB: "#50e8b8",
-  colorC: "#b850e8",
+export interface CliffordAttractorParams {
+  seed?: number;
+  pA?: number;
+  pB?: number;
+  pC?: number;
+  pD?: number;
+  pointsPerFrame?: number;
+  brightness?: number;
+  bgColor?: string;
+  colorA?: string;
+  colorB?: string;
+}
+
+export const cliffordAttractorDefaults: Required<CliffordAttractorParams> = {
+  seed: 42731,
+  pA: -1.4,
+  pB: 1.6,
+  pC: 1.0,
+  pD: 0.7,
+  pointsPerFrame: 8000,
+  brightness: 1.0,
+  bgColor: "#0a0a0a",
+  colorA: "#1a1a2e",
+  colorB: "#00d4ff",
 };
 
-export interface DoublePendulumProps extends Partial<DoublePendulumParams> {
+export interface CliffordAttractorProps extends CliffordAttractorParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function DoublePendulum(props: DoublePendulumProps) {
+export function CliffordAttractor(props: CliffordAttractorProps) {
   const { className, style, ...params } = props;
-  const merged = { ...doublePendulumDefaults, ...params };
+  const merged = { ...cliffordAttractorDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<DoublePendulumState | null>(null);
+  const stateRef = useRef<CliffordAttractorState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+
+    const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
     let animId: number;
@@ -51,17 +68,17 @@ export function DoublePendulum(props: DoublePendulumProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initDoublePendulum(w, h, paramsRef.current);
+        stateRef.current = initCliffordAttractor(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initDoublePendulum(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initCliffordAttractor(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running || !isVisible) return;
       if (stateRef.current) {
-        drawDoublePendulum(ctx, stateRef.current, paramsRef.current);
+        drawCliffordAttractor(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -90,9 +107,11 @@ export function DoublePendulum(props: DoublePendulumProps) {
   }, []);
 
   useEffect(() => {
-    if (!stateRef.current) return;
-    resetDoublePendulum(stateRef.current, merged);
-  }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx || !stateRef.current) return;
+    resetCliffordAttractor(stateRef.current, paramsRef.current);
+  }, [merged.seed, merged.pA, merged.pB, merged.pC, merged.pD]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

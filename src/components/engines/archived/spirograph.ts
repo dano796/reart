@@ -3,7 +3,7 @@
  * Hypotrochoid curves from rolling circles
  */
 
-import { SeededRandom, hexToRgb, lerp, rgba } from "../utils/noise";
+import { SeededRandom, hexToRgb, lerp, rgba } from "../../utils/noise";
 
 export interface SpirographParams {
   seed: number;

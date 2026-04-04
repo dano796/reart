@@ -3,7 +3,7 @@
  * Simulates organic growth through spring forces, repulsion, and noise-guided expansion
  */
 
-import { PerlinNoise, SeededRandom, hexToRgb, lerp, rgba } from "../utils/noise";
+import { PerlinNoise, SeededRandom, hexToRgb, lerp, rgba } from "../../utils/noise";
 
 export interface DifferentialGrowthParams {
   seed: number;

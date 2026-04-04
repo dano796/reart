@@ -6,9 +6,9 @@
  * Colors indicate velocity: slow particles → trail color, fast → core color.
  */
 
-import { PerlinNoise, SeededRandom, hexToRgb, lerp, clamp, rgba } from "../utils/noise";
-import type { GravityStormParams } from "../schemas";
-import { gravityStormDefaults } from "../schemas";
+import { PerlinNoise, SeededRandom, hexToRgb, lerp, clamp, rgba } from "../../utils/noise";
+import type { GravityStormParams } from "../../schemas";
+import { gravityStormDefaults } from "../../schemas";
 
 interface Particle {
   x: number;

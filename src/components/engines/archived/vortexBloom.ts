@@ -5,9 +5,9 @@
  * mandala-like formations through orbital crystallization.
  */
 
-import { PerlinNoise, SeededRandom, hexToRgb, rgba } from "../utils/noise";
-import type { VortexBloomParams } from "../schemas";
-import { vortexBloomDefaults } from "../schemas";
+import { PerlinNoise, SeededRandom, hexToRgb, rgba } from "../../utils/noise";
+import type { VortexBloomParams } from "../../schemas";
+import { vortexBloomDefaults } from "../../schemas";
 
 interface Vortex {
   x: number;

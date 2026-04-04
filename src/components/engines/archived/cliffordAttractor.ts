@@ -3,7 +3,7 @@
  * Strange attractor density accumulator with power-law color mapping
  */
 
-import { SeededRandom, hexToRgb, lerp } from "../utils/noise";
+import { SeededRandom, hexToRgb, lerp } from "../../utils/noise";
 
 export interface CliffordAttractorParams {
   seed: number;

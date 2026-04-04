@@ -1,61 +1,45 @@
-/**
- * Ember Cascade
- * Thermal particle system with turbulent ascent
- */
-
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initEmberCascade,
-  drawEmberCascade,
-  resetEmberCascade,
-  type EmberCascadeState,
-} from "../engines/emberCascade";
+  initDifferentialGrowth,
+  drawDifferentialGrowth,
+  resetDifferentialGrowth,
+  type DifferentialGrowthState,
+  type DifferentialGrowthParams,
+} from "../../engines/archived/differentialGrowth";
 
-export interface EmberCascadeParams {
-  seed?: number;
-  particleCount?: number;
-  sourceCount?: number;
-  riseSpeed?: number;
-  turbulence?: number;
-  glowSize?: number;
-  bgColor?: string;
-  hotColor?: string;
-  midColor?: string;
-  coolColor?: string;
-}
-
-export const emberCascadeDefaults: Required<EmberCascadeParams> = {
-  seed: 42731,
-  particleCount: 800,
-  sourceCount: 3,
-  riseSpeed: 1.2,
-  turbulence: 1.0,
-  glowSize: 1.0,
-  bgColor: "#0a0a0a",
-  hotColor: "#ffaa33",
-  midColor: "#ff5533",
-  coolColor: "#aa2233",
+export const differentialGrowthDefaults: DifferentialGrowthParams = {
+  seed: 4242,
+  growthRate: 0.8,
+  repelRadius: 12,
+  repelStrength: 0.4,
+  maxEdge: 8,
+  maxNodes: 2800,
+  stepsPerFrame: 3,
+  fadeRate: 18,
+  lineWeight: 1.8,
+  bgColor: "#0a0e14",
+  colorA: "#50b8e8",
+  colorB: "#e850b8",
 };
 
-export interface EmberCascadeProps extends EmberCascadeParams {
+export interface DifferentialGrowthProps extends Partial<DifferentialGrowthParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function EmberCascade(props: EmberCascadeProps) {
+export function DifferentialGrowth(props: DifferentialGrowthProps) {
   const { className, style, ...params } = props;
-  const merged = { ...emberCascadeDefaults, ...params };
+  const merged = { ...differentialGrowthDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<EmberCascadeState | null>(null);
+  const stateRef = useRef<DifferentialGrowthState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
-    const ctx = canvas.getContext("2d", { alpha: false });
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let animId: number;
@@ -68,19 +52,17 @@ export function EmberCascade(props: EmberCascadeProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        ctx!.fillStyle = paramsRef.current.bgColor;
-        ctx!.fillRect(0, 0, w, h);
-        stateRef.current = initEmberCascade(w, h, paramsRef.current);
+        stateRef.current = initDifferentialGrowth(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initEmberCascade(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initDifferentialGrowth(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running || !isVisible) return;
       if (stateRef.current) {
-        drawEmberCascade(ctx, stateRef.current, paramsRef.current);
+        drawDifferentialGrowth(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -109,11 +91,9 @@ export function EmberCascade(props: EmberCascadeProps) {
   }, []);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx || !stateRef.current) return;
-    resetEmberCascade(stateRef.current, paramsRef.current);
-  }, [merged.seed, merged.particleCount, merged.sourceCount]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (!stateRef.current) return;
+    resetDifferentialGrowth(stateRef.current, merged);
+  }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

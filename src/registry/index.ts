@@ -9,34 +9,34 @@
 import {
   flowCurrentsSchema,
   flowCurrentsDefaults,
-  gravityStormSchema,
-  gravityStormDefaults,
+  // gravityStormSchema, // ARCHIVED
+  // gravityStormDefaults, // ARCHIVED
   geoPulseSchema,
   geoPulseDefaults,
   waveEtherSchema,
   waveEtherDefaults,
-  vortexBloomSchema,
-  vortexBloomDefaults,
-  crystallineDriftSchema,
-  crystallineDriftDefaults,
+  // vortexBloomSchema, // ARCHIVED
+  // vortexBloomDefaults, // ARCHIVED
+  // crystallineDriftSchema, // ARCHIVED
+  // crystallineDriftDefaults, // ARCHIVED
   ambientMeshSchema,
   ambientMeshDefaults,
-  emberCascadeSchema,
-  emberCascadeDefaults,
-  cliffordAttractorSchema,
-  cliffordAttractorDefaults,
+  // emberCascadeSchema, // ARCHIVED
+  // emberCascadeDefaults, // ARCHIVED
+  // cliffordAttractorSchema, // ARCHIVED
+  // cliffordAttractorDefaults, // ARCHIVED
   harmonicLatticeSchema,
   harmonicLatticeDefaults,
   lissajousWeaveSchema,
   lissajousWeaveDefaults,
   phyllotaxisDreamSchema,
   phyllotaxisDreamDefaults,
-  spirographSchema,
-  spirographDefaults,
-  differentialGrowthSchema,
-  differentialGrowthDefaults,
-  doublePendulumSchema,
-  doublePendulumDefaults,
+  // spirographSchema, // ARCHIVED
+  // spirographDefaults, // ARCHIVED
+  // differentialGrowthSchema, // ARCHIVED
+  // differentialGrowthDefaults, // ARCHIVED
+  // doublePendulumSchema, // ARCHIVED
+  // doublePendulumDefaults, // ARCHIVED
   fractalNoiseTerrainSchema,
   fractalNoiseTerrainDefaults,
   moireLatticeSchema,
@@ -45,8 +45,8 @@ import {
   neuralWeaveDefaults,
   orbitalResonanceSchema,
   orbitalResonanceDefaults,
-  reactionDiffusionSchema,
-  reactionDiffusionDefaults,
+  // reactionDiffusionSchema, // ARCHIVED
+  // reactionDiffusionDefaults, // ARCHIVED
   recursiveSubdivisionSchema,
   recursiveSubdivisionDefaults,
   tideHarmonicsSchema,
@@ -114,23 +114,24 @@ export const registry: RegistryEntry[] = [
       "Thousands of particles trace Perlin noise vector fields forming organic density maps.",
     tags: ["particles", "noise", "flow", "organic"],
   },
-  {
-    id: "gravity-storm",
-    name: "Gravity Storm",
-    componentPath: "../components/backgrounds/GravityStorm",
-    exportName: "GravityStorm",
-    schema: gravityStormSchema,
-    defaults: gravityStormDefaults,
-    files: [
-      "src/components/backgrounds/GravityStorm.tsx",
-      "src/components/engines/gravityStorm.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
-    tags: ["particles", "physics", "gravity", "orbits"],
-  },
+  // ARCHIVED: gravity-storm
+  // {
+  //   id: "gravity-storm",
+  //   name: "Gravity Storm",
+  //   componentPath: "../components/backgrounds/GravityStorm",
+  //   exportName: "GravityStorm",
+  //   schema: gravityStormSchema,
+  //   defaults: gravityStormDefaults,
+  //   files: [
+  //     "src/components/backgrounds/GravityStorm.tsx",
+  //     "src/components/engines/gravityStorm.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
+  //   tags: ["particles", "physics", "gravity", "orbits"],
+  // },
   {
     id: "geo-pulse",
     name: "Geo Pulse",
@@ -165,40 +166,42 @@ export const registry: RegistryEntry[] = [
       "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
     tags: ["waves", "interference", "sine", "pixel"],
   },
-  {
-    id: "vortex-bloom",
-    name: "Vortex Bloom",
-    componentPath: "../components/backgrounds/VortexBloom",
-    exportName: "VortexBloom",
-    schema: vortexBloomSchema,
-    defaults: vortexBloomDefaults,
-    files: [
-      "src/components/backgrounds/VortexBloom.tsx",
-      "src/components/engines/vortexBloom.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
-    tags: ["particles", "vortex", "orbital", "mandala"],
-  },
-  {
-    id: "crystalline-drift",
-    name: "Crystalline Drift",
-    componentPath: "../components/backgrounds/CrystallineDrift",
-    exportName: "CrystallineDrift",
-    schema: crystallineDriftSchema,
-    defaults: crystallineDriftDefaults,
-    files: [
-      "src/components/backgrounds/CrystallineDrift.tsx",
-      "src/components/engines/crystallineDrift.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
-    tags: ["fractal", "crystal", "symmetry", "dendrite"],
-  },
+  // ARCHIVED: vortex-bloom
+  // {
+  //   id: "vortex-bloom",
+  //   name: "Vortex Bloom",
+  //   componentPath: "../components/backgrounds/VortexBloom",
+  //   exportName: "VortexBloom",
+  //   schema: vortexBloomSchema,
+  //   defaults: vortexBloomDefaults,
+  //   files: [
+  //     "src/components/backgrounds/VortexBloom.tsx",
+  //     "src/components/engines/vortexBloom.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
+  //   tags: ["particles", "vortex", "orbital", "mandala"],
+  // },
+  // ARCHIVED: crystalline-drift
+  // {
+  //   id: "crystalline-drift",
+  //   name: "Crystalline Drift",
+  //   componentPath: "../components/backgrounds/CrystallineDrift",
+  //   exportName: "CrystallineDrift",
+  //   schema: crystallineDriftSchema,
+  //   defaults: crystallineDriftDefaults,
+  //   files: [
+  //     "src/components/backgrounds/CrystallineDrift.tsx",
+  //     "src/components/engines/crystallineDrift.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
+  //   tags: ["fractal", "crystal", "symmetry", "dendrite"],
+  // },
   {
     id: "ambient-mesh",
     name: "Ambient Mesh",
@@ -216,40 +219,42 @@ export const registry: RegistryEntry[] = [
       "Nodes drift through noise fields, forming dynamic connections — a living network background.",
     tags: ["network", "nodes", "mesh", "subtle"],
   },
-  {
-    id: "ember-cascade",
-    name: "Ember Cascade",
-    componentPath: "../components/backgrounds/EmberCascade",
-    exportName: "EmberCascade",
-    schema: emberCascadeSchema,
-    defaults: emberCascadeDefaults as unknown as Record<string, unknown>,
-    files: [
-      "src/components/backgrounds/EmberCascade.tsx",
-      "src/components/engines/emberCascade.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Thermal particles rise with turbulent motion, glowing through temperature-based color gradients.",
-    tags: ["particles", "fire", "thermal", "glow"],
-  },
-  {
-    id: "clifford-attractor",
-    name: "Clifford Attractor",
-    componentPath: "../components/backgrounds/CliffordAttractor",
-    exportName: "CliffordAttractor",
-    schema: cliffordAttractorSchema,
-    defaults: cliffordAttractorDefaults as unknown as Record<string, unknown>,
-    files: [
-      "src/components/backgrounds/CliffordAttractor.tsx",
-      "src/components/engines/cliffordAttractor.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Strange attractor density map revealing the fractal structure of chaotic orbital dynamics.",
-    tags: ["attractor", "chaos", "fractal", "mathematical"],
-  },
+  // ARCHIVED: ember-cascade
+  // {
+  //   id: "ember-cascade",
+  //   name: "Ember Cascade",
+  //   componentPath: "../components/backgrounds/EmberCascade",
+  //   exportName: "EmberCascade",
+  //   schema: emberCascadeSchema,
+  //   defaults: emberCascadeDefaults as unknown as Record<string, unknown>,
+  //   files: [
+  //     "src/components/backgrounds/EmberCascade.tsx",
+  //     "src/components/engines/emberCascade.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Thermal particles rise with turbulent motion, glowing through temperature-based color gradients.",
+  //   tags: ["particles", "fire", "thermal", "glow"],
+  // },
+  // ARCHIVED: clifford-attractor
+  // {
+  //   id: "clifford-attractor",
+  //   name: "Clifford Attractor",
+  //   componentPath: "../components/backgrounds/CliffordAttractor",
+  //   exportName: "CliffordAttractor",
+  //   schema: cliffordAttractorSchema,
+  //   defaults: cliffordAttractorDefaults as unknown as Record<string, unknown>,
+  //   files: [
+  //     "src/components/backgrounds/CliffordAttractor.tsx",
+  //     "src/components/engines/cliffordAttractor.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Strange attractor density map revealing the fractal structure of chaotic orbital dynamics.",
+  //   tags: ["attractor", "chaos", "fractal", "mathematical"],
+  // },
   {
     id: "harmonic-lattice",
     name: "Harmonic Lattice",
@@ -301,57 +306,60 @@ export const registry: RegistryEntry[] = [
       "Golden angle spiral growth pattern inspired by sunflower seed arrangements and natural phyllotaxis.",
     tags: ["spiral", "golden-ratio", "botanical", "mathematical"],
   },
-  {
-    id: "spirograph",
-    name: "Spirograph",
-    componentPath: "../components/backgrounds/Spirograph",
-    exportName: "Spirograph",
-    schema: spirographSchema,
-    defaults: spirographDefaults as unknown as Record<string, unknown>,
-    files: [
-      "src/components/backgrounds/Spirograph.tsx",
-      "src/components/engines/spirograph.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Hypotrochoid curves traced by rolling circles, creating intricate geometric rosettes and patterns.",
-    tags: ["geometric", "parametric", "curves", "mathematical"],
-  },
-  {
-    id: "differential-growth",
-    name: "Differential Growth",
-    componentPath: "../components/backgrounds/DifferentialGrowth",
-    exportName: "DifferentialGrowth",
-    schema: differentialGrowthSchema,
-    defaults: differentialGrowthDefaults as unknown as Record<string, unknown>,
-    files: [
-      "src/components/backgrounds/DifferentialGrowth.tsx",
-      "src/components/engines/differentialGrowth.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Organic growth simulation with spring forces, repulsion, and noise-guided expansion creating folded forms.",
-    tags: ["organic", "growth", "simulation", "biological"],
-  },
-  {
-    id: "double-pendulum",
-    name: "Double Pendulum",
-    componentPath: "../components/backgrounds/DoublePendulum",
-    exportName: "DoublePendulum",
-    schema: doublePendulumSchema,
-    defaults: doublePendulumDefaults as unknown as Record<string, unknown>,
-    files: [
-      "src/components/backgrounds/DoublePendulum.tsx",
-      "src/components/engines/doublePendulum.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Chaotic dynamics visualization using RK4 integration showing diverging trajectories from similar initial conditions.",
-    tags: ["chaos", "physics", "pendulum", "mathematical"],
-  },
+  // ARCHIVED: spirograph
+  // {
+  //   id: "spirograph",
+  //   name: "Spirograph",
+  //   componentPath: "../components/backgrounds/Spirograph",
+  //   exportName: "Spirograph",
+  //   schema: spirographSchema,
+  //   defaults: spirographDefaults as unknown as Record<string, unknown>,
+  //   files: [
+  //     "src/components/backgrounds/Spirograph.tsx",
+  //     "src/components/engines/spirograph.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Hypotrochoid curves traced by rolling circles, creating intricate geometric rosettes and patterns.",
+  //   tags: ["geometric", "parametric", "curves", "mathematical"],
+  // },
+  // ARCHIVED: differential-growth
+  // {
+  //   id: "differential-growth",
+  //   name: "Differential Growth",
+  //   componentPath: "../components/backgrounds/DifferentialGrowth",
+  //   exportName: "DifferentialGrowth",
+  //   schema: differentialGrowthSchema,
+  //   defaults: differentialGrowthDefaults as unknown as Record<string, unknown>,
+  //   files: [
+  //     "src/components/backgrounds/DifferentialGrowth.tsx",
+  //     "src/components/engines/differentialGrowth.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Organic growth simulation with spring forces, repulsion, and noise-guided expansion creating folded forms.",
+  //   tags: ["organic", "growth", "simulation", "biological"],
+  // },
+  // ARCHIVED: double-pendulum
+  // {
+  //   id: "double-pendulum",
+  //   name: "Double Pendulum",
+  //   componentPath: "../components/backgrounds/DoublePendulum",
+  //   exportName: "DoublePendulum",
+  //   schema: doublePendulumSchema,
+  //   defaults: doublePendulumDefaults as unknown as Record<string, unknown>,
+  //   files: [
+  //     "src/components/backgrounds/DoublePendulum.tsx",
+  //     "src/components/engines/doublePendulum.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Chaotic dynamics visualization using RK4 integration showing diverging trajectories from similar initial conditions.",
+  //   tags: ["chaos", "physics", "pendulum", "mathematical"],
+  // },
   {
     id: "fractal-noise-terrain",
     name: "Fractal Noise Terrain",
@@ -420,23 +428,24 @@ export const registry: RegistryEntry[] = [
       "Bodies orbit at resonant period ratios creating harmonic patterns and Lissajous-like trajectories.",
     tags: ["orbital", "resonance", "harmonic", "physics"],
   },
-  {
-    id: "reaction-diffusion",
-    name: "Reaction Diffusion",
-    componentPath: "../components/backgrounds/ReactionDiffusion",
-    exportName: "ReactionDiffusion",
-    schema: reactionDiffusionSchema,
-    defaults: reactionDiffusionDefaults as unknown as Record<string, unknown>,
-    files: [
-      "src/components/backgrounds/ReactionDiffusion.tsx",
-      "src/components/engines/reactionDiffusion.ts",
-      "src/components/utils/noise.ts",
-      "src/components/schemas/index.ts",
-    ],
-    description:
-      "Gray-Scott model creating organic pattern formation through chemical reaction simulation.",
-    tags: ["reaction-diffusion", "organic", "pattern", "simulation"],
-  },
+  // ARCHIVED: reaction-diffusion
+  // {
+  //   id: "reaction-diffusion",
+  //   name: "Reaction Diffusion",
+  //   componentPath: "../components/backgrounds/ReactionDiffusion",
+  //   exportName: "ReactionDiffusion",
+  //   schema: reactionDiffusionSchema,
+  //   defaults: reactionDiffusionDefaults as unknown as Record<string, unknown>,
+  //   files: [
+  //     "src/components/backgrounds/ReactionDiffusion.tsx",
+  //     "src/components/engines/reactionDiffusion.ts",
+  //     "src/components/utils/noise.ts",
+  //     "src/components/schemas/index.ts",
+  //   ],
+  //   description:
+  //     "Gray-Scott model creating organic pattern formation through chemical reaction simulation.",
+  //   tags: ["reaction-diffusion", "organic", "pattern", "simulation"],
+  // },
   {
     id: "recursive-subdivision",
     name: "Recursive Subdivision",
@@ -697,25 +706,25 @@ export const backgroundIds = registry.map((e) => e.id);
 
 // Re-export components for convenience
 export { FlowCurrents } from "../components/backgrounds/FlowCurrents";
-export { GravityStorm } from "../components/backgrounds/GravityStorm";
+// export { GravityStorm } from "../components/backgrounds/GravityStorm"; // ARCHIVED
 export { GeoPulse } from "../components/backgrounds/GeoPulse";
 export { WaveEther } from "../components/backgrounds/WaveEther";
-export { VortexBloom } from "../components/backgrounds/VortexBloom";
-export { CrystallineDrift } from "../components/backgrounds/CrystallineDrift";
+// export { VortexBloom } from "../components/backgrounds/VortexBloom"; // ARCHIVED
+// export { CrystallineDrift } from "../components/backgrounds/CrystallineDrift"; // ARCHIVED
 export { AmbientMesh } from "../components/backgrounds/AmbientMesh";
-export { EmberCascade } from "../components/backgrounds/EmberCascade";
-export { CliffordAttractor } from "../components/backgrounds/CliffordAttractor";
+// export { EmberCascade } from "../components/backgrounds/EmberCascade"; // ARCHIVED
+// export { CliffordAttractor } from "../components/backgrounds/CliffordAttractor"; // ARCHIVED
 export { HarmonicLattice } from "../components/backgrounds/HarmonicLattice";
 export { LissajousWeave } from "../components/backgrounds/LissajousWeave";
 export { PhyllotaxisDream } from "../components/backgrounds/PhyllotaxisDream";
-export { Spirograph } from "../components/backgrounds/Spirograph";
-export { DifferentialGrowth } from "../components/backgrounds/DifferentialGrowth";
-export { DoublePendulum } from "../components/backgrounds/DoublePendulum";
+// export { Spirograph } from "../components/backgrounds/Spirograph"; // ARCHIVED
+// export { DifferentialGrowth } from "../components/backgrounds/DifferentialGrowth"; // ARCHIVED
+// export { DoublePendulum } from "../components/backgrounds/archived/DoublePendulum"; // ARCHIVED
 export { FractalNoiseTerrain } from "../components/backgrounds/FractalNoiseTerrain";
 export { MoireLattice } from "../components/backgrounds/MoireLattice";
 export { NeuralWeave } from "../components/backgrounds/NeuralWeave";
 export { OrbitalResonance } from "../components/backgrounds/OrbitalResonance";
-export { ReactionDiffusion } from "../components/backgrounds/ReactionDiffusion";
+// export { ReactionDiffusion } from "../components/backgrounds/ReactionDiffusion"; // ARCHIVED
 export { RecursiveSubdivision } from "../components/backgrounds/RecursiveSubdivision";
 export { TideHarmonics } from "../components/backgrounds/TideHarmonics";
 export { VoronoiMosaic } from "../components/backgrounds/VoronoiMosaic";

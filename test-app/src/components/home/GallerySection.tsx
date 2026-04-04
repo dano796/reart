@@ -83,7 +83,7 @@ export function GallerySection() {
           Backgrounds
         </div>
         <h2 className="font-display font-extrabold text-ink leading-none tracking-[-0.04em] mb-4.5 text-[clamp(32px,5vw,52px)]">
-          24 distinct systems.
+          21 distinct systems.
           <br />
           <span className="text-muted font-semibold">
             Infinite configurations.

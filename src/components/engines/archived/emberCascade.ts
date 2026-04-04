@@ -3,7 +3,7 @@
  * Thermal particle system with turbulent ascent and temperature-based color gradient
  */
 
-import { PerlinNoise, SeededRandom, hexToRgb, lerp, rgba } from "../utils/noise";
+import { PerlinNoise, SeededRandom, hexToRgb, lerp, rgba } from "../../utils/noise";
 
 export interface EmberCascadeParams {
   seed: number;

@@ -2,25 +2,25 @@
 
 // Components
 export { FlowCurrents } from "./components/backgrounds/FlowCurrents";
-export { GravityStorm } from "./components/backgrounds/GravityStorm";
+// export { GravityStorm } from "./components/backgrounds/GravityStorm"; // ARCHIVED
 export { GeoPulse } from "./components/backgrounds/GeoPulse";
 export { WaveEther } from "./components/backgrounds/WaveEther";
-export { VortexBloom } from "./components/backgrounds/VortexBloom";
-export { CrystallineDrift } from "./components/backgrounds/CrystallineDrift";
+// export { VortexBloom } from "./components/backgrounds/VortexBloom"; // ARCHIVED
+// export { CrystallineDrift } from "./components/backgrounds/CrystallineDrift"; // ARCHIVED
 export { AmbientMesh } from "./components/backgrounds/AmbientMesh";
-export { EmberCascade } from "./components/backgrounds/EmberCascade";
-export { CliffordAttractor } from "./components/backgrounds/CliffordAttractor";
+// export { EmberCascade } from "./components/backgrounds/EmberCascade"; // ARCHIVED
+// export { CliffordAttractor } from "./components/backgrounds/CliffordAttractor"; // ARCHIVED
 export { HarmonicLattice } from "./components/backgrounds/HarmonicLattice";
 export { LissajousWeave } from "./components/backgrounds/LissajousWeave";
 export { PhyllotaxisDream } from "./components/backgrounds/PhyllotaxisDream";
-export { Spirograph } from "./components/backgrounds/Spirograph";
-export { DifferentialGrowth } from "./components/backgrounds/DifferentialGrowth";
-export { DoublePendulum } from "./components/backgrounds/DoublePendulum";
+// export { Spirograph } from "./components/backgrounds/Spirograph"; // ARCHIVED
+// export { DifferentialGrowth } from "./components/backgrounds/DifferentialGrowth"; // ARCHIVED
+// export { DoublePendulum } from "./components/backgrounds/archived/DoublePendulum"; // ARCHIVED
 export { FractalNoiseTerrain } from "./components/backgrounds/FractalNoiseTerrain";
 export { MoireLattice } from "./components/backgrounds/MoireLattice";
 export { NeuralWeave } from "./components/backgrounds/NeuralWeave";
 export { OrbitalResonance } from "./components/backgrounds/OrbitalResonance";
-export { ReactionDiffusion } from "./components/backgrounds/ReactionDiffusion";
+// export { ReactionDiffusion } from "./components/backgrounds/ReactionDiffusion"; // ARCHIVED
 export { RecursiveSubdivision } from "./components/backgrounds/RecursiveSubdivision";
 export { TideHarmonics } from "./components/backgrounds/TideHarmonics";
 export { VoronoiMosaic } from "./components/backgrounds/VoronoiMosaic";
@@ -39,12 +39,12 @@ export {
   resetFlowCurrents,
   type FlowCurrentsState,
 } from "./components/engines/flowCurrents";
-export {
-  initGravityStorm,
-  drawGravityStorm,
-  resetGravityStorm,
-  type GravityStormState,
-} from "./components/engines/gravityStorm";
+// export {
+//   initGravityStorm,
+//   drawGravityStorm,
+//   resetGravityStorm,
+//   type GravityStormState,
+// } from "./components/engines/archived/gravityStorm"; // ARCHIVED
 export {
   initGeoPulse,
   drawGeoPulse,
@@ -57,36 +57,36 @@ export {
   resetWaveEther,
   type WaveEtherState,
 } from "./components/engines/waveEther";
-export {
-  initVortexBloom,
-  drawVortexBloom,
-  resetVortexBloom,
-  type VortexBloomState,
-} from "./components/engines/vortexBloom";
-export {
-  initCrystallineDrift,
-  drawCrystallineDrift,
-  resetCrystallineDrift,
-  type CrystallineDriftState,
-} from "./components/engines/crystallineDrift";
+// export {
+//   initVortexBloom,
+//   drawVortexBloom,
+//   resetVortexBloom,
+//   type VortexBloomState,
+// } from "./components/engines/archived/vortexBloom"; // ARCHIVED
+// export {
+//   initCrystallineDrift,
+//   drawCrystallineDrift,
+//   resetCrystallineDrift,
+//   type CrystallineDriftState,
+// } from "./components/engines/archived/crystallineDrift"; // ARCHIVED
 export {
   initAmbientMesh,
   drawAmbientMesh,
   resetAmbientMesh,
   type AmbientMeshState,
 } from "./components/engines/ambientMesh";
-export {
-  initEmberCascade,
-  drawEmberCascade,
-  resetEmberCascade,
-  type EmberCascadeState,
-} from "./components/engines/emberCascade";
-export {
-  initCliffordAttractor,
-  drawCliffordAttractor,
-  resetCliffordAttractor,
-  type CliffordAttractorState,
-} from "./components/engines/cliffordAttractor";
+// export {
+//   initEmberCascade,
+//   drawEmberCascade,
+//   resetEmberCascade,
+//   type EmberCascadeState,
+// } from "./components/engines/archived/emberCascade"; // ARCHIVED
+// export {
+//   initCliffordAttractor,
+//   drawCliffordAttractor,
+//   resetCliffordAttractor,
+//   type CliffordAttractorState,
+// } from "./components/engines/archived/cliffordAttractor"; // ARCHIVED
 export {
   initHarmonicLattice,
   drawHarmonicLattice,
@@ -105,24 +105,24 @@ export {
   resetPhyllotaxisDream,
   type PhyllotaxisDreamState,
 } from "./components/engines/phyllotaxisDream";
-export {
-  initSpirograph,
-  drawSpirograph,
-  resetSpirograph,
-  type SpirographState,
-} from "./components/engines/spirograph";
-export {
-  initDifferentialGrowth,
-  drawDifferentialGrowth,
-  resetDifferentialGrowth,
-  type DifferentialGrowthState,
-} from "./components/engines/differentialGrowth";
-export {
-  initDoublePendulum,
-  drawDoublePendulum,
-  resetDoublePendulum,
-  type DoublePendulumState,
-} from "./components/engines/doublePendulum";
+// export {
+//   initSpirograph,
+//   drawSpirograph,
+//   resetSpirograph,
+//   type SpirographState,
+// } from "./components/engines/archived/spirograph"; // ARCHIVED
+// export {
+//   initDifferentialGrowth,
+//   drawDifferentialGrowth,
+//   resetDifferentialGrowth,
+//   type DifferentialGrowthState,
+// } from "./components/engines/archived/differentialGrowth"; // ARCHIVED
+// export {
+//   initDoublePendulum,
+//   drawDoublePendulum,
+//   resetDoublePendulum,
+//   type DoublePendulumState,
+// } from "./components/engines/archived/doublePendulum"; // ARCHIVED
 export {
   initFractalNoiseTerrain,
   drawFractalNoiseTerrain,
@@ -147,12 +147,12 @@ export {
   resetOrbitalResonance,
   type OrbitalResonanceState,
 } from "./components/engines/orbitalResonance";
-export {
-  initReactionDiffusion,
-  drawReactionDiffusion,
-  resetReactionDiffusion,
-  type ReactionDiffusionState,
-} from "./components/engines/reactionDiffusion";
+// export {
+//   initReactionDiffusion,
+//   drawReactionDiffusion,
+//   resetReactionDiffusion,
+//   type ReactionDiffusionState,
+// } from "./components/engines/archived/reactionDiffusion"; // ARCHIVED
 export {
   initRecursiveSubdivision,
   drawRecursiveSubdivision,
@@ -228,34 +228,34 @@ export {
 export {
   flowCurrentsSchema,
   flowCurrentsDefaults,
-  gravityStormSchema,
-  gravityStormDefaults,
+  // gravityStormSchema, // ARCHIVED
+  // gravityStormDefaults, // ARCHIVED
   geoPulseSchema,
   geoPulseDefaults,
   waveEtherSchema,
   waveEtherDefaults,
-  vortexBloomSchema,
-  vortexBloomDefaults,
-  crystallineDriftSchema,
-  crystallineDriftDefaults,
+  // vortexBloomSchema, // ARCHIVED
+  // vortexBloomDefaults, // ARCHIVED
+  // crystallineDriftSchema, // ARCHIVED
+  // crystallineDriftDefaults, // ARCHIVED
   ambientMeshSchema,
   ambientMeshDefaults,
-  emberCascadeSchema,
-  emberCascadeDefaults,
-  cliffordAttractorSchema,
-  cliffordAttractorDefaults,
+  // emberCascadeSchema, // ARCHIVED
+  // emberCascadeDefaults, // ARCHIVED
+  // cliffordAttractorSchema, // ARCHIVED
+  // cliffordAttractorDefaults, // ARCHIVED
   harmonicLatticeSchema,
   harmonicLatticeDefaults,
   lissajousWeaveSchema,
   lissajousWeaveDefaults,
   phyllotaxisDreamSchema,
   phyllotaxisDreamDefaults,
-  spirographSchema,
-  spirographDefaults,
-  differentialGrowthSchema,
-  differentialGrowthDefaults,
-  doublePendulumSchema,
-  doublePendulumDefaults,
+  // spirographSchema, // ARCHIVED
+  // spirographDefaults, // ARCHIVED
+  // differentialGrowthSchema, // ARCHIVED
+  // differentialGrowthDefaults, // ARCHIVED
+  // doublePendulumSchema, // ARCHIVED
+  // doublePendulumDefaults, // ARCHIVED
   fractalNoiseTerrainSchema,
   fractalNoiseTerrainDefaults,
   moireLatticeSchema,
@@ -264,8 +264,8 @@ export {
   neuralWeaveDefaults,
   orbitalResonanceSchema,
   orbitalResonanceDefaults,
-  reactionDiffusionSchema,
-  reactionDiffusionDefaults,
+  // reactionDiffusionSchema, // ARCHIVED
+  // reactionDiffusionDefaults, // ARCHIVED
   recursiveSubdivisionSchema,
   recursiveSubdivisionDefaults,
   tideHarmonicsSchema,
@@ -287,25 +287,25 @@ export {
   recursiveTunnelDefaults,
   type ParamSchema,
   type FlowCurrentsParams,
-  type GravityStormParams,
+  // type GravityStormParams, // ARCHIVED
   type GeoPulseParams,
   type WaveEtherParams,
-  type VortexBloomParams,
-  type CrystallineDriftParams,
+  // type VortexBloomParams, // ARCHIVED
+  // type CrystallineDriftParams, // ARCHIVED
   type AmbientMeshParams,
-  type EmberCascadeParams,
-  type CliffordAttractorParams,
+  // type EmberCascadeParams, // ARCHIVED
+  // type CliffordAttractorParams, // ARCHIVED
   type HarmonicLatticeParams,
   type LissajousWeaveParams,
   type PhyllotaxisDreamParams,
-  type SpirographParams,
-  type DifferentialGrowthParams,
-  type DoublePendulumParams,
+  // type SpirographParams, // ARCHIVED
+  // type DifferentialGrowthParams, // ARCHIVED
+  // type DoublePendulumParams, // ARCHIVED
   type FractalNoiseTerrainParams,
   type MoireLatticeParams,
   type NeuralWeaveParams,
   type OrbitalResonanceParams,
-  type ReactionDiffusionParams,
+  // type ReactionDiffusionParams, // ARCHIVED
   type RecursiveSubdivisionParams,
   type TideHarmonicsParams,
   type VoronoiMosaicParams,
