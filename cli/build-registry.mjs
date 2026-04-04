@@ -2,9 +2,8 @@
 /**
  * build-registry.mjs — generates cli/registry.json from the source registry.
  *
- * Parses src/registry/index.ts to extract the registry entries (id, name,
- * description, tags, files) without requiring a TypeScript runtime, then
- * writes cli/registry.json.
+ * Uses esbuild to compile src/registry/index.ts on-the-fly and dynamically
+ * imports the registry array, ensuring robust parsing regardless of formatting.
  *
  * Usage: node cli/build-registry.mjs
  */
@@ -12,179 +11,118 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { buildSync } from "esbuild";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 
-// Read the TypeScript registry source
-const registrySource = fs.readFileSync(
-  path.join(root, "src", "registry", "index.ts"),
-  "utf-8"
-);
+// ─── Compile and load the registry ─────────────────────────────────────────
 
-// ─── Helpers ───────────────────────────────────────────────────────────────
+const registryPath = path.join(root, "src", "registry", "index.ts");
+const tempOutfile = path.join(root, "cli", ".registry-temp.mjs");
 
-/** Extract the value of a simple string field, e.g. `id: "foo"` → "foo" */
-function extractString(block, key) {
-  const match = block.match(new RegExp(`\\b${key}:\\s*"((?:[^"\\\\]|\\\\[\\s\\S])*)"`));
-  return match ? match[1] : null;
-}
+try {
+  // Compile TypeScript to ESM using esbuild
+  buildSync({
+    entryPoints: [registryPath],
+    bundle: true,
+    format: "esm",
+    platform: "node",
+    outfile: tempOutfile,
+    external: ["react", "react-dom", "ogl"], // Don't bundle peer dependencies
+    logLevel: "error",
+  });
 
-/**
- * Extract a string array field, e.g. `tags: ["a", "b"]` → ["a", "b"].
- * Handles multi-line arrays by tracking bracket depth.
- */
-function extractStringArray(block, key) {
-  const keyRegex = new RegExp(`\\b${key}:\\s*\\[`);
-  const keyMatch = block.match(keyRegex);
-  if (!keyMatch) return [];
-
-  const bracketStart = keyMatch.index + keyMatch[0].length - 1;
-  let depth = 0;
-  let bracketEnd = -1;
-  for (let i = bracketStart; i < block.length; i++) {
-    if (block[i] === "[") depth++;
-    else if (block[i] === "]") {
-      depth--;
-      if (depth === 0) {
-        bracketEnd = i;
-        break;
-      }
-    }
-  }
-  if (bracketEnd === -1) return [];
-
-  const arrayStr = block.slice(bracketStart + 1, bracketEnd);
-  return [...arrayStr.matchAll(/"((?:[^"\\\\]|\\\\[\\s\\S])*)"/g)].map(
-    (m) => m[1]
+  // Dynamically import the compiled module
+  const registryModule = await import(
+    `file://${tempOutfile}?cacheBust=${Date.now()}`
   );
-}
 
-// ─── Parse the registry array ──────────────────────────────────────────────
+  if (!registryModule.registry || !Array.isArray(registryModule.registry)) {
+    throw new Error(
+      "Could not find 'registry' export in src/registry/index.ts or it is not an array"
+    );
+  }
 
-const startMarker = "export const registry: RegistryEntry[] = [";
-const startIdx = registrySource.indexOf(startMarker);
-if (startIdx === -1) {
-  throw new Error("Could not find registry array in src/registry/index.ts");
-}
+  const registry = registryModule.registry;
 
-// Find the opening '[' of the array — the start marker itself ends with '['
-const arrayOpenIdx = startIdx + startMarker.length - 1;
-let depth = 0;
-let arrayCloseIdx = -1;
-for (let i = arrayOpenIdx; i < registrySource.length; i++) {
-  if (registrySource[i] === "[") depth++;
-  else if (registrySource[i] === "]") {
-    depth--;
-    if (depth === 0) {
-      arrayCloseIdx = i;
-      break;
+  if (registry.length === 0) {
+    throw new Error("Registry array is empty");
+  }
+
+  // Extract only the fields needed for CLI
+  const entries = registry.map((entry) => {
+    if (!entry.id || !entry.name || !entry.files || entry.files.length === 0) {
+      throw new Error(
+        `Invalid registry entry: missing required fields (id, name, or files)`
+      );
     }
-  }
-}
-if (arrayCloseIdx === -1) {
-  throw new Error("Could not find closing bracket of registry array");
-}
 
-const arrayContent = registrySource.slice(arrayOpenIdx + 1, arrayCloseIdx);
+    return {
+      id: entry.id,
+      name: entry.name,
+      description: entry.description ?? "",
+      tags: entry.tags ?? [],
+      files: entry.files,
+      ...(entry.tier ? { tier: entry.tier } : {}),
+      ...(entry.peerDependencies?.length > 0
+        ? { peerDependencies: entry.peerDependencies }
+        : {}),
+    };
+  });
 
-// Extract each top-level `{...}` entry object
-const entries = [];
-let pos = 0;
-while (pos < arrayContent.length) {
-  const objStart = arrayContent.indexOf("{", pos);
-  if (objStart === -1) break;
+  // ─── Output ────────────────────────────────────────────────────────────────
 
-  // Check if this object is commented out by looking backwards for comment markers
-  const textBeforeObj = arrayContent.slice(Math.max(0, objStart - 200), objStart);
-  const lastNewline = textBeforeObj.lastIndexOf("\n");
-  const lineBeforeObj = lastNewline !== -1 ? textBeforeObj.slice(lastNewline + 1) : textBeforeObj;
-  
-  // Skip if the line before contains "ARCHIVED:" comment or if the opening brace is commented
-  const isCommented = /\/\/\s*ARCHIVED:/i.test(lineBeforeObj) || /\/\/\s*\{/.test(lineBeforeObj);
-
-  let braceDepth = 0;
-  let objEnd = -1;
-  for (let i = objStart; i < arrayContent.length; i++) {
-    if (arrayContent[i] === "{") braceDepth++;
-    else if (arrayContent[i] === "}") {
-      braceDepth--;
-      if (braceDepth === 0) {
-        objEnd = i;
-        break;
-      }
+  // Source paths in the TypeScript registry use the pattern:
+  //   src/components/backgrounds/X  →  components/backgrounds/X  (no doubling)
+  //   src/components/engines/X      →  components/backgrounds/engines/X
+  //   src/components/utils/X        →  components/backgrounds/utils/X
+  //   src/components/schemas/X      →  components/backgrounds/schemas/X
+  function sourceToTarget(sourcePath) {
+    // Handle backgrounds/ subdirectory first to avoid doubling
+    if (sourcePath.startsWith("src/components/backgrounds/")) {
+      return sourcePath.replace(
+        /^src\/components\/backgrounds\//,
+        "components/backgrounds/"
+      );
     }
-  }
-  if (objEnd === -1) break;
-
-  const obj = arrayContent.slice(objStart, objEnd + 1);
-  
-  // Skip commented entries
-  if (!isCommented) {
-    const id = extractString(obj, "id");
-    const name = extractString(obj, "name");
-    const description = extractString(obj, "description");
-    const tags = extractStringArray(obj, "tags");
-    const files = extractStringArray(obj, "files");
-    const tier = extractString(obj, "tier");
-    const peerDependencies = extractStringArray(obj, "peerDependencies");
-
-    if (id && name && files.length > 0) {
-      entries.push({
-        id,
-        name,
-        description: description ?? "",
-        tags,
-        files,
-        ...(tier ? { tier } : {}),
-        ...(peerDependencies.length > 0 ? { peerDependencies } : {}),
-      });
-    }
+    return sourcePath.replace(/^src\/components\//, "components/backgrounds/");
   }
 
-  pos = objEnd + 1;
-}
+  const BASE_URL =
+    "https://raw.githubusercontent.com/dano796/alg-art-backgrounds/main";
 
-if (entries.length === 0) {
-  throw new Error("No registry entries found — check the parser or source format");
-}
-
-// ─── Output ────────────────────────────────────────────────────────────────
-
-// Source paths in the TypeScript registry use the pattern:
-//   src/components/backgrounds/X  →  components/backgrounds/X  (no doubling)
-//   src/components/engines/X      →  components/backgrounds/engines/X
-//   src/components/utils/X        →  components/backgrounds/utils/X
-//   src/components/schemas/X      →  components/backgrounds/schemas/X
-function sourceToTarget(sourcePath) {
-  // Handle backgrounds/ subdirectory first to avoid doubling
-  if (sourcePath.startsWith("src/components/backgrounds/")) {
-    return sourcePath.replace(/^src\/components\/backgrounds\//, "components/backgrounds/");
-  }
-  return sourcePath.replace(/^src\/components\//, "components/backgrounds/");
-}
-
-const BASE_URL =
-  "https://raw.githubusercontent.com/dano796/alg-art-backgrounds/main";
-
-const output = {
-  version: "1.0.0",
-  baseUrl: BASE_URL,
-  components: entries.map((entry) => ({
-    id: entry.id,
-    name: entry.name,
-    description: entry.description,
-    tags: entry.tags,
-    files: entry.files.map((source) => ({
-      source,
-      target: sourceToTarget(source),
+  const output = {
+    version: "1.0.0",
+    baseUrl: BASE_URL,
+    components: entries.map((entry) => ({
+      id: entry.id,
+      name: entry.name,
+      description: entry.description,
+      tags: entry.tags,
+      files: entry.files.map((source) => ({
+        source,
+        target: sourceToTarget(source),
+      })),
+      ...(entry.tier ? { tier: entry.tier } : {}),
+      ...(entry.peerDependencies?.length > 0
+        ? { peerDependencies: entry.peerDependencies }
+        : {}),
     })),
-    ...(entry.tier ? { tier: entry.tier } : {}),
-    ...(entry.peerDependencies?.length > 0 ? { peerDependencies: entry.peerDependencies } : {}),
-  })),
-};
+  };
 
-const outPath = path.join(root, "cli", "registry.json");
-fs.writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n", "utf-8");
-console.log(`cli/registry.json written with ${output.components.length} components.`);
+  const outPath = path.join(root, "cli", "registry.json");
+  fs.writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n", "utf-8");
+  console.log(
+    `✓ cli/registry.json written with ${output.components.length} components.`
+  );
+} catch (error) {
+  console.error("Error building registry:", error.message);
+  process.exit(1);
+} finally {
+  // Clean up temporary compiled file
+  if (fs.existsSync(tempOutfile)) {
+    fs.unlinkSync(tempOutfile);
+  }
+}
 

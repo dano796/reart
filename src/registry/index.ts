@@ -4,6 +4,8 @@
  * Every entry describes where to find a component's files, what params it
  * accepts, and how to reference it. The CLI reads registry.json (generated
  * from this) to resolve install requests.
+ *
+ * Note: This comment contains curly braces { and } to test parser robustness.
  */
 
 import {
@@ -65,7 +67,6 @@ import {
   fibonacciVortexDefaults,
   hexRippleSchema,
   hexRippleDefaults,
-
   recursiveTunnelSchema,
   recursiveTunnelDefaults,
   type ParamSchema,
@@ -550,7 +551,14 @@ export const registry: RegistryEntry[] = [
     ],
     description:
       "Wave interference mapped to a full spectral hue sweep — like light through a prism. Cursor bends the chromatic bands; click to plant new wave sources.",
-    tags: ["waves", "color", "interactive", "prism", "spectral", "interference"],
+    tags: [
+      "waves",
+      "color",
+      "interactive",
+      "prism",
+      "spectral",
+      "interference",
+    ],
   },
   {
     id: "photon-burst",
@@ -584,7 +592,14 @@ export const registry: RegistryEntry[] = [
     ],
     description:
       "Particles travel along golden spiral arms (r = k·φ^(θ/½π)) radiating from bloom centers. Cursor bends paths; click to plant new spiral origins.",
-    tags: ["fibonacci", "golden-ratio", "spiral", "particles", "interactive", "mathematical"],
+    tags: [
+      "fibonacci",
+      "golden-ratio",
+      "spiral",
+      "particles",
+      "interactive",
+      "mathematical",
+    ],
   },
   {
     id: "hex-ripple",
@@ -601,7 +616,14 @@ export const registry: RegistryEntry[] = [
     ],
     description:
       "Hexagonal tessellation with multi-source wave superposition. Interference patterns create chromatic ripples across the grid. Hover highlights cells; click plants new sources.",
-    tags: ["hexagonal", "grid", "waves", "interference", "interactive", "geometric"],
+    tags: [
+      "hexagonal",
+      "grid",
+      "waves",
+      "interference",
+      "interactive",
+      "geometric",
+    ],
   },
   {
     id: "recursive-tunnel",
@@ -618,7 +640,14 @@ export const registry: RegistryEntry[] = [
     ],
     description:
       "Concentric nested polygons zoom inward with cumulative twist, creating a recursive depth tunnel. Mouse moves the vanishing point; click reverses twist direction.",
-    tags: ["recursive", "geometric", "tunnel", "polygon", "interactive", "depth"],
+    tags: [
+      "recursive",
+      "geometric",
+      "tunnel",
+      "polygon",
+      "interactive",
+      "depth",
+    ],
   },
   {
     id: "background-studio",

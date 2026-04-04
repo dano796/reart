@@ -32,35 +32,6 @@
       ]
     },
     {
-      "id": "gravity-storm",
-      "name": "Gravity Storm",
-      "description": "",
-      "tags": [
-        "particles",
-        "physics",
-        "gravity",
-        "orbits"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/GravityStorm.tsx",
-          "target": "components/backgrounds/GravityStorm.tsx"
-        },
-        {
-          "source": "src/components/engines/gravityStorm.ts",
-          "target": "components/backgrounds/engines/gravityStorm.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
       "id": "geo-pulse",
       "name": "Geo Pulse",
       "description": "Nested parametric polygons rotating at prime-ratio angular velocities.",
@@ -119,64 +90,6 @@
       ]
     },
     {
-      "id": "vortex-bloom",
-      "name": "Vortex Bloom",
-      "description": "",
-      "tags": [
-        "particles",
-        "vortex",
-        "orbital",
-        "mandala"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/VortexBloom.tsx",
-          "target": "components/backgrounds/VortexBloom.tsx"
-        },
-        {
-          "source": "src/components/engines/vortexBloom.ts",
-          "target": "components/backgrounds/engines/vortexBloom.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "crystalline-drift",
-      "name": "Crystalline Drift",
-      "description": "",
-      "tags": [
-        "fractal",
-        "crystal",
-        "symmetry",
-        "dendrite"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/CrystallineDrift.tsx",
-          "target": "components/backgrounds/CrystallineDrift.tsx"
-        },
-        {
-          "source": "src/components/engines/crystallineDrift.ts",
-          "target": "components/backgrounds/engines/crystallineDrift.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
       "id": "ambient-mesh",
       "name": "Ambient Mesh",
       "description": "Nodes drift through noise fields, forming dynamic connections — a living network background.",
@@ -194,64 +107,6 @@
         {
           "source": "src/components/engines/ambientMesh.ts",
           "target": "components/backgrounds/engines/ambientMesh.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "ember-cascade",
-      "name": "Ember Cascade",
-      "description": "",
-      "tags": [
-        "particles",
-        "fire",
-        "thermal",
-        "glow"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/EmberCascade.tsx",
-          "target": "components/backgrounds/EmberCascade.tsx"
-        },
-        {
-          "source": "src/components/engines/emberCascade.ts",
-          "target": "components/backgrounds/engines/emberCascade.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "clifford-attractor",
-      "name": "Clifford Attractor",
-      "description": "",
-      "tags": [
-        "attractor",
-        "chaos",
-        "fractal",
-        "mathematical"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/CliffordAttractor.tsx",
-          "target": "components/backgrounds/CliffordAttractor.tsx"
-        },
-        {
-          "source": "src/components/engines/cliffordAttractor.ts",
-          "target": "components/backgrounds/engines/cliffordAttractor.ts"
         },
         {
           "source": "src/components/utils/noise.ts",
@@ -339,93 +194,6 @@
         {
           "source": "src/components/engines/phyllotaxisDream.ts",
           "target": "components/backgrounds/engines/phyllotaxisDream.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "spirograph",
-      "name": "Spirograph",
-      "description": "",
-      "tags": [
-        "geometric",
-        "parametric",
-        "curves",
-        "mathematical"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/Spirograph.tsx",
-          "target": "components/backgrounds/Spirograph.tsx"
-        },
-        {
-          "source": "src/components/engines/spirograph.ts",
-          "target": "components/backgrounds/engines/spirograph.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "differential-growth",
-      "name": "Differential Growth",
-      "description": "",
-      "tags": [
-        "organic",
-        "growth",
-        "simulation",
-        "biological"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/DifferentialGrowth.tsx",
-          "target": "components/backgrounds/DifferentialGrowth.tsx"
-        },
-        {
-          "source": "src/components/engines/differentialGrowth.ts",
-          "target": "components/backgrounds/engines/differentialGrowth.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "double-pendulum",
-      "name": "Double Pendulum",
-      "description": "",
-      "tags": [
-        "chaos",
-        "physics",
-        "pendulum",
-        "mathematical"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/DoublePendulum.tsx",
-          "target": "components/backgrounds/DoublePendulum.tsx"
-        },
-        {
-          "source": "src/components/engines/doublePendulum.ts",
-          "target": "components/backgrounds/engines/doublePendulum.ts"
         },
         {
           "source": "src/components/utils/noise.ts",
@@ -542,35 +310,6 @@
         {
           "source": "src/components/engines/orbitalResonance.ts",
           "target": "components/backgrounds/engines/orbitalResonance.ts"
-        },
-        {
-          "source": "src/components/utils/noise.ts",
-          "target": "components/backgrounds/utils/noise.ts"
-        },
-        {
-          "source": "src/components/schemas/index.ts",
-          "target": "components/backgrounds/schemas/index.ts"
-        }
-      ]
-    },
-    {
-      "id": "reaction-diffusion",
-      "name": "Reaction Diffusion",
-      "description": "",
-      "tags": [
-        "reaction-diffusion",
-        "organic",
-        "pattern",
-        "simulation"
-      ],
-      "files": [
-        {
-          "source": "src/components/backgrounds/ReactionDiffusion.tsx",
-          "target": "components/backgrounds/ReactionDiffusion.tsx"
-        },
-        {
-          "source": "src/components/engines/reactionDiffusion.ts",
-          "target": "components/backgrounds/engines/reactionDiffusion.ts"
         },
         {
           "source": "src/components/utils/noise.ts",
