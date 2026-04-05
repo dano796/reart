@@ -1,7 +1,7 @@
 {
-  "name": "alg-art-backgrounds",
+  "name": "react-reart",
   "version": "0.1.0",
-  "description": "Algorithmic art backgrounds as copy-paste-ready React components — shadcn/ui style.",
+  "description": "Algorithmic art backgrounds as copy-paste-ready React components.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -13,7 +13,7 @@
     }
   },
   "bin": {
-    "alg-art-backgrounds": "./cli/index.js"
+    "react-reart": "./cli/index.js"
   },
   "scripts": {
     "build": "tsc && node cli/build-registry.mjs",
@@ -55,5 +55,14 @@
     "dist",
     "cli"
   ],
-  "license": "MIT"
+  "author": "Daniel Ortiz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dano796/reart.git"
+  },
+  "homepage": "https://github.com/dano796/reart#readme",
+  "bugs": {
+    "url": "https://github.com/dano796/reart/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE.md"
 }

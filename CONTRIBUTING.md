@@ -1,6 +1,6 @@
-# Contributing to alg-art-backgrounds
+# Contributing to ReArt
 
-Thank you for considering contributing to alg-art-backgrounds! Contributions that improve the quality and reliability of this library are always welcome.
+Thank you for considering contributing to ReArt! Contributions that improve the quality and reliability of this library are always welcome.
 
 To ensure a smooth collaboration, please read the following guidelines before getting started.
 

@@ -73,7 +73,7 @@ import {
 } from "../components/schemas";
 
 export interface RegistryEntry {
-  /** Kebab-case id used in CLI: `npx alg-art-backgrounds add <id>` */
+  /** Kebab-case id used in CLI: `npx react-reart add <id>` */
   id: string;
   /** Human-readable display name */
   name: string;
