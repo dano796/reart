@@ -43,7 +43,7 @@ export function ExportModal({ bg, params, onClose }: ExportModalProps) {
   const [codeTab, setCodeTab] = useState<"usage" | "full">("usage");
   const [copiedInstall, setCopiedInstall] = useState(false);
 
-  const installCmd = `npx react-reart add ${bg.id}`;
+  const installCmd = `npx @dano796/react-reart add ${bg.id}`;
   const displayCode =
     codeTab === "usage"
       ? generateUsageSnippet(bg, params)

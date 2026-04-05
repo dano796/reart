@@ -1,4 +1,4 @@
-import type { ParamSchema } from "react-reart";
+import type { ParamSchema } from "@dano796/react-reart";
 
 export type BackgroundId =
   | "flow-currents"

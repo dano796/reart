@@ -89,7 +89,7 @@ import {
   hexRippleDefaults,
   recursiveTunnelSchema,
   recursiveTunnelDefaults,
-} from "react-reart";
+} from "@dano796/react-reart";
 import type { BackgroundEntry, AnyParams } from "./types";
 
 export const BACKGROUNDS: BackgroundEntry[] = [

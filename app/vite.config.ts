@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      'react-reart': path.resolve(__dirname, '../src/index.ts'),
+      '@dano796/react-reart': path.resolve(__dirname, '../src/index.ts'),
     },
   },
 })

@@ -1,5 +1,5 @@
 {
-  "name": "react-reart",
+  "name": "@dano796/react-reart",
   "version": "0.1.0",
   "description": "Algorithmic art backgrounds as copy-paste-ready React components.",
   "type": "module",
@@ -13,7 +13,7 @@
     }
   },
   "bin": {
-    "react-reart": "./cli/index.js"
+    "@dano796/react-reart": "./cli/index.js"
   },
   "scripts": {
     "build": "tsc && node cli/build-registry.mjs",

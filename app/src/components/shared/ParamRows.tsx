@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { ParamSchema } from "react-reart";
+import type { ParamSchema } from "@dano796/react-reart";
 
 export type NumberParam = Extract<ParamSchema, { type: "number" }>;
 export type ColorParam = Extract<ParamSchema, { type: "color" }>;

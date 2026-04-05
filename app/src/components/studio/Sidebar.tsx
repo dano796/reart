@@ -9,7 +9,7 @@ import {
   CodeXml,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import type { ParamSchema } from "react-reart";
+import type { ParamSchema } from "@dano796/react-reart";
 import type { BackgroundEntry, AnyParams, BackgroundId } from "./types";
 import {
   SliderRow,
