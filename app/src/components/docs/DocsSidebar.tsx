@@ -57,7 +57,7 @@ export function DocsSidebar({
         fixed top-14.5 bottom-0 left-0 z-40 w-72 bg-bg flex flex-col scrollbar-none overflow-y-auto
         transition-transform duration-300 ease-in-out
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
-        lg:relative lg:top-auto lg:bottom-auto lg:w-auto lg:z-auto lg:translate-x-0 lg:flex
+        lg:sticky lg:top-14.5 lg:h-[calc(100vh-58px)] lg:w-auto lg:z-auto lg:translate-x-0 lg:flex
       `}
     >
       {/* Mobile close button */}

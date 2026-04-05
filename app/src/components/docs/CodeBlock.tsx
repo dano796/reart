@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 
 export function CodeBlock({ code, label }: { code: string; label: string }) {
   const [copied, setCopied] = useState(false);
@@ -14,15 +14,9 @@ export function CodeBlock({ code, label }: { code: string; label: string }) {
             setCopied(true);
             setTimeout(() => setCopied(false), 1500);
           }}
-          className={`bg-transparent border border-border rounded-[5px] text-[11px] px-2.5 py-0.5 cursor-pointer font-sans transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
+          className={`bg-transparent border border-border rounded-[5px] p-1.5 cursor-pointer transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
         >
-          {copied ? (
-            <span className="inline-flex items-center gap-1">
-              <Check size={11} aria-hidden="true" /> copied
-            </span>
-          ) : (
-            "copy"
-          )}
+          {copied ? <Check size={13} aria-hidden="true" /> : <Copy size={13} aria-hidden="true" />}
         </button>
       </div>
       <pre className="bg-surface border border-border border-t-0 rounded-b-[9px] px-3 py-4 md:px-6 md:py-5 text-[12px] leading-[1.75] text-ink overflow-x-auto font-mono m-0 whitespace-pre">

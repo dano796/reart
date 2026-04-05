@@ -16,12 +16,12 @@ function GalleryCard({
 
   return (
     <div
-      className="bg-surface border border-border rounded-[18px] overflow-hidden hover:border-accent focus-within:border-accent animate-[cardIn_0.5s_ease_both]"
+      className="group bg-surface border border-border rounded-[18px] overflow-hidden hover:border-accent transition-[border-color] duration-300 ease-out animate-[cardIn_0.5s_ease_both]"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       {/* Live canvas preview — clickable */}
       <div
-        className="relative h-55 bg-bg cursor-pointer group"
+        className="relative h-55 bg-bg cursor-pointer"
         onClick={() => navigate(docsRoute(item.id))}
         role="link"
         tabIndex={0}
@@ -43,8 +43,8 @@ function GalleryCard({
         <div className="absolute top-3 left-3 px-2.5 py-1 bg-bg/75 backdrop-blur-sm border border-border rounded-full text-[10px] text-muted font-mono tracking-[0.04em]">
           {item.tag}
         </div>
-        {/* Hover overlay hint */}
-        <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-200 pointer-events-none" />
+        {/* Hover overlay — responds to card-level hover */}
+        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.03] transition-colors duration-300 pointer-events-none" />
       </div>
 
       {/* Card body */}

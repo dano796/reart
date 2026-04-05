@@ -27,7 +27,7 @@ function NavLink({
     <a
       href={href}
       onClick={handleClick}
-      className={`px-3.5 py-1.75 text-[13px] no-underline font-sans rounded-md inline-block transition-colors ${active ? "text-ink font-medium" : "text-muted font-normal"}`}
+      className={`px-3.5 py-1.75 text-[13px] no-underline font-sans rounded-md inline-block transition-colors hover:text-ink ${active ? "text-ink font-medium" : "text-muted font-normal"}`}
     >
       {children}
     </a>

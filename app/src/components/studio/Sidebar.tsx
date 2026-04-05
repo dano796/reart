@@ -2,10 +2,11 @@ import { useState } from "react";
 import {
   RotateCcw,
   Share2,
-  ArrowUpRight,
+  SquareArrowOutUpRight,
   ChevronDown,
   Check,
   X,
+  CodeXml,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import type { ParamSchema } from "react-reart";
@@ -201,7 +202,7 @@ export function Sidebar({
         <div className="flex gap-2">
           <button
             onClick={onReset}
-            className="flex-1 flex items-center justify-center gap-1 bg-transparent border border-current rounded-lg text-[12px] text-muted py-2 cursor-pointer hover:text-ink transition-colors font-sans"
+            className="flex-1 flex items-center justify-center gap-1.5 bg-transparent border border-current rounded-lg text-[12px] text-muted py-2 cursor-pointer hover:text-ink transition-colors font-sans"
           >
             <RotateCcw size={12} aria-hidden="true" /> Reset
           </button>
@@ -211,7 +212,7 @@ export function Sidebar({
               setCopied(true);
               setTimeout(() => setCopied(false), 1500);
             }}
-            className={`flex-1 flex items-center justify-center gap-1 bg-transparent border border-current rounded-lg text-[12px] py-2 cursor-pointer transition-colors font-sans ${copied ? "text-green" : "text-muted hover:text-ink"}`}
+            className={`flex-1 flex items-center justify-center gap-1.5 bg-transparent border border-current rounded-lg text-[12px] py-2 cursor-pointer transition-colors font-sans ${copied ? "text-green" : "text-muted hover:text-ink"}`}
           >
             {copied ? (
               <>
@@ -227,16 +228,16 @@ export function Sidebar({
 
         <a
           href="/docs"
-          className="flex items-center justify-center gap-1 bg-transparent border border-current rounded-lg text-[12px] text-muted py-2 cursor-pointer hover:text-ink transition-colors font-sans no-underline"
+          className="flex items-center justify-center gap-1.5 bg-transparent border border-current rounded-lg text-[12px] text-muted py-2 cursor-pointer hover:text-ink transition-colors font-sans no-underline"
         >
-          Read Full Docs
+          <SquareArrowOutUpRight size={13} aria-hidden="true" /> Read Full Docs
         </a>
 
         <button
           onClick={onExport}
           className="w-full bg-accent border-none rounded-lg text-[#1a1a1a] text-[13px] font-semibold py-2.5 cursor-pointer hover:opacity-90 transition-opacity font-display flex items-center justify-center gap-1.5"
         >
-          <ArrowUpRight size={13} aria-hidden="true" /> Export Code
+          <CodeXml size={13} aria-hidden="true" /> Export Code
         </button>
       </div>
     </motion.aside>

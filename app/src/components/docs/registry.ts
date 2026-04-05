@@ -529,7 +529,7 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "plasma-field",
     name: "Plasma Field",
-    tag: "WebGL2 · Shader · Noise",
+    tag: "Shader · Noise",
     desc: "Domain-warped fractional Brownian motion rendered at true pixel resolution via a WebGL2 fragment shader. Three color stops shift through the warped noise field.",
     Component: PlasmaField as React.ComponentType<BgComponentProps>,
     schema: plasmaFieldSchema,
@@ -546,7 +546,7 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "nebula-veil",
     name: "Nebula Veil",
-    tag: "OGL · Shader · Volumetric",
+    tag: "Shader · Volumetric",
     desc: "Three superimposed simplex noise planes interfere at different frequencies to create a volumetric nebula curtain with radial depth and luminous cloud structures.",
     Component: NebulaVeil as React.ComponentType<BgComponentProps>,
     schema: nebulaVeilSchema,
@@ -563,7 +563,7 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "prismatic-wave",
     name: "Prismatic Wave",
-    tag: "Waves · Prism · Interactive",
+    tag: "Waves · Prism",
     desc: "Wave interference mapped to a full spectral hue sweep — like white light through a prism. Move the cursor to bend the chromatic bands; click to plant new wave sources.",
     Component: PrismaticWave as React.ComponentType<BgComponentProps>,
     schema: prismaticWaveSchema,
@@ -581,7 +581,7 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "photon-burst",
     name: "Photon Burst",
-    tag: "Particles · Glow · Interactive",
+    tag: "Particles · Glow",
     desc: "Glowing photons drift through cosmic noise currents. Move the cursor to bend paths with gravitational pull; click anywhere to detonate a radial rainbow burst.",
     Component: PhotonBurst as React.ComponentType<BgComponentProps>,
     schema: photonBurstSchema,
@@ -597,8 +597,8 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "fibonacci-vortex",
     name: "Fibonacci Vortex",
-    tag: "Fibonacci · Spiral · Interactive",
-    desc: "Particles travel along golden spiral arms (r = k·φ^(θ/½π)) radiating from bloom centers. Move the cursor to gravitationally bend nearby paths; click to plant a new spiral origin.",
+    tag: "Fibonacci · Spiral",
+    desc: "Particles travel along golden spiral arms radiating from bloom centers. Move the cursor to gravitationally bend nearby paths; click to plant a new spiral origin.",
     Component: FibonacciVortex as React.ComponentType<BgComponentProps>,
     schema: fibonacciVortexSchema,
     defaults: fibonacciVortexDefaults as unknown as Record<string, unknown>,
@@ -615,7 +615,7 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "hex-ripple",
     name: "Hex Ripple",
-    tag: "Hexagonal · Grid · Interactive",
+    tag: "Hexagonal · Grid",
     desc: "A hexagonal tessellation with multi-source wave superposition. Chromatic interference patterns ripple across the grid. Hover highlights cells; click anywhere to plant a new wave source.",
     Component: HexRipple as React.ComponentType<BgComponentProps>,
     schema: hexRippleSchema,
@@ -633,7 +633,7 @@ export const DOC_REGISTRY: DocEntry[] = [
   {
     id: "recursive-tunnel",
     name: "Recursive Tunnel",
-    tag: "Recursive · Geometric · Interactive",
+    tag: "Recursive · Geometric",
     desc: "Concentric nested polygons zoom inward with cumulative twist — a hypnotic recursive depth tunnel. Move the cursor to shift the vanishing point; click to reverse the twist direction.",
     Component: RecursiveTunnel as React.ComponentType<BgComponentProps>,
     schema: recursiveTunnelSchema,

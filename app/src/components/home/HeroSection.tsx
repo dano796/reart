@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Check } from "lucide-react";
-import { FlowCurrents } from "react-reart";
+import { Copy, Check } from "lucide-react";
+import { RecursiveTunnel } from "react-reart";
 import { navigate } from "../../lib/navigate";
-import { ROUTES, CLI_PACKAGE } from "../../lib/constants";
+import { CLI_PACKAGE, studioRoute } from "../../lib/constants";
 
 export function HeroSection() {
   const [copied, setCopied] = useState(false);
-  const cmd = `npx ${CLI_PACKAGE} add flow-currents`;
+  const cmd = `npx ${CLI_PACKAGE} add recursive-tunnel`;
 
   const copyCmd = () => {
     navigator.clipboard.writeText(cmd);
@@ -17,20 +17,21 @@ export function HeroSection() {
   return (
     <section className="relative h-svh min-h-150 flex items-center justify-center overflow-hidden">
       {/* Live canvas background */}
-      <FlowCurrents
+      <RecursiveTunnel
         style={{
           position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
         }}
-        count={2200}
-        speed={0.75}
-        colorWarm="#d97757"
-        colorCool="#6a9bcc"
-        colorAccent="#788c5d"
-        trailOpacity={6}
-        noiseEvol={0.0004}
+        sides={5}
+        layers={22}
+        zoomSpeed={0.05}
+        twistPerLayer={0.11}
+        parallaxStrength={0.28}
+        colorInner="#d5ff0b"
+        colorMid="#1e1e30"
+        colorOuter="#d5ff0b"
       />
 
       {/* Vignette overlay */}
@@ -40,7 +41,7 @@ export function HeroSection() {
       <div className="relative text-center w-full max-w-190 px-4 md:px-6">
         {/* Badge */}
         <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.25 bg-accent-soft border border-accent-border rounded-full text-[11px] text-accent font-semibold tracking-[0.08em] mb-7 font-mono uppercase">
-          Zero Dependencies · Copy-paste · shadcn/ui Style
+          Zero Dependencies · Copy-paste Ready
         </div>
 
         {/* Headline */}
@@ -60,14 +61,14 @@ export function HeroSection() {
         {/* CTA buttons */}
         <div className="hero-ctas flex gap-3 justify-center flex-wrap mb-7">
           <a
-            href={ROUTES.studio}
+            href={studioRoute("recursive-tunnel")}
             onClick={(e) => {
               e.preventDefault();
-              navigate(ROUTES.studio);
+              navigate(studioRoute("recursive-tunnel"));
             }}
             className="px-7.5 py-3.25 bg-accent border-none rounded-[10px] text-[#1a1a1a] text-[15px] font-bold cursor-pointer font-display tracking-[0.01em] hover:opacity-90 transition-opacity no-underline inline-block"
           >
-            Open Studio →
+            Open Studio
           </a>
           <a
             href="#gallery"
@@ -88,14 +89,12 @@ export function HeroSection() {
               {cmd}
             </span>
             <span
-              className={`px-2.25 py-0.5 bg-faint rounded text-[11px] shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
+              className={`shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
             >
               {copied ? (
-                <span className="inline-flex items-center gap-1">
-                  <Check size={11} aria-hidden="true" /> copied
-                </span>
+                <Check size={13} aria-hidden="true" />
               ) : (
-                "copy"
+                <Copy size={13} aria-hidden="true" />
               )}
             </span>
           </button>
