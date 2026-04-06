@@ -1,12 +1,10 @@
 <div align="center">
 	<br>
-	<br>
-	<img src="./media/reart-logo.png" alt="ReArt logo">
-	<br>
+	<img src="./media/reart-logo.png" alt="ReArt" height="160">
 	<br>
 	<b>Algorithmic art backgrounds for React — installed like shadcn/ui, owned by you.</b>
 	<br>
-  <sub>Stand out with 21+ free customizable backgrounds.</sub>
+  <sub>Stand out with 20+ free customizable backgrounds.</sub>
 	<br>
 	<br>
   <a href="https://www.npmjs.com/package/@dano796/react-reart"><img alt="License" src="https://img.shields.io/npm/v/@dano796/react-reart"></a>
