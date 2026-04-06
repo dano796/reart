@@ -46,10 +46,10 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
     >
       {/* Header */}
       <div className="flex items-center gap-3 px-6 py-4 border-b border-border">
-        <h3 className="font-display font-bold text-[18px] text-ink tracking-[-0.02em]">
+        <h3 className="font-display font-bold text-[18px] text-ink">
           {entry.name}
         </h3>
-        <span className="px-2.5 py-1 bg-bg border border-border rounded-full text-[10px] text-muted font-mono tracking-[0.04em]">
+        <span className="px-2.5 py-1 bg-bg border border-border rounded-full text-[10px] text-muted font-mono">
           {entry.tag}
         </span>
       </div>
@@ -114,7 +114,7 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
       {/* Controls */}
       <div className="border-b border-border">
         <div className="flex items-center justify-between px-5 pt-4 pb-1">
-          <span className="text-[11px] text-muted font-mono uppercase tracking-[0.08em]">
+          <span className="text-[11px] text-muted font-mono uppercase">
             Customize
           </span>
           <button
@@ -159,7 +159,7 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
       {/* Props table */}
       <div className="px-0 py-0">
         <div className="px-6 py-3 border-b border-border/50">
-          <span className="text-[11px] text-muted font-mono uppercase tracking-[0.08em]">
+          <span className="text-[11px] text-muted font-mono uppercase">
             Props
           </span>
         </div>

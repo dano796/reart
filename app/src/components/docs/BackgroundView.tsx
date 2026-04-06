@@ -43,7 +43,7 @@ export function BackgroundView({
   return (
     <div>
       {/* Title */}
-      <h1 className="font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-6 text-[clamp(28px,4vw,42px)]">
+      <h1 className="font-display font-extrabold text-ink leading-[1.05] mb-6 text-[clamp(28px,4vw,42px)]">
         {entry.name}
       </h1>
 
@@ -116,7 +116,7 @@ export function BackgroundView({
 
         {/* Props section */}
         <div className="mt-10 mb-10">
-          <h2 className="font-display font-bold text-ink tracking-[-0.02em] mb-5 text-[clamp(20px,2.5vw,28px)]">
+          <h2 className="font-display font-bold text-ink mb-5 text-[clamp(20px,2.5vw,28px)]">
             Props
           </h2>
           <PropsTable schema={entry.schema} />
@@ -125,7 +125,7 @@ export function BackgroundView({
 
       {/* ── CODE TAB ── */}
       <div className={`${tab === "code" ? "block" : "hidden"} pt-9`}>
-        <h2 className="font-display font-bold text-ink tracking-[-0.02em] mb-4 text-[clamp(20px,2.5vw,28px)]">
+        <h2 className="font-display font-bold text-ink mb-4 text-[clamp(20px,2.5vw,28px)]">
           Install
         </h2>
         <CodeBlock
@@ -133,7 +133,7 @@ export function BackgroundView({
           label="terminal"
         />
 
-        <h2 className="font-display font-bold text-ink tracking-[-0.02em] mb-4 text-[clamp(20px,2.5vw,28px)]">
+        <h2 className="font-display font-bold text-ink mb-4 text-[clamp(20px,2.5vw,28px)]">
           Usage
         </h2>
         <CodeBlock code={fullSnippet} label={`${entry.name}.tsx`} />

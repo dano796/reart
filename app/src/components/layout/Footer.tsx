@@ -36,10 +36,12 @@ export function Footer() {
         {/* Left — brand + tagline + copyright */}
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-accent flex items-center justify-center text-[13px] font-bold text-[#1a1a1a] font-display">
-              A
-            </div>
-            <span className="text-[13px] text-ink font-display font-semibold tracking-[-0.01em]">
+            <img
+              src="/reart-icon.png"
+              alt="ReArt"
+              className="w-6 h-6 rounded-md mix-blend-screen"
+            />
+            <span className="text-[14px] text-ink font-display font-semibold">
               ReArt
             </span>
           </div>
@@ -67,7 +69,7 @@ export function Footer() {
               GitHub
             </a>
           </nav>
-          <span className="inline-flex items-center gap-1.5 text-[13px] text-muted font-mono py-1">
+          <span className="inline-flex items-center gap-1.5 text-[13px] text-muted py-1">
             <Copyright size={12} /> {new Date().getFullYear()} ReArt
           </span>
         </div>

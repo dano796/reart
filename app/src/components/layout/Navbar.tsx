@@ -69,17 +69,23 @@ export function Navbar() {
           onClick={() => navigate(ROUTES.home)}
           className="flex items-center gap-2.5 cursor-pointer bg-transparent border-0"
         >
-          <div className="w-7 h-7 rounded-[7px] bg-accent flex items-center justify-center text-[13px] font-bold text-[#1a1a1a] font-display shrink-0">
-            A
-          </div>
-          <span className="font-display font-bold text-[14px] text-ink tracking-[-0.01em]">
+          <img
+            src="/reart-icon.png"
+            alt="ReArt"
+            className="w-7 h-7 rounded-[7px] shrink-0 mix-blend-screen"
+          />
+          <span className="font-display font-bold text-[14px] text-ink">
             ReArt
           </span>
         </button>
 
         {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-0.5">
-          <NavLink href={ROUTES.studio} spa active={currentPath === ROUTES.studio}>
+          <NavLink
+            href={ROUTES.studio}
+            spa
+            active={currentPath === ROUTES.studio}
+          >
             Studio
           </NavLink>
           <NavLink href="/#gallery" active={currentPath === "/" && false}>
@@ -92,7 +98,7 @@ export function Navbar() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 ml-2.5 px-4 py-1.75 bg-accent rounded-lg text-[#1a1a1a] no-underline text-[13px] font-semibold font-display tracking-[0.01em] whitespace-nowrap hover:opacity-90 transition-opacity"
+            className="flex items-center gap-1.5 ml-2.5 px-4 py-1.75 bg-accent rounded-lg text-[#1a1a1a] no-underline text-[13px] font-semibold font-display whitespace-nowrap hover:opacity-90 transition-opacity"
           >
             <GitHubIcon /> GitHub
           </a>
@@ -154,7 +160,11 @@ export function Navbar() {
               <div className="px-4 py-2 flex flex-col">
                 <a
                   href={ROUTES.studio}
-                  onClick={(e) => { e.preventDefault(); setMenuOpen(false); navigate(ROUTES.studio); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    navigate(ROUTES.studio);
+                  }}
                   className={`py-3.5 text-[13px] font-sans no-underline border-b border-border/40 ${currentPath === ROUTES.studio ? "text-ink font-semibold" : "text-muted"}`}
                 >
                   Studio
@@ -168,7 +178,11 @@ export function Navbar() {
                 </a>
                 <a
                   href={ROUTES.docs}
-                  onClick={(e) => { e.preventDefault(); setMenuOpen(false); navigate(ROUTES.docs); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    navigate(ROUTES.docs);
+                  }}
                   className={`py-3.5 text-[13px] font-sans no-underline border-b border-border/40 ${currentPath === ROUTES.docs ? "text-ink font-semibold" : "text-muted"}`}
                 >
                   Docs

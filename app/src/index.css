@@ -20,6 +20,10 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+.font-display {
+  letter-spacing: -0.02em;
+}
+
 @layer base {
   *,
   *::before,

@@ -40,7 +40,7 @@ function GalleryCard({
         {/* Bottom fade-out */}
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-surface to-transparent pointer-events-none" />
         {/* Tag chip */}
-        <div className="absolute top-3 left-3 px-2.5 py-1 bg-bg/75 backdrop-blur-sm border border-border rounded-full text-[10px] text-muted font-mono tracking-[0.04em]">
+        <div className="absolute top-3 left-3 px-2.5 py-1 bg-bg/75 backdrop-blur-sm border border-border rounded-full text-[10px] text-muted font-mono">
           {item.tag}
         </div>
         {/* Hover overlay — responds to card-level hover */}
@@ -50,12 +50,12 @@ function GalleryCard({
       {/* Card body */}
       <div className="px-5 pt-4.5 pb-5">
         <div
-          className="font-display font-bold text-[18px] text-ink mb-2 tracking-[-0.02em] cursor-pointer hover:text-accent transition-colors duration-150"
+          className="font-display font-bold text-[18px] text-ink mb-2 cursor-pointer hover:text-accent transition-colors duration-150"
           onClick={() => navigate(docsRoute(item.id))}
         >
           {item.name}
         </div>
-        <p className="text-[13px] text-muted leading-[1.65] mb-4.5 font-sans font-light">
+        <p className="text-[14px] text-muted leading-[1.65] mb-4.5 font-sans font-light">
           {item.desc}
         </p>
 
@@ -89,23 +89,26 @@ function GalleryCard({
 
 export function GallerySection() {
   return (
-    <section id="gallery" className="py-16 md:py-27.5 px-5 md:px-10 max-w-280 mx-auto">
+    <section
+      id="gallery"
+      className="py-16 md:py-27.5 px-5 md:px-10 max-w-280 mx-auto"
+    >
       {/* Section header */}
       <div className="mb-15 max-w-145">
-        <div className="font-mono text-[11px] text-accent tracking-[0.12em] font-medium mb-3.5 uppercase">
+        <div className="font-mono text-[12px] text-accent font-medium mb-3.5 uppercase">
           Backgrounds
         </div>
-        <h2 className="font-display font-extrabold text-ink leading-none tracking-[-0.04em] mb-4.5 text-[clamp(32px,5vw,52px)]">
-          21 distinct systems.
+        <h2 className="font-display font-extrabold text-ink leading-none mb-4.5 text-[clamp(32px,5vw,52px)]">
+          20+ Distinct Systems,
           <br />
           <span className="text-muted font-semibold">
-            Infinite configurations.
+            Infinite Configurations
           </span>
         </h2>
-        <p className="text-[15px] text-muted leading-[1.7] font-sans font-light">
-          Each background is a self-contained canvas renderer. Install one or
-          all — you get the full source directly in your project with no npm
-          dependency.
+        <p className="text-[16px] text-muted leading-[1.7] font-sans font-light">
+          Each background is a self-contained canvas renderer. Explore the
+          gallery and pick the one you vibe with. Clic on any background to see
+          its docs and customize it in the studio.
         </p>
       </div>
 

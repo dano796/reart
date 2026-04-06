@@ -40,22 +40,22 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative text-center w-full max-w-190 px-4 md:px-6">
         {/* Badge */}
-        <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.25 bg-accent-soft border border-accent-border rounded-full text-[11px] text-accent font-semibold tracking-[0.08em] mb-7 font-mono uppercase">
+        <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.25 bg-accent-soft border border-accent-border rounded-full text-[11px] text-accent font-semibold mb-7 font-mono uppercase">
           Zero Dependencies · Copy-paste Ready
         </div>
 
         {/* Headline */}
-        <h1 className="hero-h1 font-display font-extrabold text-ink mb-6.5 leading-[0.92] tracking-[-0.045em] text-[clamp(52px,9vw,96px)]">
-          Algorithmic Art
+        <h1 className="hero-h1 font-display font-extrabold text-ink mb-6.5 leading-[0.92] text-[clamp(52px,9vw,96px)]">
+          ReArt
           <br />
           <span className="text-accent">for React</span>
         </h1>
 
         {/* Subheadline */}
         <p className="hero-sub text-muted font-sans font-light leading-[1.65] mx-auto mb-10 max-w-full md:max-w-135 text-[clamp(15px,2vw,19px)]">
-          21 animated canvas backgrounds you own forever. Install with one
-          command, customize every parameter, ship without adding a single npm
-          dependency.
+          Animated canvas backgrounds inspired by algorithmic concepts. Install
+          with one command, customize every parameter, ship without
+          dependencies.
         </p>
 
         {/* CTA buttons */}
@@ -66,7 +66,7 @@ export function HeroSection() {
               e.preventDefault();
               navigate(studioRoute("recursive-tunnel"));
             }}
-            className="px-7.5 py-3.25 bg-accent border-none rounded-[10px] text-[#1a1a1a] text-[15px] font-bold cursor-pointer font-display tracking-[0.01em] hover:opacity-90 transition-opacity no-underline inline-block"
+            className="px-7.5 py-3.25 bg-accent border-none rounded-[10px] text-[#1a1a1a] text-[15px] font-bold font-display cursor-pointer hover:opacity-90 transition-opacity no-underline inline-block"
           >
             Open Studio
           </a>
@@ -105,7 +105,7 @@ export function HeroSection() {
       <div className="hero-scroll absolute bottom-7.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
         <div className="animate-[scrollBounce_2.4s_ease-in-out_infinite] flex flex-col items-center gap-1.5">
           <div className="w-px h-9 bg-linear-to-b from-muted to-transparent" />
-          <span className="text-[10px] text-muted tracking-[0.14em] font-mono uppercase">
+          <span className="text-[11px] text-muted font-mono uppercase">
             scroll
           </span>
         </div>

@@ -78,7 +78,7 @@ export function Sidebar({
       {/* Header */}
       <div className="flex items-center justify-between mx-5 md:mx-4 py-4 border-b border-border shrink-0">
         <div className="flex items-center gap-2">
-          <span className="text-[14px] font-bold tracking-[-0.01em] font-display">
+          <span className="text-[14px] font-bold font-display">
             Background Studio
           </span>
         </div>
@@ -95,7 +95,7 @@ export function Sidebar({
       <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-none">
         {/* Background selector + parameters */}
         <div className="px-5 md:px-4 pt-4 pb-3">
-          <div className="text-[12px] text-muted font-semibold tracking-[0.12em] uppercase font-mono mb-2.5">
+          <div className="text-[12px] text-muted font-semibold uppercase font-mono mb-2.5">
             Background
           </div>
 
