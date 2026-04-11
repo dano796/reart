@@ -1,4 +1,5 @@
 import type { ParamSchema } from "react-algo";
+import type { ReactElement } from "react";
 
 export type BackgroundId =
   | "flow-currents"
@@ -42,6 +43,6 @@ export interface BackgroundEntry {
   label: string;
   schema: ParamSchema[];
   defaults: AnyParams;
-  Component: (props: any) => JSX.Element;
+  Component: (props: any) => ReactElement;
   description: string;
 }
