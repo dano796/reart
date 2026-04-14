@@ -126,7 +126,7 @@ function rewriteImports(content, srcFile, tgtFile, allFiles) {
       path.posix.normalize(path.posix.join(srcDir, importPath))
     );
     const targetDep = depMap.get(resolved);
-    if (!targetDep) return match; // not one of our files — leave unchanged
+    if (!targetDep) return `// ${match}`; // not installed — comment out missing dependency
 
     let rel = path.posix.relative(tgtDir, targetDep);
     if (!rel.startsWith(".")) rel = "." + path.posix.sep + rel;
