@@ -119,7 +119,9 @@ function rewriteImports(content, srcFile, tgtFile, allFiles) {
   }
 
   // Matches: import … from "./…" | export … from "../…" | import("…")
-  const importRe = /((?:import|export)[^'"]*?from\s*|import\s*)(['"])(\.\.?\/[^'"]+)(\2)/g;
+  // The ^ anchor (with m flag) ensures only line-starting import/export statements are
+  // matched, preventing false matches on words like "re-exports" inside block comments.
+  const importRe = /^((?:import|export)[^'"]*?from\s*|import\s*)(['"])(\.\.?\/[^'"]+)(\2)/gm;
 
   return content.replace(importRe, (match, kw, q, importPath, _q2) => {
     const resolved = stripExt(
